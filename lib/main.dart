@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio_flutter_web/screens/whole_page.dart';
 
 void main() {
   runApp(const MyApp());
