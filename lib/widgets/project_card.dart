@@ -43,8 +43,8 @@ class ProjectCard extends StatelessWidget {
                             Alignment(project.index % 2 == 1 ? 1.0 : -1.0, 1.0),
                         child: Container(
                           height: 500,
-                          width: 20.0,
-                          color: Colors.blue,
+                          width: 1.0,
+                          color: Colors.white,
                         ),
                       ),
                     ],
@@ -70,8 +70,8 @@ class ProjectCard extends StatelessWidget {
                             Alignment(project.index % 2 == 1 ? -1.0 : 1.0, 1.0),
                         child: Container(
                           height: 500,
-                          width: 20.0,
-                          color: Colors.blue,
+                          width: 1.0,
+                          color: Colors.white,
                         ),
                       ),
                     ],
