@@ -19,15 +19,15 @@ class _WholePageState extends State<WholePage> {
         children: [
           FirstSection(),
           SizedBox(
-            height: 100.0,
+            height: 10.0,
           ),
           SecondSection(),
           SizedBox(
-            height: 100.0,
+            height: 10.0,
           ),
           ThirdSection(),
           SizedBox(
-            height: 100.0,
+            height: 10.0,
           ),
           FourthSection(),
         ],

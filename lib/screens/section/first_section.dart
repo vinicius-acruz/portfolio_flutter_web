@@ -28,8 +28,6 @@ class _FirstSectionState extends State<FirstSection> {
             children: [
               Expanded(
                 child: Container(
-                  color: Colors.blue
-                      .withOpacity(0.1), // Adjust the opacity as needed
                   padding: const EdgeInsets.only(left: 50.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -58,14 +56,14 @@ class _FirstSectionState extends State<FirstSection> {
                           ),
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20.0,
                       ),
                       Text(
                         'Flutter Developer',
                         style: _robotoStyle.copyWith(fontSize: 25.0),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20.0,
                       ),
                       Row(
@@ -90,7 +88,7 @@ class _FirstSectionState extends State<FirstSection> {
                           // Add your action here
                         },
                         style: ElevatedButton.styleFrom(
-                          fixedSize: Size(200.0, 60.0),
+                          fixedSize: const Size(200.0, 60.0),
                           backgroundColor: Colors.indigo,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10.0),
@@ -118,10 +116,7 @@ class _FirstSectionState extends State<FirstSection> {
                 ),
               ),
               Expanded(
-                child: Container(
-                  color: Colors.red
-                      .withOpacity(0.1), // Adjust the opacity as needed
-                ),
+                child: Container(),
               ),
             ],
           ),
