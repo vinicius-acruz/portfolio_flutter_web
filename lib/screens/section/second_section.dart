@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_flutter_web/modals/skills.dart';
+import 'package:portfolio_flutter_web/widgets/text_reveal.dart';
 
 import '../../widgets/skill_card.dart';
 
@@ -11,16 +12,34 @@ class SecondSection extends StatefulWidget {
   State<SecondSection> createState() => _SecondSectionState();
 }
 
-class _SecondSectionState extends State<SecondSection> {
+class _SecondSectionState extends State<SecondSection>
+    with TickerProviderStateMixin {
+  late AnimationController controller;
+  @override
+  void initState() {
+    controller = AnimationController(
+        vsync: this,
+        duration: const Duration(milliseconds: 1000),
+        reverseDuration: const Duration(milliseconds: 375));
+    super.initState();
+    Future.delayed(const Duration(milliseconds: 1000), () {
+      controller.forward();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text(
-          'My skills ,',
-          style: GoogleFonts.quicksand(
-            fontWeight: FontWeight.w700,
-            fontSize: 50.0,
+        TextReveal(
+          maxHeight: 70.0,
+          controller: controller,
+          child: Text(
+            'My skills ,',
+            style: GoogleFonts.quicksand(
+              fontWeight: FontWeight.w700,
+              fontSize: 50.0,
+            ),
           ),
         ),
         Container(
