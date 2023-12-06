@@ -69,7 +69,7 @@ class _SkillCardState extends State<SkillCard> {
               SizedBox(height: 15.0),
               Text(
                 widget.skill.title,
-                style: GoogleFonts.quicksand(
+                style: GoogleFonts.roboto(
                   fontSize: 20.0,
                   fontWeight: FontWeight.bold,
                   color: Colors.indigo,
@@ -78,7 +78,7 @@ class _SkillCardState extends State<SkillCard> {
               SizedBox(height: 10.0),
               Text(
                 widget.skill.description,
-                style: GoogleFonts.quicksand(
+                style: GoogleFonts.roboto(
                   fontSize: 14.0,
                   color: Colors.grey,
                 ),

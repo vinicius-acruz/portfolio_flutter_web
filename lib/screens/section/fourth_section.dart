@@ -28,7 +28,7 @@ class FourthSection extends StatelessWidget {
                     children: [
                       Text(
                         "Contact me",
-                        style: GoogleFonts.quicksand(
+                        style: GoogleFonts.roboto(
                           fontSize: 25.0,
                           fontWeight: FontWeight.w500,
                           color: Colors.redAccent,
@@ -37,14 +37,14 @@ class FourthSection extends StatelessWidget {
                       SizedBox(height: 10.0),
                       Text(
                         'Got a project?',
-                        style: GoogleFonts.quicksand(
+                        style: GoogleFonts.roboto(
                           fontWeight: FontWeight.w600,
                           fontSize: 40.0,
                         ),
                       ),
                       Text(
                         'Let\'s talk!',
-                        style: GoogleFonts.quicksand(
+                        style: GoogleFonts.roboto(
                           fontWeight: FontWeight.w600,
                           fontSize: 40.0,
                         ),

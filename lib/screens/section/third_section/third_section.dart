@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../modals/projects.dart';
-import '../../widgets/project_card.dart';
+import '../../../modals/projects.dart';
+import '../../../widgets/project_card.dart';
 
 class ThirdSection extends StatefulWidget {
   const ThirdSection({Key? key}) : super(key: key);
@@ -20,7 +20,7 @@ class _ThirdSectionState extends State<ThirdSection> {
         children: [
           Text(
             'My projects ,',
-            style: GoogleFonts.quicksand(
+            style: GoogleFonts.roboto(
               fontWeight: FontWeight.w700,
               fontSize: 50.0,
             ),

@@ -36,7 +36,7 @@ class _SecondSectionState extends State<SecondSection>
           controller: controller,
           child: Text(
             'My skills ,',
-            style: GoogleFonts.quicksand(
+            style: GoogleFonts.roboto(
               fontWeight: FontWeight.w700,
               fontSize: 50.0,
             ),
