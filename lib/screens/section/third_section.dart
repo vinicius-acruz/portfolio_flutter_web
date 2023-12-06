@@ -19,7 +19,7 @@ class _ThirdSectionState extends State<ThirdSection> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
-            'My skills ,',
+            'My projects ,',
             style: GoogleFonts.quicksand(
               fontWeight: FontWeight.w700,
               fontSize: 50.0,

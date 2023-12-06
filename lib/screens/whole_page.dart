@@ -17,15 +17,15 @@ class _WholePageState extends State<WholePage> {
     return const SingleChildScrollView(
       child: Column(
         children: [
+          ThirdSection(),
+          SizedBox(
+            height: 10.0,
+          ),
           FirstSection(),
           SizedBox(
             height: 10.0,
           ),
           SecondSection(),
-          SizedBox(
-            height: 10.0,
-          ),
-          ThirdSection(),
           SizedBox(
             height: 10.0,
           ),
