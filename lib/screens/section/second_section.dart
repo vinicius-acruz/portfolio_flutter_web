@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:portfolio_flutter_web/modals/scroll_offset.dart';
 import 'package:portfolio_flutter_web/modals/skills.dart';
 import 'package:portfolio_flutter_web/responsive/responsive_layout.dart';
 import 'package:portfolio_flutter_web/widgets/text_reveal.dart';
@@ -23,26 +25,38 @@ class _SecondSectionState extends State<SecondSection>
         duration: const Duration(milliseconds: 1000),
         reverseDuration: const Duration(milliseconds: 375));
     super.initState();
-    Future.delayed(const Duration(milliseconds: 1000), () {
-      controller.forward();
-    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        TextReveal(
-          maxHeight: ResponsiveLayout.getResponsiveSize(context, 70.0),
-          controller: controller,
-          child: Text(
-            'My skills,',
-            style: GoogleFonts.roboto(
-              fontWeight: FontWeight.w700,
-              fontSize: ResponsiveLayout.getResponsiveSize(context, 50.0),
+        BlocBuilder<DisplayOffset, ScrollOffset>(
+            buildWhen: (previous, current) {
+          if ((current.scrollOffsetValue >= 900 &&
+                  current.scrollOffsetValue <= 1300) ||
+              controller.isAnimating) {
+            return true;
+          } else {
+            return false;
+          }
+        }, builder: (context, state) {
+          print("Scroll Offset: ${state.scrollOffsetValue}");
+          (state.scrollOffsetValue > 1100)
+              ? controller.forward()
+              : controller.reverse();
+          return TextReveal(
+            maxHeight: ResponsiveLayout.getResponsiveSize(context, 70.0),
+            controller: controller,
+            child: Text(
+              'My skills,',
+              style: GoogleFonts.roboto(
+                fontWeight: FontWeight.w700,
+                fontSize: ResponsiveLayout.getResponsiveSize(context, 50.0),
+              ),
             ),
-          ),
-        ),
+          );
+        }),
         Container(
           padding: const EdgeInsets.symmetric(vertical: 20.0),
           child: Center(
@@ -54,8 +68,10 @@ class _SecondSectionState extends State<SecondSection>
                   .map<Widget>(
                     (skill) => ResponsiveLayout(
                         mobileLayout: SkillCardMobile(skill: skill),
-                        desktopLayout: SkillCardWeb(skill: skill),
-                        tabletLayout: SkillCardWeb(skill: skill)),
+                        desktopLayout: SkillCardWeb(
+                            skill: skill, index: skills.indexOf(skill)),
+                        tabletLayout: SkillCardWeb(
+                            skill: skill, index: skills.indexOf(skill))),
                   )
                   .toList(),
             ),
