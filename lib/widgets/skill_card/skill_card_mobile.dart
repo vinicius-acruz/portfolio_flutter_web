@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_flutter_web/responsive/responsive_layout.dart';
 
+import '../../modals/scroll_offset.dart';
 import '../../modals/skills.dart';
 
 class SkillCardMobile extends StatefulWidget {
   final Skill skill;
+  final int index;
 
-  const SkillCardMobile({Key? key, required this.skill}) : super(key: key);
+  const SkillCardMobile({Key? key, required this.skill, required this.index})
+      : super(key: key);
 
   @override
   State<SkillCardMobile> createState() => _SkillCardMobileState();
@@ -21,10 +25,10 @@ class _SkillCardMobileState extends State<SkillCardMobile>
 
   @override
   void initState() {
-    Future.delayed(const Duration(milliseconds: 1000), () {
-      animateCard = true;
-      setState(() {});
-    });
+    // Future.delayed(const Duration(milliseconds: 1000), () {
+    //   animateCard = true;
+    //   setState(() {});
+    // });
     _animationController =
         AnimationController(vsync: this, duration: Duration(milliseconds: 300));
 
@@ -40,43 +44,54 @@ class _SkillCardMobileState extends State<SkillCardMobile>
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedCrossFade(
-      crossFadeState:
-          animateCard ? CrossFadeState.showSecond : CrossFadeState.showFirst,
-      duration: const Duration(milliseconds: 800),
-      reverseDuration: const Duration(milliseconds: 400),
-      alignment: Alignment.center,
-      firstCurve: Curves.easeOut,
-      secondCurve: Curves.easeOut,
-      firstChild: Container(
-        color: Colors.white,
-        height: getResponsiveCard(context, 400),
-        width: getResponsiveCard(context, 280),
-        margin: const EdgeInsets.symmetric(vertical: 25.0, horizontal: 5.0),
-      ),
-      secondChild: AnimatedContainer(
-        duration: Duration(milliseconds: 300),
-        height: _isExpanded
-            ? getResponsiveCard(context, 800)
-            : getResponsiveCard(context, 400),
-        width: _isExpanded
-            ? getResponsiveCard(context, 420)
-            : getResponsiveCard(context, 270),
-        margin: EdgeInsets.symmetric(vertical: 15.0, horizontal: 5.0),
-        padding: EdgeInsets.all(10.0),
-        decoration: BoxDecoration(
+    final startRange = 1100 + widget.index * 50;
+    final endRange = 2200 + widget.index * 50; // Adjust the range as needed
+
+    return BlocBuilder<DisplayOffset, ScrollOffset>(
+        buildWhen: (previous, current) {
+      // Return true if the current scroll offset is within the calculated range
+      return (current.scrollOffsetValue >= startRange &&
+          current.scrollOffsetValue <= endRange);
+    }, builder: (context, state) {
+      print("skillcard: ${state.scrollOffsetValue}");
+      return AnimatedCrossFade(
+        crossFadeState: (state.scrollOffsetValue >= (startRange + 100) &&
+                state.scrollOffsetValue <= (endRange - 100))
+            ? CrossFadeState.showSecond
+            : CrossFadeState.showFirst,
+        duration: const Duration(milliseconds: 800),
+        reverseDuration: const Duration(milliseconds: 400),
+        alignment: Alignment.center,
+        firstCurve: Curves.easeOut,
+        secondCurve: Curves.easeOut,
+        firstChild: Container(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(20.0),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.3),
-              spreadRadius: 3,
-              blurRadius: 5,
-              offset: Offset(0, 3),
-            ),
-          ],
+          height: getResponsiveCard(context, 400),
+          width: getResponsiveCard(context, 280),
+          margin: const EdgeInsets.symmetric(vertical: 25.0, horizontal: 5.0),
         ),
-        child: SingleChildScrollView(
+        secondChild: AnimatedContainer(
+          duration: Duration(milliseconds: 300),
+          height: _isExpanded
+              ? getResponsiveCard(context, 800)
+              : getResponsiveCard(context, 400),
+          width: _isExpanded
+              ? getResponsiveCard(context, 420)
+              : getResponsiveCard(context, 270),
+          margin: EdgeInsets.symmetric(vertical: 15.0, horizontal: 5.0),
+          padding: EdgeInsets.all(10.0),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(20.0),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.3),
+                spreadRadius: 3,
+                blurRadius: 5,
+                offset: Offset(0, 3),
+              ),
+            ],
+          ),
           child: SizedBox(
             height: _isExpanded
                 ? getResponsiveCard(context, 800)
@@ -143,8 +158,8 @@ class _SkillCardMobileState extends State<SkillCardMobile>
             ),
           ),
         ),
-      ),
-    );
+      );
+    });
   }
 
   @override

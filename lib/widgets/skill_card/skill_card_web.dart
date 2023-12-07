@@ -19,10 +19,6 @@ class _SkillCardWebState extends State<SkillCardWeb> {
 
   @override
   void initState() {
-    //Future.delayed(const Duration(milliseconds: 1000), () {
-    //   animateCard = true;
-    //   setState(() {});
-    // });
     super.initState();
   }
 

@@ -52,7 +52,7 @@ class _SecondSectionState extends State<SecondSection>
               'My skills,',
               style: GoogleFonts.roboto(
                 fontWeight: FontWeight.w700,
-                fontSize: ResponsiveLayout.getResponsiveSize(context, 50.0),
+                fontSize: ResponsiveLayout.getResponsiveSize(context, 40.0),
               ),
             ),
           );
@@ -67,7 +67,10 @@ class _SecondSectionState extends State<SecondSection>
               children: skills
                   .map<Widget>(
                     (skill) => ResponsiveLayout(
-                        mobileLayout: SkillCardMobile(skill: skill),
+                        mobileLayout: SkillCardMobile(
+                          skill: skill,
+                          index: skills.indexOf(skill),
+                        ),
                         desktopLayout: SkillCardWeb(
                             skill: skill, index: skills.indexOf(skill)),
                         tabletLayout: SkillCardWeb(
