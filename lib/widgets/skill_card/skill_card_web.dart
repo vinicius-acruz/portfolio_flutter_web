@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../modals/skills.dart';
+import '../../modals/skills.dart';
 
-class SkillCard extends StatefulWidget {
+class SkillCardWeb extends StatefulWidget {
   final Skill skill;
 
-  const SkillCard({Key? key, required this.skill}) : super(key: key);
+  const SkillCardWeb({Key? key, required this.skill}) : super(key: key);
 
   @override
-  State<SkillCard> createState() => _SkillCardState();
+  State<SkillCardWeb> createState() => _SkillCardWebState();
 }
 
-class _SkillCardState extends State<SkillCard> {
+class _SkillCardWebState extends State<SkillCardWeb> {
   bool animateCard = false;
 
   @override
@@ -69,7 +69,7 @@ class _SkillCardState extends State<SkillCard> {
               SizedBox(height: 15.0),
               Text(
                 widget.skill.title,
-                style: GoogleFonts.roboto(
+                style: GoogleFonts.quicksand(
                   fontSize: 20.0,
                   fontWeight: FontWeight.bold,
                   color: Colors.indigo,
@@ -78,7 +78,7 @@ class _SkillCardState extends State<SkillCard> {
               SizedBox(height: 10.0),
               Text(
                 widget.skill.description,
-                style: GoogleFonts.roboto(
+                style: GoogleFonts.quicksand(
                   fontSize: 14.0,
                   color: Colors.grey,
                 ),

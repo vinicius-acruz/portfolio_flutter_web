@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_flutter_web/modals/skills.dart';
+import 'package:portfolio_flutter_web/responsive/responsive_layout.dart';
 import 'package:portfolio_flutter_web/widgets/text_reveal.dart';
-
-import '../../widgets/skill_card.dart';
+import '../../widgets/skill_card/skill_card_mobile.dart';
+import '../../widgets/skill_card/skill_card_web.dart';
 
 class SecondSection extends StatefulWidget {
   const SecondSection({Key? key});
@@ -32,13 +33,13 @@ class _SecondSectionState extends State<SecondSection>
     return Column(
       children: [
         TextReveal(
-          maxHeight: 70.0,
+          maxHeight: ResponsiveLayout.getResponsiveSize(context, 70.0),
           controller: controller,
           child: Text(
-            'My skills ,',
+            'My skills,',
             style: GoogleFonts.roboto(
               fontWeight: FontWeight.w700,
-              fontSize: 50.0,
+              fontSize: ResponsiveLayout.getResponsiveSize(context, 50.0),
             ),
           ),
         ),
@@ -50,9 +51,12 @@ class _SecondSectionState extends State<SecondSection>
               spacing: 20.0,
               runSpacing: 20.0,
               children: skills
-                  .map<Widget>((skill) => SkillCard(
-                        skill: skill,
-                      ))
+                  .map<Widget>(
+                    (skill) => ResponsiveLayout(
+                        mobileLayout: SkillCardMobile(skill: skill),
+                        desktopLayout: SkillCardWeb(skill: skill),
+                        tabletLayout: SkillCardWeb(skill: skill)),
+                  )
                   .toList(),
             ),
           ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../../responsive/responsive_layout.dart';
 import '../../../widgets/text_reveal.dart';
 import 'first_section.dart';
 
@@ -24,11 +25,6 @@ class FirstSectionMobile extends StatelessWidget {
     double screenHeight = MediaQuery.of(context).size.height;
 
     // function to calculate responsive size
-    double getResponsiveSize(double baseFontSize) {
-      // adjust this factor based on preference
-      const double scaleFactor = 0.0015;
-      return screenHeight * scaleFactor * baseFontSize;
-    }
 
     return Stack(
       children: [
@@ -44,13 +40,13 @@ class FirstSectionMobile extends StatelessWidget {
               TextReveal(
                 textOpacityAnimation: textOpacityAnimation,
                 textRevealAnimation: textRevealAnimation,
-                maxHeight: getResponsiveSize(60.0),
+                maxHeight: ResponsiveLayout.getResponsiveSize(context, 60.0),
                 controller: controller,
                 child: Text(
                   'Hello,',
                   style: GoogleFonts.roboto(
                     fontWeight: FontWeight.w900,
-                    fontSize: getResponsiveSize(40.0),
+                    fontSize: ResponsiveLayout.getResponsiveSize(context, 40.0),
                   ),
                 ),
               ),
@@ -59,26 +55,30 @@ class FirstSectionMobile extends StatelessWidget {
                   TextReveal(
                     textOpacityAnimation: textOpacityAnimation,
                     textRevealAnimation: textRevealAnimation,
-                    maxHeight: getResponsiveSize(65.0),
+                    maxHeight:
+                        ResponsiveLayout.getResponsiveSize(context, 65.0),
                     controller: controller,
                     child: Text(
                       "I'm ",
                       style: GoogleFonts.roboto(
                         fontWeight: FontWeight.w900,
-                        fontSize: getResponsiveSize(30.0),
+                        fontSize:
+                            ResponsiveLayout.getResponsiveSize(context, 30.0),
                       ),
                     ),
                   ),
                   TextReveal(
                     textOpacityAnimation: textOpacityAnimation,
                     textRevealAnimation: textRevealAnimation,
-                    maxHeight: getResponsiveSize(60.0),
+                    maxHeight:
+                        ResponsiveLayout.getResponsiveSize(context, 60.0),
                     controller: controller,
                     child: Text(
                       'Vinicius',
                       style: GoogleFonts.roboto(
                         fontWeight: FontWeight.w900,
-                        fontSize: getResponsiveSize(30.0),
+                        fontSize:
+                            ResponsiveLayout.getResponsiveSize(context, 30.0),
                         decoration: TextDecoration.underline,
                       ),
                     ),
@@ -93,7 +93,7 @@ class FirstSectionMobile extends StatelessWidget {
                 child: Text(
                   'Flutter Developer',
                   style: GoogleFonts.roboto(
-                    fontSize: getResponsiveSize(18.0),
+                    fontSize: ResponsiveLayout.getResponsiveSize(context, 18.0),
                   ),
                 ),
               ),
@@ -108,8 +108,9 @@ class FirstSectionMobile extends StatelessWidget {
                     // Add your action here
                   },
                   style: ElevatedButton.styleFrom(
-                    fixedSize:
-                        Size(getResponsiveSize(170.0), getResponsiveSize(40.0)),
+                    fixedSize: Size(
+                        ResponsiveLayout.getResponsiveSize(context, 170.0),
+                        ResponsiveLayout.getResponsiveSize(context, 40.0)),
                     backgroundColor: Colors.indigo,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0),
@@ -122,7 +123,8 @@ class FirstSectionMobile extends StatelessWidget {
                         'Reach Me',
                         style: GoogleFonts.roboto(
                             color: Colors.white,
-                            fontSize: getResponsiveSize(15.0)),
+                            fontSize: ResponsiveLayout.getResponsiveSize(
+                                context, 15.0)),
                       ),
                       SizedBox(
                         width: 20.0,
@@ -130,7 +132,7 @@ class FirstSectionMobile extends StatelessWidget {
                       Icon(
                         Icons.send,
                         color: Colors.white,
-                        size: getResponsiveSize(18.0),
+                        size: ResponsiveLayout.getResponsiveSize(context, 18.0),
                       ),
                     ],
                   ),
@@ -150,7 +152,8 @@ class FirstSectionMobile extends StatelessWidget {
                     child: Text(
                       'Hi, I\'m Vinicius, an aspiring Flutter developer passionate about crafting seamless and engaging cross-platform applications. Eager to merge creativity with code, I strive to bring innovative solutions to life in the ever-evolving world of mobile development.',
                       style: TextStyle(
-                          fontSize: getResponsiveSize(15.0),
+                          fontSize:
+                              ResponsiveLayout.getResponsiveSize(context, 15.0),
                           color: Colors.black54),
                       textAlign: TextAlign.justify,
                     ),
@@ -158,7 +161,7 @@ class FirstSectionMobile extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: getResponsiveSize(25.0),
+                height: ResponsiveLayout.getResponsiveSize(context, 25.0),
               ),
             ],
           ),

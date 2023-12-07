@@ -119,9 +119,10 @@ class FirstSectionWeb extends StatelessWidget {
                               textRevealAnimation: textRevealAnimation,
                               maxHeight: 200.0,
                               controller: controller,
-                              child: const Text(
+                              child: Text(
                                 'Hi, I\'m Vinicius, an aspiring Flutter developer passionate about crafting seamless and engaging cross-platform applications. Eager to merge creativity with code, I strive to bring innovative solutions to life in the ever-evolving world of mobile development.',
-                                style: TextStyle(fontSize: 16.0),
+                                style: GoogleFonts.roboto(
+                                    fontSize: 16.0, color: Colors.black54),
                               ),
                             ),
                           ),

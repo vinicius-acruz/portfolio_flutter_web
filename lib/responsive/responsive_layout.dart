@@ -5,14 +5,22 @@ class ResponsiveLayout extends StatelessWidget {
   final Widget tabletLayout;
   final Widget desktopLayout;
 
-  const ResponsiveLayout(
-      {super.key,
-      required this.mobileLayout,
-      required this.tabletLayout,
-      required this.desktopLayout});
+  const ResponsiveLayout({
+    super.key,
+    required this.mobileLayout,
+    required this.desktopLayout,
+    required this.tabletLayout,
+  });
 
   static int mobileWidthLimit = 500;
   static int tabletWidthLimit = 1100;
+
+  static double getResponsiveSize(BuildContext context, double baseSize) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    // Adjust this factor based on preference
+    const double scaleFactor = 0.0015;
+    return screenHeight * scaleFactor * baseSize;
+  }
 
   @override
   Widget build(BuildContext context) {
