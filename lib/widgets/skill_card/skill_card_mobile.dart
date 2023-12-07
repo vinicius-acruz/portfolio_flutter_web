@@ -74,7 +74,7 @@ class _SkillCardMobileState extends State<SkillCardMobile>
           duration: Duration(milliseconds: 300),
           height: _isExpanded
               ? getResponsiveCard(context, 800)
-              : getResponsiveCard(context, 400),
+              : getResponsiveCard(context, 450),
           width: _isExpanded
               ? getResponsiveCard(context, 420)
               : getResponsiveCard(context, 270),
@@ -140,12 +140,12 @@ class _SkillCardMobileState extends State<SkillCardMobile>
                         decoration: TextDecoration.underline,
                         decorationThickness: 2,
                         decorationColor: Colors.grey),
+                    textAlign: TextAlign.center,
                   ),
                 ),
                 if (_isExpanded) // Additional details can be added here
                   Flexible(
-                    child: Container(
-                      padding: EdgeInsets.symmetric(vertical: 10.0),
+                    child: SingleChildScrollView(
                       child: Text(
                         widget.skill.description,
                         style: GoogleFonts.roboto(
