@@ -44,8 +44,8 @@ class _SkillCardMobileState extends State<SkillCardMobile>
 
   @override
   Widget build(BuildContext context) {
-    final startRange = 1100 + widget.index * 50;
-    final endRange = 2200 + widget.index * 50; // Adjust the range as needed
+    final startRange = 950 + widget.index * 100;
+    final endRange = 2000 + widget.index * 100; // Adjust the range as needed
 
     return BlocBuilder<DisplayOffset, ScrollOffset>(
         buildWhen: (previous, current) {

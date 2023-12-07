@@ -18,17 +18,24 @@ class SecondSection extends StatefulWidget {
 class _SecondSectionState extends State<SecondSection>
     with TickerProviderStateMixin {
   late AnimationController controller;
+  late bool isMobile;
+
   @override
   void initState() {
     controller = AnimationController(
         vsync: this,
         duration: const Duration(milliseconds: 1000),
         reverseDuration: const Duration(milliseconds: 375));
+
+    // Determine if the screen width is considered mobile
+
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    isMobile = MediaQuery.of(context).size.width < 500;
+
     return Column(
       children: [
         BlocBuilder<DisplayOffset, ScrollOffset>(
@@ -42,7 +49,7 @@ class _SecondSectionState extends State<SecondSection>
           }
         }, builder: (context, state) {
           print("Scroll Offset: ${state.scrollOffsetValue}");
-          (state.scrollOffsetValue > 1100)
+          (state.scrollOffsetValue > (isMobile ? 950 : 1100))
               ? controller.forward()
               : controller.reverse();
           return TextReveal(
