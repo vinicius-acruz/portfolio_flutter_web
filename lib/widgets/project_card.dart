@@ -116,7 +116,7 @@ class _ProjectCardState extends State<ProjectCard>
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   child: Text(
                     widget.project.title,
-                    style: GoogleFonts.quicksand(
+                    style: GoogleFonts.roboto(
                       fontSize: 20.0,
                       fontWeight: FontWeight.w600,
                     ),
@@ -129,7 +129,7 @@ class _ProjectCardState extends State<ProjectCard>
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   child: Text(
                     widget.project.description,
-                    style: GoogleFonts.quicksand(
+                    style: GoogleFonts.roboto(
                         fontSize: 16.0,
                         fontWeight: FontWeight.w500,
                         color: Colors.black54),

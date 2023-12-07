@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio_flutter_web/screens/section/first_section.dart';
+import 'package:portfolio_flutter_web/screens/section/first_section/first_section.dart';
 import 'package:portfolio_flutter_web/screens/section/fourth_section.dart';
 import 'package:portfolio_flutter_web/screens/section/second_section.dart';
-import 'package:portfolio_flutter_web/screens/section/third_section.dart';
+import 'package:portfolio_flutter_web/screens/section/third_section/third_section.dart';
 
 class WholePage extends StatefulWidget {
   const WholePage({super.key});
@@ -17,19 +17,20 @@ class _WholePageState extends State<WholePage> {
     return const SingleChildScrollView(
       child: Column(
         children: [
-          ThirdSection(),
-          SizedBox(
-            height: 10.0,
-          ),
-          FirstSection(),
-          SizedBox(
-            height: 10.0,
-          ),
+          // FirstSection(),
+          // SizedBox(
+          //   height: 10.0,
+          // ),
           SecondSection(),
           SizedBox(
             height: 10.0,
           ),
-          FourthSection(),
+
+          //ThirdSection(),
+          SizedBox(
+            height: 10.0,
+          ),
+          //FourthSection(),
         ],
       ),
     );
