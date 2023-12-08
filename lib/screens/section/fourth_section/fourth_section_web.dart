@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class FourthSection extends StatelessWidget {
-  const FourthSection({Key? key}) : super(key: key);
+class FourthSectionWeb extends StatelessWidget {
+  const FourthSectionWeb({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

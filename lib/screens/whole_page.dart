@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:portfolio_flutter_web/responsive/responsive_layout.dart';
 import 'package:portfolio_flutter_web/screens/section/first_section/first_section.dart';
-import 'package:portfolio_flutter_web/screens/section/fourth_section.dart';
+import 'package:portfolio_flutter_web/screens/section/fourth_section/fourth_section_mobile.dart';
+import 'package:portfolio_flutter_web/screens/section/fourth_section/fourth_section_web.dart';
 import 'package:portfolio_flutter_web/screens/section/second_section.dart';
 import 'package:portfolio_flutter_web/screens/section/third_section/third_section.dart';
 
@@ -48,7 +50,10 @@ class _WholePageState extends State<WholePage> {
           SizedBox(
             height: 10.0,
           ),
-          FourthSection(),
+          ResponsiveLayout(
+              mobileLayout: FourthSectionMobile(),
+              desktopLayout: FourthSectionWeb(),
+              tabletLayout: FourthSectionWeb()),
         ],
       ),
     );
