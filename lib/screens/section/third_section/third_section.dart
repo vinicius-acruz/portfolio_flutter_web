@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_flutter_web/responsive/responsive_layout.dart';
 import 'package:portfolio_flutter_web/widgets/project_card/project_card_mobile.dart';
 import 'package:portfolio_flutter_web/widgets/text_reveal.dart';
+import '../../../constants/style.dart';
 import '../../../modals/projects.dart';
 import '../../../modals/scroll_offset.dart';
 import '../../../widgets/project_card/project_card_web.dart';
@@ -58,9 +59,10 @@ class _ThirdSectionState extends State<ThirdSection>
               controller: controller,
               child: Text(
                 'My projects ,',
-                style: GoogleFonts.roboto(
+                style: AppStyles.fontStyle(
                   fontWeight: FontWeight.w700,
                   fontSize: ResponsiveLayout.getResponsiveSize(context, 40.0),
+                  color: AppStyles.bigLettersColor,
                 ),
               ),
             ),

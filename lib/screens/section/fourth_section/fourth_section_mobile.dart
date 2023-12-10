@@ -2,19 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../constants/style.dart';
+
 class FourthSectionMobile extends StatelessWidget {
   const FourthSectionMobile({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 330.0,
-      margin: const EdgeInsets.all(10.0),
-      decoration: BoxDecoration(
-        color: Colors.yellow.withOpacity(0.1),
-        borderRadius: BorderRadius.circular(20.0), // Rounded edges
+      height: 280.0,
+      //margin: const EdgeInsets.all(10.0),
+      decoration: const BoxDecoration(
+        color: AppStyles.bottomSheetColor,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(20),
+          topRight: Radius.circular(20),
+        ), // Rounded edges
       ),
-      padding: const EdgeInsets.symmetric(vertical: 40.0, horizontal: 20.0),
+      //padding: const EdgeInsets.symmetric(vertical: 40.0, horizontal: 20.0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -23,30 +28,32 @@ class FourthSectionMobile extends StatelessWidget {
             children: [
               Text(
                 "Contact me",
-                style: GoogleFonts.roboto(
-                  fontSize: 20.0,
+                style: AppStyles.fontStyle(
+                  fontSize: 23.0,
                   fontWeight: FontWeight.w500,
-                  color: Colors.redAccent,
+                  color: AppStyles.bottomLettersContactColor,
                 ),
               ),
               SizedBox(height: 5.0),
               Text(
                 'Got a project?',
-                style: GoogleFonts.roboto(
+                style: AppStyles.fontStyle(
                   fontWeight: FontWeight.w600,
                   fontSize: 30.0,
+                  color: AppStyles.bottomLettersColor,
                 ),
               ),
               Text(
                 'Let\'s talk!',
-                style: GoogleFonts.roboto(
+                style: AppStyles.fontStyle(
                   fontWeight: FontWeight.w600,
-                  fontSize: 30.0,
+                  fontSize: 27.0,
+                  color: AppStyles.bottomLettersColor,
                 ),
               ),
             ],
           ),
-          const SizedBox(width: 20.0),
+          const SizedBox(height: 20.0),
           const Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -58,7 +65,7 @@ class FourthSectionMobile extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 20.0,
                   fontWeight: FontWeight.bold,
-                  color: Colors.black54,
+                  color: AppStyles.bottomLettersColor,
                 ),
               ),
             ],
@@ -69,6 +76,7 @@ class FourthSectionMobile extends StatelessWidget {
                 color: Colors.grey.withOpacity(0.2),
                 borderRadius: BorderRadius.circular(10.0)),
             padding: EdgeInsets.all(10.0),
+            margin: EdgeInsets.only(left: 30.0, right: 30.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

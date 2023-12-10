@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:portfolio_flutter_web/constants/style.dart';
 import 'package:portfolio_flutter_web/responsive/responsive_layout.dart';
 import 'first_section_mobile.dart';
 import 'first_section_web.dart';
@@ -134,7 +135,7 @@ class _FirstPageImageState extends State<FirstPageImage>
                     child: Container(
                       height: _animation.value,
                       width: double.infinity,
-                      color: Colors.white,
+                      color: AppStyles.backgroundColor,
                     ),
                   )
                 ],
@@ -207,7 +208,7 @@ class _SecondPageImageState extends State<SecondPageImage>
                     child: Container(
                       height: _animation.value,
                       width: double.infinity,
-                      color: Colors.white,
+                      color: AppStyles.backgroundColor,
                     ),
                   )
                 ],

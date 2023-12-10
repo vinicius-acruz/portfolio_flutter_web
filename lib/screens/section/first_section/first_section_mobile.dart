@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:portfolio_flutter_web/constants/style.dart';
 import '../../../responsive/responsive_layout.dart';
 import '../../../widgets/text_reveal.dart';
 import 'first_section.dart';
@@ -31,7 +32,6 @@ class FirstSectionMobile extends StatelessWidget {
         // Page Content
         Container(
           height: screenHeight,
-          color: Colors.white,
           padding: const EdgeInsets.only(left: 20.0, top: 180.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -44,10 +44,11 @@ class FirstSectionMobile extends StatelessWidget {
                 controller: controller,
                 child: Text(
                   'Hello,',
-                  style: GoogleFonts.roboto(
-                    fontWeight: FontWeight.w900,
-                    fontSize: ResponsiveLayout.getResponsiveSize(context, 40.0),
-                  ),
+                  style: AppStyles.fontStyle(
+                      fontWeight: FontWeight.w900,
+                      fontSize:
+                          ResponsiveLayout.getResponsiveSize(context, 40.0),
+                      color: AppStyles.bigLettersColor),
                 ),
               ),
               Row(
@@ -60,11 +61,20 @@ class FirstSectionMobile extends StatelessWidget {
                     controller: controller,
                     child: Text(
                       "I'm ",
-                      style: GoogleFonts.roboto(
-                        fontWeight: FontWeight.w900,
-                        fontSize:
-                            ResponsiveLayout.getResponsiveSize(context, 30.0),
-                      ),
+                      style: AppStyles.fontStyle(
+                              fontWeight: FontWeight.w900,
+                              fontSize: ResponsiveLayout.getResponsiveSize(
+                                  context, 30.0),
+                              color: AppStyles.bigLettersColor)
+                          .copyWith(
+                              shadows: [
+                            const Shadow(
+                                color: AppStyles.bigLettersColor,
+                                offset: Offset(0, -5))
+                          ],
+                              color: Colors.transparent,
+                              decorationThickness: 2,
+                              decorationColor: AppStyles.bigLettersColor),
                     ),
                   ),
                   TextReveal(
@@ -75,12 +85,21 @@ class FirstSectionMobile extends StatelessWidget {
                     controller: controller,
                     child: Text(
                       'Vinicius',
-                      style: GoogleFonts.roboto(
-                        fontWeight: FontWeight.w900,
-                        fontSize:
-                            ResponsiveLayout.getResponsiveSize(context, 30.0),
-                        decoration: TextDecoration.underline,
-                      ),
+                      style: AppStyles.fontStyle(
+                              fontWeight: FontWeight.w900,
+                              fontSize: ResponsiveLayout.getResponsiveSize(
+                                  context, 30.0),
+                              color: AppStyles.bigLettersColor)
+                          .copyWith(
+                              shadows: [
+                            const Shadow(
+                                color: AppStyles.bigLettersColor,
+                                offset: Offset(0, -5))
+                          ],
+                              color: Colors.transparent,
+                              decoration: TextDecoration.underline,
+                              decorationThickness: 2,
+                              decorationColor: AppStyles.bigLettersColor),
                     ),
                   ),
                 ],
@@ -92,7 +111,7 @@ class FirstSectionMobile extends StatelessWidget {
                 controller: controller,
                 child: Text(
                   'Flutter Developer',
-                  style: GoogleFonts.roboto(
+                  style: AppStyles.fontStyle(
                     fontSize: ResponsiveLayout.getResponsiveSize(context, 18.0),
                   ),
                 ),
@@ -111,7 +130,7 @@ class FirstSectionMobile extends StatelessWidget {
                     fixedSize: Size(
                         ResponsiveLayout.getResponsiveSize(context, 170.0),
                         ResponsiveLayout.getResponsiveSize(context, 40.0)),
-                    backgroundColor: Colors.indigo,
+                    backgroundColor: AppStyles.reachButtonColor,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0),
                     ),
@@ -121,8 +140,8 @@ class FirstSectionMobile extends StatelessWidget {
                     children: [
                       Text(
                         'Reach Me',
-                        style: GoogleFonts.roboto(
-                            color: Colors.white,
+                        style: AppStyles.fontStyle(
+                            color: AppStyles.reachButtonLettersColor,
                             fontSize: ResponsiveLayout.getResponsiveSize(
                                 context, 15.0)),
                       ),
@@ -131,7 +150,7 @@ class FirstSectionMobile extends StatelessWidget {
                       ),
                       Icon(
                         Icons.send,
-                        color: Colors.white,
+                        color: AppStyles.reachButtonLettersColor,
                         size: ResponsiveLayout.getResponsiveSize(context, 18.0),
                       ),
                     ],
@@ -152,9 +171,8 @@ class FirstSectionMobile extends StatelessWidget {
                     child: Text(
                       'Hi, I\'m Vinicius, an aspiring Flutter developer passionate about crafting seamless and engaging cross-platform applications. Eager to merge creativity with code, I strive to bring innovative solutions to life in the ever-evolving world of mobile development.',
                       style: TextStyle(
-                          fontSize:
-                              ResponsiveLayout.getResponsiveSize(context, 15.0),
-                          color: Colors.black54),
+                          fontSize: ResponsiveLayout.getResponsiveSize(
+                              context, 15.0)),
                       textAlign: TextAlign.justify,
                     ),
                   ),

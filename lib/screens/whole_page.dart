@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:portfolio_flutter_web/constants/style.dart';
 import 'package:portfolio_flutter_web/responsive/responsive_layout.dart';
 import 'package:portfolio_flutter_web/screens/section/first_section/first_section.dart';
 import 'package:portfolio_flutter_web/screens/section/fourth_section/fourth_section_mobile.dart';
@@ -34,27 +35,30 @@ class _WholePageState extends State<WholePage> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      controller: controller,
-      child: Column(
-        children: [
-          FirstSection(),
-          SizedBox(
-            height: 10.0,
-          ),
-          SecondSection(),
-          SizedBox(
-            height: 10.0,
-          ),
-          ThirdSection(),
-          SizedBox(
-            height: 10.0,
-          ),
-          ResponsiveLayout(
-              mobileLayout: FourthSectionMobile(),
-              desktopLayout: FourthSectionWeb(),
-              tabletLayout: FourthSectionWeb()),
-        ],
+    return Container(
+      color: AppStyles.backgroundColor,
+      child: SingleChildScrollView(
+        controller: controller,
+        child: Column(
+          children: [
+            FirstSection(),
+            SizedBox(
+              height: 10.0,
+            ),
+            SecondSection(),
+            SizedBox(
+              height: 10.0,
+            ),
+            ThirdSection(),
+            SizedBox(
+              height: 10.0,
+            ),
+            ResponsiveLayout(
+                mobileLayout: FourthSectionMobile(),
+                desktopLayout: FourthSectionWeb(),
+                tabletLayout: FourthSectionWeb()),
+          ],
+        ),
       ),
     );
   }

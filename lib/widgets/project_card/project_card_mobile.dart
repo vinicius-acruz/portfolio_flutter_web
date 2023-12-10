@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../constants/style.dart';
 import '../../modals/projects.dart';
 import '../../modals/scroll_offset.dart';
 import 'package:lottie/lottie.dart';
@@ -65,8 +66,8 @@ class _ProjectCardMobileState extends State<ProjectCardMobile>
                   const EdgeInsets.symmetric(vertical: 25.0, horizontal: 5.0),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15.0),
-                color: Colors
-                    .white, // Added a background color for better visibility
+                color: AppStyles
+                    .backgroundColor, // Added a background color for better visibility
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -102,7 +103,7 @@ class _ProjectCardMobileState extends State<ProjectCardMobile>
                                     1.0),
                                 child: Container(
                                   width: animation.value,
-                                  color: Colors.white,
+                                  color: AppStyles.backgroundColor,
                                 ),
                               ),
                             ],
@@ -111,34 +112,6 @@ class _ProjectCardMobileState extends State<ProjectCardMobile>
                         SizedBox(
                           width: 20.0,
                         ),
-                        //Commented the second image, not to show for mobile
-                        // Expanded(
-                        //   child: Stack(
-                        //     children: [
-                        //       Padding(
-                        //         padding: const EdgeInsets.all(1.0),
-                        //         child: Image.network(
-                        //           widget.project.imageUrl2,
-                        //           fit: BoxFit.cover,
-                        //           height: 500.0,
-                        //           width: 250.0, // Adjusted width for two images
-                        //         ),
-                        //       ),
-                        //       Align(
-                        //         alignment: Alignment(
-                        //             widget.project.index % 2 == 1
-                        //                 ? -1.0
-                        //                 : 1.0, //Animation alignment
-                        //             1.0),
-                        //         child: Container(
-                        //           height: 500,
-                        //           width: animation.value,
-                        //           color: Colors.white,
-                        //         ),
-                        //       ),
-                        //     ],
-                        //   ),
-                        // ), //
                       ],
                     ),
                   ),
@@ -149,7 +122,7 @@ class _ProjectCardMobileState extends State<ProjectCardMobile>
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     child: Text(
                       widget.project.title,
-                      style: GoogleFonts.roboto(
+                      style: AppStyles.fontStyle(
                         fontSize: 20.0,
                         fontWeight: FontWeight.w600,
                       ),
@@ -162,10 +135,11 @@ class _ProjectCardMobileState extends State<ProjectCardMobile>
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     child: Text(
                       widget.project.description,
-                      style: GoogleFonts.roboto(
+                      style: AppStyles.fontStyle(
                           fontSize: 16.0,
                           fontWeight: FontWeight.w500,
                           color: Colors.black54),
+                      textAlign: TextAlign.justify,
                     ),
                   ),
                 ],

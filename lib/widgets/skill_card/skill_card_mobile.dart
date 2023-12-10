@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_flutter_web/responsive/responsive_layout.dart';
 
+import '../../constants/style.dart';
 import '../../modals/scroll_offset.dart';
 import '../../modals/skills.dart';
 
@@ -65,7 +66,7 @@ class _SkillCardMobileState extends State<SkillCardMobile>
         firstCurve: Curves.easeOut,
         secondCurve: Curves.easeOut,
         firstChild: Container(
-          color: Colors.white,
+          color: AppStyles.backgroundColor,
           height: getResponsiveCard(context, 400),
           width: getResponsiveCard(context, 280),
           margin: const EdgeInsets.symmetric(vertical: 25.0, horizontal: 5.0),
@@ -81,11 +82,11 @@ class _SkillCardMobileState extends State<SkillCardMobile>
           margin: EdgeInsets.symmetric(vertical: 15.0, horizontal: 5.0),
           padding: EdgeInsets.all(10.0),
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: AppStyles.skillCardsColor,
             borderRadius: BorderRadius.circular(20.0),
             boxShadow: [
               BoxShadow(
-                color: Colors.grey.withOpacity(0.3),
+                color: AppStyles.skillCardsBorderColor.withOpacity(1),
                 spreadRadius: 3,
                 blurRadius: 5,
                 offset: Offset(0, 3),
@@ -105,15 +106,15 @@ class _SkillCardMobileState extends State<SkillCardMobile>
                   size: _isExpanded
                       ? ResponsiveLayout.getResponsiveSize(context, 25)
                       : ResponsiveLayout.getResponsiveSize(context, 40),
-                  color: Colors.indigo,
+                  color: AppStyles.skillCardsIconsColor,
                 ),
                 SizedBox(height: 10.0),
                 Text(
                   widget.skill.title,
-                  style: GoogleFonts.roboto(
+                  style: AppStyles.fontStyle(
                     fontSize: ResponsiveLayout.getResponsiveSize(context, 14.0),
                     fontWeight: FontWeight.bold,
-                    color: Colors.indigo,
+                    color: AppStyles.skillLettersColor,
                   ),
                   textAlign: TextAlign.center,
                 ),
@@ -131,15 +132,16 @@ class _SkillCardMobileState extends State<SkillCardMobile>
                   },
                   child: Text(
                     _isExpanded ? 'View less' : 'View more',
-                    style: GoogleFonts.roboto(
-                        fontSize: 14.0,
+                    style: AppStyles.fontStyle(fontSize: 14.0).copyWith(
                         shadows: [
-                          Shadow(color: Colors.black54, offset: Offset(0, -5))
+                          const Shadow(
+                              color: AppStyles.skillLettersColor,
+                              offset: Offset(0, -5))
                         ],
                         color: Colors.transparent,
                         decoration: TextDecoration.underline,
                         decorationThickness: 2,
-                        decorationColor: Colors.grey),
+                        decorationColor: AppStyles.skillLettersColor),
                     textAlign: TextAlign.center,
                   ),
                 ),
@@ -148,8 +150,8 @@ class _SkillCardMobileState extends State<SkillCardMobile>
                     child: SingleChildScrollView(
                       child: Text(
                         widget.skill.description,
-                        style: GoogleFonts.roboto(
-                            fontSize: 16.0, color: Colors.grey),
+                        style: AppStyles.fontStyle(
+                            fontSize: 16.0, color: AppStyles.skillLettersColor),
                         textAlign: TextAlign.center,
                       ),
                     ),

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../constants/style.dart';
+
 class FourthSectionWeb extends StatelessWidget {
   const FourthSectionWeb({Key? key}) : super(key: key);
 
@@ -10,9 +12,12 @@ class FourthSectionWeb extends StatelessWidget {
     return Container(
       height: 300.0,
       margin: const EdgeInsets.all(10.0),
-      decoration: BoxDecoration(
-        color: Colors.yellow.withOpacity(0.1),
-        borderRadius: BorderRadius.circular(20.0), // Rounded edges
+      decoration: const BoxDecoration(
+        color: AppStyles.bottomSheetColor,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(20),
+          topRight: Radius.circular(20),
+        ), // Rounded edges
       ),
       padding: const EdgeInsets.symmetric(vertical: 40.0, horizontal: 20.0),
       child: Column(
@@ -28,25 +33,27 @@ class FourthSectionWeb extends StatelessWidget {
                     children: [
                       Text(
                         "Contact me",
-                        style: GoogleFonts.roboto(
+                        style: AppStyles.fontStyle(
                           fontSize: 25.0,
                           fontWeight: FontWeight.w500,
-                          color: Colors.redAccent,
+                          color: AppStyles.bottomLettersContactColor,
                         ),
                       ),
                       SizedBox(height: 10.0),
                       Text(
                         'Got a project?',
-                        style: GoogleFonts.roboto(
+                        style: AppStyles.fontStyle(
                           fontWeight: FontWeight.w600,
                           fontSize: 40.0,
+                          color: AppStyles.bottomLettersColor,
                         ),
                       ),
                       Text(
                         'Let\'s talk!',
-                        style: GoogleFonts.roboto(
+                        style: AppStyles.fontStyle(
                           fontWeight: FontWeight.w600,
                           fontSize: 40.0,
+                          color: AppStyles.bottomLettersColor,
                         ),
                       ),
                     ],
@@ -70,7 +77,7 @@ class FourthSectionWeb extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 20.0,
                             fontWeight: FontWeight.bold,
-                            color: Colors.black54,
+                            color: AppStyles.bottomLettersColor,
                           ),
                         ),
                       ],

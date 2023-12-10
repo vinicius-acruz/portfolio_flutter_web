@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../../constants/style.dart';
 import '../../../widgets/text_reveal.dart';
 import 'first_section.dart';
 
@@ -55,13 +56,14 @@ class FirstSectionWeb extends StatelessWidget {
                       TextReveal(
                         textOpacityAnimation: textOpacityAnimation,
                         textRevealAnimation: textRevealAnimation,
-                        maxHeight: 100.0,
+                        maxHeight: 80.0,
                         controller: controller,
                         child: Text(
                           'Hello,',
-                          style: GoogleFonts.roboto(
+                          style: AppStyles.fontStyle(
                             fontWeight: FontWeight.w900,
                             fontSize: 70.0,
+                            color: AppStyles.bigLettersColor,
                           ),
                         ),
                       ),
@@ -70,42 +72,64 @@ class FirstSectionWeb extends StatelessWidget {
                           TextReveal(
                             textOpacityAnimation: textOpacityAnimation,
                             textRevealAnimation: textRevealAnimation,
-                            maxHeight: 100.0,
+                            maxHeight: 80.0,
                             controller: controller,
                             child: Text(
                               "I'm ",
-                              style: GoogleFonts.roboto(
+                              style: AppStyles.fontStyle(
                                 fontWeight: FontWeight.w900,
                                 fontSize: 70.0,
-                              ),
+                                color: AppStyles.bigLettersColor,
+                              ).copyWith(
+                                  shadows: [
+                                    const Shadow(
+                                        color: AppStyles.bigLettersColor,
+                                        offset: Offset(0, -5))
+                                  ],
+                                  color: Colors.transparent,
+                                  decorationThickness: 2,
+                                  decorationColor: AppStyles.bigLettersColor),
                             ),
                           ),
                           TextReveal(
                             textOpacityAnimation: textOpacityAnimation,
                             textRevealAnimation: textRevealAnimation,
-                            maxHeight: 100.0,
+                            maxHeight: 80.0,
                             controller: controller,
                             child: Text(
                               'Vinicius',
-                              style: GoogleFonts.roboto(
-                                  fontWeight: FontWeight.w900,
-                                  fontSize: 70.0,
-                                  decoration: TextDecoration.underline),
+                              style: AppStyles.fontStyle(
+                                      fontWeight: FontWeight.w900,
+                                      fontSize: 70.0,
+                                      color: AppStyles.bigLettersColor)
+                                  .copyWith(
+                                      shadows: [
+                                    const Shadow(
+                                        color: AppStyles.bigLettersColor,
+                                        offset: Offset(0, -5))
+                                  ],
+                                      color: Colors.transparent,
+                                      decoration: TextDecoration.underline,
+                                      decorationThickness: 2,
+                                      decorationColor:
+                                          AppStyles.bigLettersColor),
                             ),
                           ),
                         ],
                       ),
                       const SizedBox(
-                        height: 20.0,
+                        height: 10.0,
                       ),
                       TextReveal(
                         textOpacityAnimation: textOpacityAnimation,
                         textRevealAnimation: textRevealAnimation,
                         maxHeight: 35.0,
                         controller: controller,
-                        child: const Text(
+                        child: Text(
                           'Flutter Developer',
-                          style: TextStyle(fontSize: 25.0),
+                          style: AppStyles.fontStyle(
+                              fontSize: 25.0,
+                              color: AppStyles.occupationLetterColor),
                         ),
                       ),
                       const SizedBox(
@@ -121,8 +145,8 @@ class FirstSectionWeb extends StatelessWidget {
                               controller: controller,
                               child: Text(
                                 'Hi, I\'m Vinicius, an aspiring Flutter developer passionate about crafting seamless and engaging cross-platform applications. Eager to merge creativity with code, I strive to bring innovative solutions to life in the ever-evolving world of mobile development.',
-                                style: GoogleFonts.roboto(
-                                    fontSize: 16.0, color: Colors.black54),
+                                style: AppStyles.fontStyle(fontSize: 16.0),
+                                textAlign: TextAlign.justify,
                               ),
                             ),
                           ),
@@ -143,7 +167,7 @@ class FirstSectionWeb extends StatelessWidget {
                           },
                           style: ElevatedButton.styleFrom(
                             fixedSize: const Size(200.0, 60.0),
-                            backgroundColor: Colors.indigo,
+                            backgroundColor: AppStyles.reachButtonColor,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10.0),
                             ),
@@ -153,14 +177,15 @@ class FirstSectionWeb extends StatelessWidget {
                             children: [
                               Text(
                                 'Reach Me',
-                                style: GoogleFonts.roboto(color: Colors.white),
+                                style: AppStyles.fontStyle(
+                                    color: AppStyles.reachButtonLettersColor),
                               ),
                               SizedBox(
                                 width: 20.0,
                               ),
                               Icon(
                                 Icons.send,
-                                color: Colors.white,
+                                color: AppStyles.reachButtonLettersColor,
                               ),
                             ],
                           ),

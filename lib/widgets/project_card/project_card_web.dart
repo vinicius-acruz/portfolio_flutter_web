@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../constants/style.dart';
 import '../../modals/projects.dart';
 import '../../modals/scroll_offset.dart';
 
@@ -19,7 +20,7 @@ class _ProjectCardWebState extends State<ProjectCardWeb>
     with TickerProviderStateMixin {
   late AnimationController controller;
   late Animation<double> animation;
-  double projectCardHeight = 650.0;
+  double projectCardHeight = 680.0;
   double projectCardWidth = 500.0;
   @override
   void initState() {
@@ -67,8 +68,8 @@ class _ProjectCardWebState extends State<ProjectCardWeb>
                   const EdgeInsets.symmetric(vertical: 25.0, horizontal: 5.0),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15.0),
-                color: Colors
-                    .white, // Added a background color for better visibility
+                color: AppStyles
+                    .backgroundColor, // Added a background color for better visibility
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -100,7 +101,7 @@ class _ProjectCardWebState extends State<ProjectCardWeb>
                                 child: Container(
                                   height: 500,
                                   width: animation.value,
-                                  color: Colors.white,
+                                  color: AppStyles.backgroundColor,
                                 ),
                               ),
                             ],
@@ -130,7 +131,7 @@ class _ProjectCardWebState extends State<ProjectCardWeb>
                                 child: Container(
                                   height: 500,
                                   width: animation.value,
-                                  color: Colors.white,
+                                  color: AppStyles.backgroundColor,
                                 ),
                               ),
                             ],
@@ -142,27 +143,78 @@ class _ProjectCardWebState extends State<ProjectCardWeb>
                   const SizedBox(
                     height: 8.0,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: Text(
-                      widget.project.title,
-                      style: GoogleFonts.roboto(
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.w600,
-                      ),
+                  Text(
+                    widget.project.title,
+                    style: AppStyles.fontStyle(
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
-                  const SizedBox(
-                    height: 2.0,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: Text(
-                      widget.project.description,
-                      style: GoogleFonts.roboto(
-                          fontSize: 16.0,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.black54),
+                  Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        TextButton(
+                          onPressed: () {},
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                padding:
+                                    EdgeInsets.only(left: 10.0, right: 10.0),
+                                width: 100.0,
+                                child: Image.asset(
+                                  widget.project.projectIcon,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                              SizedBox(
+                                height: 10.0,
+                              ),
+                              Text(
+                                'Click the icon',
+                                style: AppStyles.fontStyle(
+                                  fontSize: 12.0,
+                                ).copyWith(
+                                    shadows: [
+                                      Shadow(
+                                          color: Colors.black54,
+                                          offset: Offset(0, -3))
+                                    ],
+                                    color: Colors.transparent,
+                                    decoration: TextDecoration.underline,
+                                    decorationThickness: 2,
+                                    decorationColor: Colors.grey),
+                                textAlign: TextAlign.center,
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          width: 20.0,
+                        ),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SizedBox(
+                                height: 100.0,
+                                child: Text(
+                                  widget.project.description,
+                                  style: AppStyles.fontStyle(
+                                    fontSize: 16.0,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                  textAlign: TextAlign.justify,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],

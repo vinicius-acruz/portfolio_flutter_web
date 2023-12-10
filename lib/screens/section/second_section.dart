@@ -5,6 +5,7 @@ import 'package:portfolio_flutter_web/modals/scroll_offset.dart';
 import 'package:portfolio_flutter_web/modals/skills.dart';
 import 'package:portfolio_flutter_web/responsive/responsive_layout.dart';
 import 'package:portfolio_flutter_web/widgets/text_reveal.dart';
+import '../../constants/style.dart';
 import '../../widgets/skill_card/skill_card_mobile.dart';
 import '../../widgets/skill_card/skill_card_web.dart';
 
@@ -57,10 +58,10 @@ class _SecondSectionState extends State<SecondSection>
             controller: controller,
             child: Text(
               'My skills,',
-              style: GoogleFonts.roboto(
-                fontWeight: FontWeight.w700,
-                fontSize: ResponsiveLayout.getResponsiveSize(context, 40.0),
-              ),
+              style: AppStyles.fontStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: ResponsiveLayout.getResponsiveSize(context, 40.0),
+                  color: AppStyles.bigLettersColor),
             ),
           );
         }),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_flutter_web/modals/scroll_offset.dart';
+import '../../constants/style.dart';
 import '../../modals/skills.dart';
 
 class SkillCardWeb extends StatefulWidget {
@@ -55,11 +56,12 @@ class _SkillCardWebState extends State<SkillCardWeb> {
           margin: const EdgeInsets.symmetric(vertical: 25.0, horizontal: 15.0),
           padding: const EdgeInsets.all(20.0),
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: AppStyles.skillCardsColor,
             borderRadius: BorderRadius.circular(20.0),
+            //border: Border.all(color: Colors.blue, width: 2.0),
             boxShadow: [
               BoxShadow(
-                color: Colors.grey.withOpacity(0.3),
+                color: AppStyles.skillCardsBorderColor.withOpacity(1),
                 spreadRadius: 3,
                 blurRadius: 5,
                 offset: Offset(0, 3),
@@ -74,7 +76,7 @@ class _SkillCardWebState extends State<SkillCardWeb> {
                 Icon(
                   widget.skill.iconData,
                   size: 40.0,
-                  color: Colors.indigo,
+                  color: AppStyles.skillCardsIconsColor,
                 ),
                 SizedBox(height: 15.0),
                 Text(
@@ -82,7 +84,7 @@ class _SkillCardWebState extends State<SkillCardWeb> {
                   style: GoogleFonts.quicksand(
                     fontSize: 20.0,
                     fontWeight: FontWeight.bold,
-                    color: Colors.indigo,
+                    color: AppStyles.skillLettersColor,
                   ),
                 ),
                 SizedBox(height: 10.0),
@@ -90,7 +92,7 @@ class _SkillCardWebState extends State<SkillCardWeb> {
                   widget.skill.description,
                   style: GoogleFonts.quicksand(
                     fontSize: 14.0,
-                    color: Colors.grey,
+                    color: AppStyles.skillLettersColor,
                   ),
                   textAlign: TextAlign.center,
                 ),
