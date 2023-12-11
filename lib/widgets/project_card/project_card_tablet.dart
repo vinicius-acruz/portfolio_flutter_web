@@ -21,7 +21,7 @@ class _ProjectCardTabletState extends State<ProjectCardTablet>
     with TickerProviderStateMixin {
   late AnimationController controller;
   late Animation<double> animation;
-  double projectCardHeight = 1100.0;
+  double projectCardHeight = 850.0;
   double projectCardWidth = 400.0;
 
   @override
@@ -41,7 +41,7 @@ class _ProjectCardTabletState extends State<ProjectCardTablet>
     final lineIndex = ResponsiveLayout.getWidgetIndex(context,
         index: widget.index, projectWidth: projectCardWidth);
 
-    final startRange = 2300 + lineIndex * 700;
+    final startRange = 2300 + lineIndex * 600;
 
     return BlocBuilder<DisplayOffset, ScrollOffset>(
         buildWhen: (previous, current) {
@@ -139,7 +139,6 @@ class _ProjectCardTabletState extends State<ProjectCardTablet>
                               fontSize: ResponsiveLayout.getResponsiveSize(
                                   context,
                                   ResponsiveLayout.normalLettersSizeTablet),
-                              fontWeight: FontWeight.w500,
                               color: AppStyles.lettersColor,
                             ),
                             textAlign: TextAlign.justify,

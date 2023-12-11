@@ -48,6 +48,9 @@ class _SkillCardMobileState extends State<SkillCardMobile>
           current.scrollOffsetValue <= endRange);
     }, builder: (context, state) {
       print("skillcard: ${state.scrollOffsetValue}");
+      setState(() {
+        _isExpanded = false;
+      });
       return AnimatedCrossFade(
         crossFadeState: (state.scrollOffsetValue >= (startRange + 100) &&
                 state.scrollOffsetValue <= (endRange - 100))
