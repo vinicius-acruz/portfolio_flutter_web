@@ -107,12 +107,13 @@ class FirstSectionMobile extends StatelessWidget {
               TextReveal(
                 textOpacityAnimation: textOpacityAnimation,
                 textRevealAnimation: textRevealAnimation,
-                maxHeight: 35.0,
+                maxHeight: ResponsiveLayout.getResponsiveSize(context, 35.0),
                 controller: controller,
                 child: Text(
                   'Flutter Developer',
                   style: AppStyles.fontStyle(
                     fontSize: ResponsiveLayout.getResponsiveSize(context, 18.0),
+                    color: AppStyles.occupationLetterColor,
                   ),
                 ),
               ),

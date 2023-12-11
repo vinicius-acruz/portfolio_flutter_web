@@ -7,6 +7,7 @@ import 'package:portfolio_flutter_web/responsive/responsive_layout.dart';
 import 'package:portfolio_flutter_web/widgets/text_reveal.dart';
 import '../../constants/style.dart';
 import '../../widgets/skill_card/skill_card_mobile.dart';
+import '../../widgets/skill_card/skill_card_tablet.dart';
 import '../../widgets/skill_card/skill_card_web.dart';
 
 class SecondSection extends StatefulWidget {
@@ -20,6 +21,8 @@ class _SecondSectionState extends State<SecondSection>
     with TickerProviderStateMixin {
   late AnimationController controller;
   late bool isMobile;
+  late double startRange;
+  late double endRange;
 
   @override
   void initState() {
@@ -41,8 +44,13 @@ class _SecondSectionState extends State<SecondSection>
       children: [
         BlocBuilder<DisplayOffset, ScrollOffset>(
             buildWhen: (previous, current) {
-          if ((current.scrollOffsetValue >= 900 &&
-                  current.scrollOffsetValue <= 1300) ||
+          startRange = ResponsiveLayout.buildWidgetValue(context,
+              mobileValue: 900, tabletValue: 1000, desktopValue: 1100);
+          endRange = ResponsiveLayout.buildWidgetValue(context,
+              mobileValue: 1300, tabletValue: 1600, desktopValue: 1500);
+
+          if ((current.scrollOffsetValue >= startRange &&
+                  current.scrollOffsetValue <= endRange) ||
               controller.isAnimating) {
             return true;
           } else {
@@ -50,16 +58,20 @@ class _SecondSectionState extends State<SecondSection>
           }
         }, builder: (context, state) {
           print("Scroll Offset: ${state.scrollOffsetValue}");
-          (state.scrollOffsetValue > (isMobile ? 950 : 1100))
+          (state.scrollOffsetValue >
+                  (ResponsiveLayout.buildWidgetValue(context,
+                      mobileValue: 950.0,
+                      tabletValue: 1450,
+                      desktopValue: 1100)))
               ? controller.forward()
               : controller.reverse();
           return TextReveal(
             maxHeight: ResponsiveLayout.getResponsiveSize(context, 70.0),
             controller: controller,
             child: Text(
-              'My skills,',
+              'MY SKILLS',
               style: AppStyles.fontStyle(
-                  fontWeight: FontWeight.w700,
+                  fontWeight: FontWeight.w900,
                   fontSize: ResponsiveLayout.getResponsiveSize(context, 40.0),
                   color: AppStyles.bigLettersColor),
             ),
@@ -81,7 +93,7 @@ class _SecondSectionState extends State<SecondSection>
                         ),
                         desktopLayout: SkillCardWeb(
                             skill: skill, index: skills.indexOf(skill)),
-                        tabletLayout: SkillCardWeb(
+                        tabletLayout: SkillCardTablet(
                             skill: skill, index: skills.indexOf(skill))),
                   )
                   .toList(),

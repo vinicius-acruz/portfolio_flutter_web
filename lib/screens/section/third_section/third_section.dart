@@ -58,9 +58,9 @@ class _ThirdSectionState extends State<ThirdSection>
               maxHeight: ResponsiveLayout.getResponsiveSize(context, 70.0),
               controller: controller,
               child: Text(
-                'My projects ,',
+                'MY PROJECTS',
                 style: AppStyles.fontStyle(
-                  fontWeight: FontWeight.w700,
+                  fontWeight: FontWeight.w900,
                   fontSize: ResponsiveLayout.getResponsiveSize(context, 40.0),
                   color: AppStyles.bigLettersColor,
                 ),

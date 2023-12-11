@@ -11,7 +11,7 @@ class AppStyles {
   static const Color lettersColor = Color.fromRGBO(26, 50, 99, 1.0);
 
 // Main Letters color
-  static const Color bigLettersColor = Color.fromRGBO(26, 50, 99, 1.0);
+  static const Color bigLettersColor = Color.fromRGBO(241, 104, 33, 1.0);
 
   // First section
 

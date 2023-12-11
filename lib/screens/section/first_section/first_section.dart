@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:portfolio_flutter_web/constants/style.dart';
 import 'package:portfolio_flutter_web/responsive/responsive_layout.dart';
+import 'package:portfolio_flutter_web/screens/section/first_section/first_section_tablet.dart';
 import 'first_section_mobile.dart';
 import 'first_section_web.dart';
 
@@ -63,7 +64,7 @@ class _FirstSectionState extends State<FirstSection>
           textRevealAnimation: textRevealAnimation,
           controller: controller,
           buttonAnimation: buttonAnimation),
-      tabletLayout: FirstSectionWeb(
+      tabletLayout: FirstSectionTablet(
           patternAnimation: patternAnimation,
           textOpacityAnimation: textOpacityAnimation,
           textRevealAnimation: textRevealAnimation,
@@ -95,9 +96,9 @@ class _FirstPageImageState extends State<FirstPageImage>
   void initState() {
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 1000),
+      duration: const Duration(milliseconds: 2000),
     );
-    _animation = Tween<double>(begin: 920.0, end: 0.0)
+    _animation = Tween<double>(begin: 1500, end: 0.0)
         .animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
 
     super.initState();
@@ -105,8 +106,6 @@ class _FirstPageImageState extends State<FirstPageImage>
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-
     return Image(
       image: AssetImage('assets/images/vini.png'),
       fit: BoxFit.cover,
@@ -124,9 +123,7 @@ class _FirstPageImageState extends State<FirstPageImage>
                 children: [
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 1.0),
-                    height: screenWidth > ResponsiveLayout.mobileWidthLimit
-                        ? 920.0
-                        : 550,
+                    height: ResponsiveLayout.ImageSize(context),
                     width: double.infinity,
                     child: child,
                   ),
@@ -170,7 +167,7 @@ class _SecondPageImageState extends State<SecondPageImage>
       vsync: this,
       duration: const Duration(milliseconds: 2000),
     );
-    _animation = Tween<double>(begin: 920.0, end: 0.0)
+    _animation = Tween<double>(begin: 1500, end: 0.0)
         .animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
 
     super.initState();
@@ -178,8 +175,6 @@ class _SecondPageImageState extends State<SecondPageImage>
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-
     return Image(
       image: AssetImage('assets/images/fundo1.png'),
       fit: BoxFit.cover,
@@ -197,9 +192,7 @@ class _SecondPageImageState extends State<SecondPageImage>
                 children: [
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 1.0),
-                    height: screenWidth > ResponsiveLayout.mobileWidthLimit
-                        ? 920.0
-                        : 550,
+                    height: ResponsiveLayout.ImageSize(context),
                     width: double.infinity,
                     child: child,
                   ),
