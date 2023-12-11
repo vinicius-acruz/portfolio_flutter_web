@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../../../constants/style.dart';
 import '../../../widgets/text_reveal.dart';
 import 'first_section.dart';
@@ -180,10 +179,10 @@ class FirstSectionWeb extends StatelessWidget {
                                 style: AppStyles.fontStyle(
                                     color: AppStyles.reachButtonLettersColor),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 20.0,
                               ),
-                              Icon(
+                              const Icon(
                                 Icons.send,
                                 color: AppStyles.reachButtonLettersColor,
                               ),

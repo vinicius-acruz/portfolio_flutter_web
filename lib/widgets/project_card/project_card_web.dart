@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:portfolio_flutter_web/responsive/responsive_layout.dart';
 import '../../constants/style.dart';
 import '../../modals/projects.dart';
 import '../../modals/scroll_offset.dart';
@@ -9,8 +9,7 @@ class ProjectCardWeb extends StatefulWidget {
   final Project project;
   final int index;
 
-  const ProjectCardWeb({Key? key, required this.project, required this.index})
-      : super(key: key);
+  const ProjectCardWeb({super.key, required this.project, required this.index});
 
   @override
   State<ProjectCardWeb> createState() => _ProjectCardWebState();
@@ -36,14 +35,10 @@ class _ProjectCardWebState extends State<ProjectCardWeb>
 
   @override
   Widget build(BuildContext context) {
-    //Setting the same start range for projects in the same line
-    final screenWidth = MediaQuery.of(context).size.width;
-    final projectsPerLine = (screenWidth / (projectCardWidth + 20))
-        .floor(); // Assuming each card is 500 wide with 20 spacing
-    final lineIndex = projectsPerLine == 0
-        ? 0
-        : widget.index ~/
-            projectsPerLine; //Avoid error for screens with width below projectCardWidth+20
+//call the responsive layout method to get the index of projects in same line
+    final lineIndex = ResponsiveLayout.getWidgetIndex(context,
+        index: widget.index, projectWidth: projectCardWidth);
+
     final startRange = 2100 + lineIndex * 500;
 
     return BlocBuilder<DisplayOffset, ScrollOffset>(
@@ -54,7 +49,7 @@ class _ProjectCardWebState extends State<ProjectCardWeb>
         return false;
       }
     }, builder: (context, state) {
-      print('Card ${widget.index}: project line $lineIndex');
+      print('Card ${widget.index}: project line $lineIndex ');
       state.scrollOffsetValue > (startRange + 100)
           ? controller.forward()
           : controller.reverse();
@@ -107,7 +102,7 @@ class _ProjectCardWebState extends State<ProjectCardWeb>
                             ],
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 20.0,
                         ),
                         Expanded(
@@ -162,15 +157,15 @@ class _ProjectCardWebState extends State<ProjectCardWeb>
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Container(
-                                padding:
-                                    EdgeInsets.only(left: 10.0, right: 10.0),
+                                padding: const EdgeInsets.only(
+                                    left: 10.0, right: 10.0),
                                 width: 100.0,
                                 child: Image.asset(
                                   widget.project.projectIcon,
                                   fit: BoxFit.cover,
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 10.0,
                               ),
                               Text(
@@ -179,7 +174,7 @@ class _ProjectCardWebState extends State<ProjectCardWeb>
                                   fontSize: 12.0,
                                 ).copyWith(
                                     shadows: [
-                                      Shadow(
+                                      const Shadow(
                                           color: Colors.black54,
                                           offset: Offset(0, -3))
                                     ],
@@ -192,7 +187,7 @@ class _ProjectCardWebState extends State<ProjectCardWeb>
                             ],
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 20.0,
                         ),
                         Expanded(

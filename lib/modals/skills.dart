@@ -27,25 +27,25 @@ List<Skill> skills = [
     iconData: FontAwesomeIcons.fire,
   ),
   Skill(
-    title: 'BloC/Provider Package',
+    title: 'BloC/Provider\nPackage',
     description:
         'BloC pattern and Provider package are state management solutions for Flutter. They organize and manage data flow, ensuring a clean and efficient architecture for scalable applications.',
     iconData: FontAwesomeIcons.gears,
   ),
   Skill(
-    title: 'HTML/CSS/Javascript',
+    title: 'HTML\nCSS\nJavascript',
     description:
         'HTML, CSS, and JavaScript are foundational for web development. HTML structures content, CSS styles it, and JavaScript adds interactivity, essential for creating responsive and visually appealing web applications.',
     iconData: FontAwesomeIcons.code,
   ),
   Skill(
-    title: 'Version Control Tools',
+    title: 'Version\nControl\nTools',
     description:
         'Version control tools like Git are crucial for collaborative software development. They enable multiple developers to work simultaneously, track changes, and ensure a seamless and organized development process.',
     iconData: FontAwesomeIcons.codeBranch,
   ),
   Skill(
-    title: 'Project Management Tools',
+    title: 'Project\nManagement\nTools',
     description:
         'Project management tools like Jira, Trello, or Asana streamline development, enhance collaboration, and ensure timely project delivery. They help plan, track progress, and communicate efficiently for successful project outcomes.',
     iconData: FontAwesomeIcons.listCheck,

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:portfolio_flutter_web/responsive/responsive_layout.dart';
 
 import '../../../constants/style.dart';
 
 class FourthSectionMobile extends StatelessWidget {
-  const FourthSectionMobile({Key? key}) : super(key: key);
+  const FourthSectionMobile({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,17 +29,19 @@ class FourthSectionMobile extends StatelessWidget {
               Text(
                 "Contact me",
                 style: AppStyles.fontStyle(
-                  fontSize: 23.0,
+                  fontSize: ResponsiveLayout.getResponsiveSize(context,
+                      ResponsiveLayout.bottomSheetLetterSizeMobile - 5),
                   fontWeight: FontWeight.w500,
                   color: AppStyles.bottomLettersContactColor,
                 ),
               ),
-              SizedBox(height: 5.0),
+              const SizedBox(height: 5.0),
               Text(
                 'Got a project?',
                 style: AppStyles.fontStyle(
                   fontWeight: FontWeight.w600,
-                  fontSize: 30.0,
+                  fontSize: ResponsiveLayout.getResponsiveSize(
+                      context, ResponsiveLayout.bottomSheetLetterSizeMobile),
                   color: AppStyles.bottomLettersColor,
                 ),
               ),
@@ -47,14 +49,15 @@ class FourthSectionMobile extends StatelessWidget {
                 'Let\'s talk!',
                 style: AppStyles.fontStyle(
                   fontWeight: FontWeight.w600,
-                  fontSize: 27.0,
+                  fontSize: ResponsiveLayout.getResponsiveSize(
+                      context, ResponsiveLayout.bottomSheetLetterSizeMobile),
                   color: AppStyles.bottomLettersColor,
                 ),
               ),
             ],
           ),
           const SizedBox(height: 20.0),
-          const Row(
+          Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               FaIcon(FontAwesomeIcons.envelopeCircleCheck,
@@ -63,21 +66,22 @@ class FourthSectionMobile extends StatelessWidget {
               Text(
                 "vinicius.a.cruz1@gmail.com",
                 style: TextStyle(
-                  fontSize: 20.0,
+                  fontSize: ResponsiveLayout.getResponsiveSize(
+                      context, ResponsiveLayout.normalLettersSizeMobile),
                   fontWeight: FontWeight.bold,
                   color: AppStyles.bottomLettersColor,
                 ),
               ),
             ],
           ),
-          SizedBox(height: 10.0),
+          const SizedBox(height: 10.0),
           Container(
             decoration: BoxDecoration(
-                color: Colors.grey.withOpacity(0.2),
+                color: Colors.white.withOpacity(0.3),
                 borderRadius: BorderRadius.circular(10.0)),
-            padding: EdgeInsets.all(10.0),
-            margin: EdgeInsets.only(left: 30.0, right: 30.0),
-            child: Row(
+            padding: const EdgeInsets.all(10.0),
+            margin: const EdgeInsets.only(left: 30.0, right: 30.0),
+            child: const Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 FaIcon(FontAwesomeIcons.linkedin,

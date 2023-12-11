@@ -64,7 +64,7 @@ class _SkillCardWebState extends State<SkillCardWeb> {
                 color: AppStyles.skillCardsBorderColor.withOpacity(1),
                 spreadRadius: 3,
                 blurRadius: 5,
-                offset: Offset(0, 3),
+                offset: const Offset(0, 3),
               ),
             ],
           ),
@@ -78,7 +78,7 @@ class _SkillCardWebState extends State<SkillCardWeb> {
                   size: 40.0,
                   color: AppStyles.skillCardsIconsColor,
                 ),
-                SizedBox(height: 15.0),
+                const SizedBox(height: 15.0),
                 Text(
                   widget.skill.title,
                   style: GoogleFonts.quicksand(
@@ -87,7 +87,7 @@ class _SkillCardWebState extends State<SkillCardWeb> {
                     color: AppStyles.skillLettersColor,
                   ),
                 ),
-                SizedBox(height: 10.0),
+                const SizedBox(height: 10.0),
                 Text(
                   widget.skill.description,
                   style: GoogleFonts.quicksand(

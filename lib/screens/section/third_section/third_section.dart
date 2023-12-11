@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_flutter_web/responsive/responsive_layout.dart';
 import 'package:portfolio_flutter_web/widgets/project_card/project_card_mobile.dart';
+import 'package:portfolio_flutter_web/widgets/project_card/project_card_tablet.dart';
 import 'package:portfolio_flutter_web/widgets/text_reveal.dart';
 import '../../../constants/style.dart';
 import '../../../modals/projects.dart';
@@ -10,7 +10,7 @@ import '../../../widgets/project_card/project_card_web.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ThirdSection extends StatefulWidget {
-  const ThirdSection({Key? key}) : super(key: key);
+  const ThirdSection({super.key});
 
   @override
   State<ThirdSection> createState() => _ThirdSectionState();
@@ -61,15 +61,21 @@ class _ThirdSectionState extends State<ThirdSection>
                 'MY PROJECTS',
                 style: AppStyles.fontStyle(
                   fontWeight: FontWeight.w900,
-                  fontSize: ResponsiveLayout.getResponsiveSize(context, 40.0),
+                  fontSize: ResponsiveLayout.getResponsiveSize(
+                      context,
+                      (ResponsiveLayout.buildWidgetValue(context,
+                          mobileValue: ResponsiveLayout.mainLettersSizeMobile,
+                          tabletValue: ResponsiveLayout.mainLettersSizeTablet,
+                          desktopValue:
+                              ResponsiveLayout.mainLettersSizeDesktop))),
                   color: AppStyles.bigLettersColor,
                 ),
               ),
             ),
-            SizedBox(height: 20.0),
+            const SizedBox(height: 20.0),
             Wrap(
               alignment: WrapAlignment.center,
-              spacing: 20.0,
+              spacing: 30.0,
               runSpacing: 20.0,
               children: projects
                   .map<Widget>((project) => ResponsiveLayout(

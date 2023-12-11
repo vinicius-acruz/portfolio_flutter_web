@@ -22,8 +22,8 @@ class _SkillCardTabletState extends State<SkillCardTablet>
 
   @override
   void initState() {
-    _animationController =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 300));
+    _animationController = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 300));
 
     super.initState();
   }
@@ -64,15 +64,15 @@ class _SkillCardTabletState extends State<SkillCardTablet>
           margin: const EdgeInsets.symmetric(vertical: 25.0, horizontal: 5.0),
         ),
         secondChild: AnimatedContainer(
-          duration: Duration(milliseconds: 300),
+          duration: const Duration(milliseconds: 300),
           height: _isExpanded
               ? getResponsiveCard(context, 950)
               : getResponsiveCard(context, 450),
           width: _isExpanded
               ? getResponsiveCard(context, 500)
               : getResponsiveCard(context, 300),
-          margin: EdgeInsets.symmetric(vertical: 15.0, horizontal: 5.0),
-          padding: EdgeInsets.all(10.0),
+          margin: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 5.0),
+          padding: const EdgeInsets.all(10.0),
           decoration: BoxDecoration(
             color: AppStyles.skillCardsColor,
             borderRadius: BorderRadius.circular(20.0),
@@ -81,7 +81,7 @@ class _SkillCardTabletState extends State<SkillCardTablet>
                 color: AppStyles.skillCardsBorderColor.withOpacity(1),
                 spreadRadius: 3,
                 blurRadius: 5,
-                offset: Offset(0, 3),
+                offset: const Offset(0, 3),
               ),
             ],
           ),
@@ -100,17 +100,18 @@ class _SkillCardTabletState extends State<SkillCardTablet>
                       : ResponsiveLayout.getResponsiveSize(context, 50),
                   color: AppStyles.skillCardsIconsColor,
                 ),
-                SizedBox(height: 10.0),
+                const SizedBox(height: 10.0),
                 Text(
                   widget.skill.title,
                   style: AppStyles.fontStyle(
-                    fontSize: ResponsiveLayout.getResponsiveSize(context, 15.0),
+                    fontSize: ResponsiveLayout.getResponsiveSize(
+                        context, ResponsiveLayout.cardTitleLettersSizeTablet),
                     fontWeight: FontWeight.bold,
                     color: AppStyles.skillLettersColor,
                   ),
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(height: 10.0),
+                const SizedBox(height: 10.0),
                 TextButton(
                   onPressed: () {
                     setState(() {
@@ -126,7 +127,8 @@ class _SkillCardTabletState extends State<SkillCardTablet>
                     _isExpanded ? 'View less' : 'View more',
                     style: AppStyles.fontStyle(
                             fontSize: ResponsiveLayout.getResponsiveSize(
-                                context, 12.0))
+                                context,
+                                ResponsiveLayout.normalLettersSizeTablet - 2))
                         .copyWith(
                             shadows: [
                           const Shadow(
@@ -140,7 +142,7 @@ class _SkillCardTabletState extends State<SkillCardTablet>
                     textAlign: TextAlign.center,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15.0,
                 ),
                 if (_isExpanded) // Shows expanded information
@@ -150,7 +152,8 @@ class _SkillCardTabletState extends State<SkillCardTablet>
                         widget.skill.description,
                         style: AppStyles.fontStyle(
                             fontSize: ResponsiveLayout.getResponsiveSize(
-                                context, 14.0),
+                                context,
+                                ResponsiveLayout.normalLettersSizeTablet),
                             color: AppStyles.skillLettersColor),
                         textAlign: TextAlign.center,
                       ),

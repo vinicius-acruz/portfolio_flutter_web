@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_flutter_web/constants/style.dart';
 import '../../../responsive/responsive_layout.dart';
 import '../../../widgets/text_reveal.dart';
@@ -29,6 +28,28 @@ class FirstSectionMobile extends StatelessWidget {
 
     return Stack(
       children: [
+        const Positioned.fill(
+          left: -130.0,
+          child: SecondPageImage(),
+        ),
+        Positioned(
+          left: 30,
+          child: SizeTransition(
+            sizeFactor: patternAnimation,
+            axis: Axis.horizontal,
+            child: SizedBox(
+              height: ResponsiveLayout.getResponsiveSize(context, 470),
+              child: Image.asset(
+                'assets/images/listras_mobile.png',
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+        ),
+        const Positioned.fill(
+          left: -130.0,
+          child: FirstPageImage(),
+        ),
         // Page Content
         Container(
           height: screenHeight,
@@ -40,14 +61,15 @@ class FirstSectionMobile extends StatelessWidget {
               TextReveal(
                 textOpacityAnimation: textOpacityAnimation,
                 textRevealAnimation: textRevealAnimation,
-                maxHeight: ResponsiveLayout.getResponsiveSize(context, 60.0),
+                maxHeight: ResponsiveLayout.getResponsiveSize(
+                    context, ResponsiveLayout.mainLettersSizeMobile + 20),
                 controller: controller,
                 child: Text(
                   'Hello,',
                   style: AppStyles.fontStyle(
                       fontWeight: FontWeight.w900,
-                      fontSize:
-                          ResponsiveLayout.getResponsiveSize(context, 40.0),
+                      fontSize: ResponsiveLayout.getResponsiveSize(
+                          context, ResponsiveLayout.mainLettersSizeMobile + 10),
                       color: AppStyles.bigLettersColor),
                 ),
               ),
@@ -56,15 +78,16 @@ class FirstSectionMobile extends StatelessWidget {
                   TextReveal(
                     textOpacityAnimation: textOpacityAnimation,
                     textRevealAnimation: textRevealAnimation,
-                    maxHeight:
-                        ResponsiveLayout.getResponsiveSize(context, 65.0),
+                    maxHeight: ResponsiveLayout.getResponsiveSize(
+                        context, ResponsiveLayout.mainLettersSizeMobile + 10),
                     controller: controller,
                     child: Text(
                       "I'm ",
                       style: AppStyles.fontStyle(
                               fontWeight: FontWeight.w900,
                               fontSize: ResponsiveLayout.getResponsiveSize(
-                                  context, 30.0),
+                                  context,
+                                  ResponsiveLayout.mainLettersSizeMobile - 10),
                               color: AppStyles.bigLettersColor)
                           .copyWith(
                               shadows: [
@@ -80,15 +103,16 @@ class FirstSectionMobile extends StatelessWidget {
                   TextReveal(
                     textOpacityAnimation: textOpacityAnimation,
                     textRevealAnimation: textRevealAnimation,
-                    maxHeight:
-                        ResponsiveLayout.getResponsiveSize(context, 60.0),
+                    maxHeight: ResponsiveLayout.getResponsiveSize(
+                        context, ResponsiveLayout.mainLettersSizeMobile),
                     controller: controller,
                     child: Text(
                       'Vinicius',
                       style: AppStyles.fontStyle(
                               fontWeight: FontWeight.w900,
                               fontSize: ResponsiveLayout.getResponsiveSize(
-                                  context, 30.0),
+                                  context,
+                                  ResponsiveLayout.mainLettersSizeMobile - 10),
                               color: AppStyles.bigLettersColor)
                           .copyWith(
                               shadows: [
@@ -107,12 +131,14 @@ class FirstSectionMobile extends StatelessWidget {
               TextReveal(
                 textOpacityAnimation: textOpacityAnimation,
                 textRevealAnimation: textRevealAnimation,
-                maxHeight: ResponsiveLayout.getResponsiveSize(context, 35.0),
+                maxHeight: ResponsiveLayout.getResponsiveSize(
+                    context, ResponsiveLayout.occupationLettersSizeMobile + 10),
                 controller: controller,
                 child: Text(
                   'Flutter Developer',
                   style: AppStyles.fontStyle(
-                    fontSize: ResponsiveLayout.getResponsiveSize(context, 18.0),
+                    fontSize: ResponsiveLayout.getResponsiveSize(
+                        context, ResponsiveLayout.occupationLettersSizeMobile),
                     color: AppStyles.occupationLetterColor,
                   ),
                 ),
@@ -144,21 +170,27 @@ class FirstSectionMobile extends StatelessWidget {
                         style: AppStyles.fontStyle(
                             color: AppStyles.reachButtonLettersColor,
                             fontSize: ResponsiveLayout.getResponsiveSize(
-                                context, 15.0)),
+                                context,
+                                ResponsiveLayout.getResponsiveSize(
+                                    context,
+                                    ResponsiveLayout
+                                            .cardTitleLettersSizeMobile -
+                                        5))),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 20.0,
                       ),
                       Icon(
                         Icons.send,
                         color: AppStyles.reachButtonLettersColor,
-                        size: ResponsiveLayout.getResponsiveSize(context, 18.0),
+                        size: ResponsiveLayout.getResponsiveSize(context,
+                            ResponsiveLayout.cardTitleLettersSizeMobile),
                       ),
                     ],
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 25.0,
               ),
               Flexible(
@@ -168,12 +200,12 @@ class FirstSectionMobile extends StatelessWidget {
                   maxHeight: 20,
                   controller: controller,
                   child: Container(
-                    padding: EdgeInsets.only(right: 30.0),
+                    padding: const EdgeInsets.only(right: 30.0),
                     child: Text(
                       'Hi, I\'m Vinicius, an aspiring Flutter developer passionate about crafting seamless and engaging cross-platform applications. Eager to merge creativity with code, I strive to bring innovative solutions to life in the ever-evolving world of mobile development.',
                       style: TextStyle(
-                          fontSize: ResponsiveLayout.getResponsiveSize(
-                              context, 15.0)),
+                          fontSize: ResponsiveLayout.getResponsiveSize(context,
+                              ResponsiveLayout.normalLettersSizeMobile)),
                       textAlign: TextAlign.justify,
                     ),
                   ),
@@ -184,14 +216,6 @@ class FirstSectionMobile extends StatelessWidget {
               ),
             ],
           ),
-        ),
-        Positioned.fill(
-          left: -130.0,
-          child: SecondPageImage(),
-        ),
-        const Positioned.fill(
-          left: -130.0,
-          child: FirstPageImage(),
         ),
       ],
     );

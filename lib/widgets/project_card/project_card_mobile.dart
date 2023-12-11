@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:portfolio_flutter_web/responsive/responsive_layout.dart';
 import '../../constants/style.dart';
 import '../../modals/projects.dart';
 import '../../modals/scroll_offset.dart';
@@ -11,8 +11,7 @@ class ProjectCardMobile extends StatefulWidget {
   final int index;
 
   const ProjectCardMobile(
-      {Key? key, required this.project, required this.index})
-      : super(key: key);
+      {super.key, required this.project, required this.index});
 
   @override
   State<ProjectCardMobile> createState() => _ProjectCardMobileState();
@@ -109,7 +108,7 @@ class _ProjectCardMobileState extends State<ProjectCardMobile>
                             ],
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 20.0,
                         ),
                       ],
@@ -123,8 +122,9 @@ class _ProjectCardMobileState extends State<ProjectCardMobile>
                     child: Text(
                       widget.project.title,
                       style: AppStyles.fontStyle(
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.w600,
+                        fontSize: ResponsiveLayout.getResponsiveSize(context,
+                            ResponsiveLayout.cardTitleLettersSizeMobile),
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
@@ -136,9 +136,9 @@ class _ProjectCardMobileState extends State<ProjectCardMobile>
                     child: Text(
                       widget.project.description,
                       style: AppStyles.fontStyle(
-                          fontSize: 16.0,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.black54),
+                          fontSize: ResponsiveLayout.getResponsiveSize(context,
+                              ResponsiveLayout.normalLettersSizeMobile),
+                          color: AppStyles.lettersColor),
                       textAlign: TextAlign.justify,
                     ),
                   ),

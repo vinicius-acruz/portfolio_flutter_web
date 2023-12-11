@@ -20,15 +20,45 @@ class ResponsiveLayout extends StatelessWidget {
   //profile image
 
   static double mobileImageSize = 550.0;
-  static double tableImageSize = 1500.0;
+  static double tableImageSize = 1200.0;
   static double desktopImageSize = 920.0;
 
-  static double ScreenWidthSize(BuildContext context) {
+//Letters size
+
+  static double getResponsiveSize(BuildContext context, double baseSize) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    // Adjust this factor based on preference
+    const double scaleFactor = 0.0015;
+    return screenHeight * scaleFactor * baseSize;
+  }
+
+//Desktop
+  static double mainLettersSizeDesktop = 100.0;
+  static double occupationLettersSizeDesktop = 50.0;
+  static double normalLettersSizeDesktop = 20.0;
+  static double cardTitleLettersSizeDesktop = 15.0;
+  static double bottomSheetLetterSizeDesktop = 12.0;
+
+//Tablet
+  static double mainLettersSizeTablet = 35.0;
+  static double occupationLettersSizeTablet = 22.0;
+  static double normalLettersSizeTablet = 12.0;
+  static double cardTitleLettersSizeTablet = 15.0;
+  static double bottomSheetLetterSizeTablet = 24.0;
+
+//Mobile
+  static double mainLettersSizeMobile = 40.0;
+  static double occupationLettersSizeMobile = 18.0;
+  static double normalLettersSizeMobile = 13.0;
+  static double cardTitleLettersSizeMobile = 15.0;
+  static double bottomSheetLetterSizeMobile = 23.0;
+
+  static double screenWidthSize(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     return screenWidth;
   }
 
-  static double ScreenWidthHeight(BuildContext context) {
+  static double screenWidthHeight(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.height;
     return screenWidth;
   }
@@ -37,16 +67,27 @@ class ResponsiveLayout extends StatelessWidget {
       {required double mobileValue,
       required tabletValue,
       required desktopValue}) {
-    if (ScreenWidthSize(context) < mobileWidthLimit) {
+    if (screenWidthSize(context) < mobileWidthLimit) {
       return mobileValue;
-    } else if (ScreenWidthSize(context) < tabletWidthLimit) {
+    } else if (screenWidthSize(context) < tabletWidthLimit) {
       return tabletValue;
     } else {
       return desktopValue;
     }
   }
 
-  static double ImageSize(BuildContext context) {
+  // Create a method for setting a index for projects in same line
+  static int getWidgetIndex(BuildContext context,
+      {double projectSpace = 20.0,
+      required int index,
+      required double projectWidth}) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final projectsPerLine = (screenWidth / (projectWidth + 20)).floor();
+    final lineIndex = projectsPerLine == 0 ? 0 : index ~/ projectsPerLine;
+    return lineIndex;
+  }
+
+  static double imageSize(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final imageSize = screenWidth > ResponsiveLayout.mobileWidthLimit
         ? (screenWidth > ResponsiveLayout.tabletWidthLimit
@@ -54,13 +95,6 @@ class ResponsiveLayout extends StatelessWidget {
             : tableImageSize)
         : mobileImageSize;
     return imageSize;
-  }
-
-  static double getResponsiveSize(BuildContext context, double baseSize) {
-    double screenHeight = MediaQuery.of(context).size.height;
-    // Adjust this factor based on preference
-    const double scaleFactor = 0.0015;
-    return screenHeight * scaleFactor * baseSize;
   }
 
   static bool buildWhenSecondSection(BuildContext context, ScrollOffset current,

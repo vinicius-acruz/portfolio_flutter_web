@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../../../constants/style.dart';
 
 class FourthSectionWeb extends StatelessWidget {
-  const FourthSectionWeb({Key? key}) : super(key: key);
+  const FourthSectionWeb({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,37 +26,35 @@ class FourthSectionWeb extends StatelessWidget {
             children: [
               Expanded(
                 flex: 3,
-                child: Container(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "Contact me",
-                        style: AppStyles.fontStyle(
-                          fontSize: 25.0,
-                          fontWeight: FontWeight.w500,
-                          color: AppStyles.bottomLettersContactColor,
-                        ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Contact me",
+                      style: AppStyles.fontStyle(
+                        fontSize: 25.0,
+                        fontWeight: FontWeight.w500,
+                        color: AppStyles.bottomLettersContactColor,
                       ),
-                      SizedBox(height: 10.0),
-                      Text(
-                        'Got a project?',
-                        style: AppStyles.fontStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 40.0,
-                          color: AppStyles.bottomLettersColor,
-                        ),
+                    ),
+                    const SizedBox(height: 10.0),
+                    Text(
+                      'Got a project?',
+                      style: AppStyles.fontStyle(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 40.0,
+                        color: AppStyles.bottomLettersColor,
                       ),
-                      Text(
-                        'Let\'s talk!',
-                        style: AppStyles.fontStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 40.0,
-                          color: AppStyles.bottomLettersColor,
-                        ),
+                    ),
+                    Text(
+                      'Let\'s talk!',
+                      style: AppStyles.fontStyle(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 40.0,
+                        color: AppStyles.bottomLettersColor,
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
               const SizedBox(width: 20.0),
@@ -82,13 +79,13 @@ class FourthSectionWeb extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(height: 20.0),
+                    const SizedBox(height: 20.0),
                     Container(
                       decoration: BoxDecoration(
                           color: Colors.grey.withOpacity(0.2),
                           borderRadius: BorderRadius.circular(10.0)),
-                      padding: EdgeInsets.all(10.0),
-                      child: Row(
+                      padding: const EdgeInsets.all(10.0),
+                      child: const Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           FaIcon(FontAwesomeIcons.linkedin,

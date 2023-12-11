@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_flutter_web/responsive/responsive_layout.dart';
 
 import '../../constants/style.dart';
@@ -11,8 +10,7 @@ class SkillCardMobile extends StatefulWidget {
   final Skill skill;
   final int index;
 
-  const SkillCardMobile({Key? key, required this.skill, required this.index})
-      : super(key: key);
+  const SkillCardMobile({super.key, required this.skill, required this.index});
 
   @override
   State<SkillCardMobile> createState() => _SkillCardMobileState();
@@ -25,8 +23,8 @@ class _SkillCardMobileState extends State<SkillCardMobile>
 
   @override
   void initState() {
-    _animationController =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 300));
+    _animationController = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 300));
 
     super.initState();
   }
@@ -67,15 +65,15 @@ class _SkillCardMobileState extends State<SkillCardMobile>
           margin: const EdgeInsets.symmetric(vertical: 25.0, horizontal: 5.0),
         ),
         secondChild: AnimatedContainer(
-          duration: Duration(milliseconds: 300),
+          duration: const Duration(milliseconds: 300),
           height: _isExpanded
               ? getResponsiveCard(context, 800)
-              : getResponsiveCard(context, 450),
+              : getResponsiveCard(context, 500),
           width: _isExpanded
               ? getResponsiveCard(context, 420)
-              : getResponsiveCard(context, 270),
-          margin: EdgeInsets.symmetric(vertical: 15.0, horizontal: 5.0),
-          padding: EdgeInsets.all(10.0),
+              : getResponsiveCard(context, 300),
+          margin: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 5.0),
+          padding: const EdgeInsets.all(10.0),
           decoration: BoxDecoration(
             color: AppStyles.skillCardsColor,
             borderRadius: BorderRadius.circular(20.0),
@@ -84,7 +82,7 @@ class _SkillCardMobileState extends State<SkillCardMobile>
                 color: AppStyles.skillCardsBorderColor.withOpacity(1),
                 spreadRadius: 3,
                 blurRadius: 5,
-                offset: Offset(0, 3),
+                offset: const Offset(0, 3),
               ),
             ],
           ),
@@ -103,17 +101,18 @@ class _SkillCardMobileState extends State<SkillCardMobile>
                       : ResponsiveLayout.getResponsiveSize(context, 40),
                   color: AppStyles.skillCardsIconsColor,
                 ),
-                SizedBox(height: 10.0),
+                const SizedBox(height: 10.0),
                 Text(
                   widget.skill.title,
                   style: AppStyles.fontStyle(
-                    fontSize: ResponsiveLayout.getResponsiveSize(context, 14.0),
+                    fontSize: ResponsiveLayout.getResponsiveSize(
+                        context, ResponsiveLayout.cardTitleLettersSizeMobile),
                     fontWeight: FontWeight.bold,
                     color: AppStyles.skillLettersColor,
                   ),
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(height: 10.0),
+                const SizedBox(height: 1.0),
                 TextButton(
                   onPressed: () {
                     setState(() {
@@ -127,16 +126,20 @@ class _SkillCardMobileState extends State<SkillCardMobile>
                   },
                   child: Text(
                     _isExpanded ? 'View less' : 'View more',
-                    style: AppStyles.fontStyle(fontSize: 14.0).copyWith(
-                        shadows: [
+                    style: AppStyles.fontStyle(
+                            fontSize: ResponsiveLayout.getResponsiveSize(
+                                context,
+                                ResponsiveLayout.normalLettersSizeMobile - 3))
+                        .copyWith(
+                            shadows: [
                           const Shadow(
                               color: AppStyles.skillLettersColor,
                               offset: Offset(0, -5))
                         ],
-                        color: Colors.transparent,
-                        decoration: TextDecoration.underline,
-                        decorationThickness: 2,
-                        decorationColor: AppStyles.skillLettersColor),
+                            color: Colors.transparent,
+                            decoration: TextDecoration.underline,
+                            decorationThickness: 2,
+                            decorationColor: AppStyles.skillLettersColor),
                     textAlign: TextAlign.center,
                   ),
                 ),
@@ -146,7 +149,10 @@ class _SkillCardMobileState extends State<SkillCardMobile>
                       child: Text(
                         widget.skill.description,
                         style: AppStyles.fontStyle(
-                            fontSize: 16.0, color: AppStyles.skillLettersColor),
+                            fontSize: ResponsiveLayout.getResponsiveSize(
+                                context,
+                                ResponsiveLayout.normalLettersSizeMobile),
+                            color: AppStyles.skillLettersColor),
                         textAlign: TextAlign.center,
                       ),
                     ),

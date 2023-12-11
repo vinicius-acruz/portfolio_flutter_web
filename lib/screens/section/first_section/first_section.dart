@@ -7,7 +7,7 @@ import 'first_section_mobile.dart';
 import 'first_section_web.dart';
 
 class FirstSection extends StatefulWidget {
-  const FirstSection({Key? key}) : super(key: key);
+  const FirstSection({super.key});
 
   @override
   State<FirstSection> createState() => _FirstSectionState();
@@ -44,7 +44,7 @@ class _FirstSectionState extends State<FirstSection>
             parent: controller,
             curve: const Interval(0, 1, curve: Curves.easeOut)));
 
-    patternAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
+    patternAnimation = Tween<double>(begin: 0.5, end: 1.0).animate(
         CurvedAnimation(
             parent: controller,
             curve: const Interval(0, 1, curve: Curves.easeOut)));
@@ -81,7 +81,7 @@ class _FirstSectionState extends State<FirstSection>
 }
 
 class FirstPageImage extends StatefulWidget {
-  const FirstPageImage({Key? key}) : super(key: key);
+  const FirstPageImage({super.key});
 
   @override
   State<FirstPageImage> createState() => _FirstPageImageState();
@@ -107,7 +107,7 @@ class _FirstPageImageState extends State<FirstPageImage>
   @override
   Widget build(BuildContext context) {
     return Image(
-      image: AssetImage('assets/images/vini.png'),
+      image: const AssetImage('assets/images/vini.png'),
       fit: BoxFit.cover,
       loadingBuilder: (context, child, loadingProgress) {
         if (loadingProgress == null) {
@@ -123,7 +123,7 @@ class _FirstPageImageState extends State<FirstPageImage>
                 children: [
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 1.0),
-                    height: ResponsiveLayout.ImageSize(context),
+                    height: ResponsiveLayout.imageSize(context),
                     width: double.infinity,
                     child: child,
                   ),
@@ -150,7 +150,7 @@ class _FirstPageImageState extends State<FirstPageImage>
 }
 
 class SecondPageImage extends StatefulWidget {
-  const SecondPageImage({Key? key}) : super(key: key);
+  const SecondPageImage({super.key});
 
   @override
   State<SecondPageImage> createState() => _SecondPageImageState();
@@ -176,7 +176,7 @@ class _SecondPageImageState extends State<SecondPageImage>
   @override
   Widget build(BuildContext context) {
     return Image(
-      image: AssetImage('assets/images/fundo1.png'),
+      image: const AssetImage('assets/images/fundo1.png'),
       fit: BoxFit.cover,
       loadingBuilder: (context, child, loadingProgress) {
         if (loadingProgress == null) {
@@ -192,7 +192,7 @@ class _SecondPageImageState extends State<SecondPageImage>
                 children: [
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 1.0),
-                    height: ResponsiveLayout.ImageSize(context),
+                    height: ResponsiveLayout.imageSize(context),
                     width: double.infinity,
                     child: child,
                   ),

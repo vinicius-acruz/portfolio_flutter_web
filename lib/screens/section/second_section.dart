@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_flutter_web/modals/scroll_offset.dart';
 import 'package:portfolio_flutter_web/modals/skills.dart';
 import 'package:portfolio_flutter_web/responsive/responsive_layout.dart';
@@ -11,7 +10,7 @@ import '../../widgets/skill_card/skill_card_tablet.dart';
 import '../../widgets/skill_card/skill_card_web.dart';
 
 class SecondSection extends StatefulWidget {
-  const SecondSection({Key? key});
+  const SecondSection({super.key});
 
   @override
   State<SecondSection> createState() => _SecondSectionState();
@@ -72,7 +71,13 @@ class _SecondSectionState extends State<SecondSection>
               'MY SKILLS',
               style: AppStyles.fontStyle(
                   fontWeight: FontWeight.w900,
-                  fontSize: ResponsiveLayout.getResponsiveSize(context, 40.0),
+                  fontSize: ResponsiveLayout.getResponsiveSize(
+                      context,
+                      (ResponsiveLayout.buildWidgetValue(context,
+                          mobileValue: ResponsiveLayout.mainLettersSizeMobile,
+                          tabletValue: ResponsiveLayout.mainLettersSizeTablet,
+                          desktopValue:
+                              ResponsiveLayout.mainLettersSizeDesktop))),
                   color: AppStyles.bigLettersColor),
             ),
           );
