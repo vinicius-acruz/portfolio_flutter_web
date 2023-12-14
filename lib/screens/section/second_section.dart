@@ -76,7 +76,7 @@ class _SecondSectionState extends State<SecondSection>
                           mobileValue: ResponsiveLayout.mainLettersSizeMobile,
                           tabletValue: ResponsiveLayout.mainLettersSizeTablet,
                           desktopValue:
-                              ResponsiveLayout.mainLettersSizeDesktop))),
+                              ResponsiveLayout.mainLettersSizeDesktop - 5))),
                   color: AppStyles.bigLettersColor),
             ),
           );

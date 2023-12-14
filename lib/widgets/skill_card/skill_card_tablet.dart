@@ -35,8 +35,8 @@ class _SkillCardTabletState extends State<SkillCardTablet>
 
   @override
   Widget build(BuildContext context) {
-    final startRange = MediaQuery.of(context).size.height + widget.index * 100;
-    final endRange = 1.3 * widget.sectionHeight +
+    final startRange = MediaQuery.of(context).size.height + widget.index * 50;
+    final endRange = 1.4 * widget.sectionHeight +
         widget.index * 100; //  constants to adjust the range as needed
 
     return BlocBuilder<DisplayOffset, ScrollOffset>(
@@ -104,7 +104,7 @@ class _SkillCardTabletState extends State<SkillCardTablet>
                   widget.skill.iconData,
                   size: _isExpanded
                       ? ResponsiveLayout.getResponsiveSize(context, 40)
-                      : ResponsiveLayout.getResponsiveSize(context, 50),
+                      : ResponsiveLayout.getResponsiveSize(context, 45),
                   color: AppStyles.skillCardsIconsColor,
                 ),
                 const SizedBox(height: 10.0),
@@ -118,7 +118,6 @@ class _SkillCardTabletState extends State<SkillCardTablet>
                   ),
                   textAlign: TextAlign.center,
                 ),
-                const SizedBox(height: 10.0),
                 TextButton(
                   onPressed: () {
                     setState(() {
@@ -148,9 +147,6 @@ class _SkillCardTabletState extends State<SkillCardTablet>
                             decorationColor: AppStyles.skillLettersColor),
                     textAlign: TextAlign.center,
                   ),
-                ),
-                const SizedBox(
-                  height: 15.0,
                 ),
                 if (_isExpanded) // Shows expanded information
                   Flexible(

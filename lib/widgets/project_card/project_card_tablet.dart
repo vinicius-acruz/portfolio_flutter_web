@@ -28,16 +28,13 @@ class _ProjectCardTabletState extends State<ProjectCardTablet>
 
   late double startRange;
 
-  double projectCardHeight = 850.0;
-  double projectCardWidth = 400.0;
-
   @override
   void initState() {
     controller = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 1000),
     );
-    animation = Tween(begin: projectCardWidth, end: 0.0)
+    animation = Tween(begin: ResponsiveLayout.projectCardWidthTablet, end: 0.0)
         .animate(CurvedAnimation(parent: controller, curve: Curves.easeOut));
 
     super.initState();
@@ -46,10 +43,15 @@ class _ProjectCardTabletState extends State<ProjectCardTablet>
   @override
   Widget build(BuildContext context) {
     final lineIndex = ResponsiveLayout.getWidgetIndex(context,
-        index: widget.index, projectWidth: projectCardWidth);
+        index: widget.index,
+        projectWidth: ((ResponsiveLayout.getResponsiveCard(
+            context, ResponsiveLayout.projectCardWidthTablet))));
 
-    startRange =
-        widget.secondSectionHeight + 100 + lineIndex * projectCardHeight;
+    startRange = widget.secondSectionHeight +
+        100 +
+        lineIndex *
+            ((ResponsiveLayout.getResponsiveCard(
+                context, ResponsiveLayout.projectCardHeightTablet)));
 
     return BlocBuilder<DisplayOffset, ScrollOffset>(
         buildWhen: (previous, current) {
@@ -61,15 +63,17 @@ class _ProjectCardTabletState extends State<ProjectCardTablet>
     }, builder: (context, state) {
       print(
           'Card ${widget.index}: project line $lineIndex, scrolloffset: ${state.scrollOffsetValue}, ');
-      state.scrollOffsetValue > (startRange + 300)
+      state.scrollOffsetValue > (startRange + 100)
           ? controller.forward()
           : controller.reverse();
       return AnimatedBuilder(
           animation: animation,
           builder: (context, child) {
             return Container(
-              height: projectCardHeight,
-              width: projectCardWidth,
+              height: ResponsiveLayout.getResponsiveCard(
+                  context, ResponsiveLayout.projectCardHeightTablet),
+              width: ResponsiveLayout.getResponsiveCard(
+                  context, ResponsiveLayout.projectCardWidthTablet),
               margin:
                   const EdgeInsets.symmetric(vertical: 15.0, horizontal: 5.0),
               decoration: BoxDecoration(
@@ -97,7 +101,9 @@ class _ProjectCardTabletState extends State<ProjectCardTablet>
                           child: Lottie.asset(
                             'assets/images/projects/project1/project1_animation.json',
                             fit: BoxFit.cover,
-                            width: projectCardWidth / 2,
+                            width: (ResponsiveLayout.getResponsiveCard(context,
+                                    ResponsiveLayout.projectCardWidthTablet)) /
+                                2,
                           ),
                         ),
                         Align(
@@ -140,7 +146,7 @@ class _ProjectCardTabletState extends State<ProjectCardTablet>
                         ),
                         Padding(
                           padding: const EdgeInsets.symmetric(
-                              horizontal: 8.0, vertical: 10.0),
+                              horizontal: 8.0, vertical: 5.0),
                           child: Text(
                             widget.project.description,
                             style: AppStyles.fontStyle(

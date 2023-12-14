@@ -11,7 +11,7 @@ class FourthSectionTablet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 300.0,
+      height: ResponsiveLayout.getResponsiveSize(context, 250),
       margin: const EdgeInsets.all(10.0),
       decoration: const BoxDecoration(
         color: AppStyles.bottomSheetColor,
@@ -66,7 +66,7 @@ class FourthSectionTablet extends StatelessWidget {
               Expanded(
                 flex: 1,
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -74,24 +74,23 @@ class FourthSectionTablet extends StatelessWidget {
                         FaIcon(FontAwesomeIcons.envelopeCircleCheck,
                             size: 30.0, color: Colors.red),
                         SizedBox(width: 20.0),
-                        Expanded(
-                          child: Text(
-                            "vinicius.a.cruz1@gmail.com",
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                              fontSize: ResponsiveLayout.getResponsiveSize(
-                                  context,
-                                  ResponsiveLayout.bottomSheetLetterSizeTablet -
-                                      11),
-                              fontWeight: FontWeight.bold,
-                              color: AppStyles.bottomLettersColor,
-                            ),
+                        Text(
+                          "vinicius.a.cruz1@gmail.com",
+                          textAlign: TextAlign.center,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: AppStyles.fontStyle(
+                            fontSize: ResponsiveLayout.getResponsiveSize(
+                                context,
+                                ResponsiveLayout.bottomSheetLetterSizeTablet -
+                                    7),
+                            fontWeight: FontWeight.bold,
+                            color: AppStyles.bottomLettersColor,
                           ),
                         ),
                       ],
                     ),
-                    const SizedBox(height: 20.0),
+                    const SizedBox(height: 5.0),
                     Container(
                       decoration: BoxDecoration(
                           color: Colors.grey.withOpacity(0.2),

@@ -81,7 +81,9 @@ class _FirstSectionState extends State<FirstSection>
 }
 
 class FirstPageImage extends StatefulWidget {
-  const FirstPageImage({super.key});
+  final double height;
+
+  const FirstPageImage({super.key, required this.height});
 
   @override
   State<FirstPageImage> createState() => _FirstPageImageState();
@@ -106,54 +108,53 @@ class _FirstPageImageState extends State<FirstPageImage>
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.transparent,
-      child: Image(
-        image: const AssetImage('assets/images/vini.png'),
-        fit: BoxFit.contain,
-        alignment: Alignment.topRight,
-        loadingBuilder: (context, child, loadingProgress) {
-          if (loadingProgress == null) {
-            Future.delayed(const Duration(milliseconds: 1000), () {
-              if (_controller.isDismissed) {
-                _controller.forward();
-              }
-            });
-            return AnimatedBuilder(
-              animation: _animation,
-              builder: (context, child) {
-                return Stack(
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 1.0),
+    return Image(
+      image: const AssetImage('assets/images/vini.png'),
+      fit: BoxFit.contain,
+      alignment: Alignment.topRight,
+      loadingBuilder: (context, child, loadingProgress) {
+        if (loadingProgress == null) {
+          Future.delayed(const Duration(milliseconds: 1000), () {
+            if (_controller.isDismissed) {
+              _controller.forward();
+            }
+          });
+          return AnimatedBuilder(
+            animation: _animation,
+            builder: (context, child) {
+              return Stack(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 1.0),
+                    height: widget.height,
+                    width: double.infinity,
+                    child: child,
+                  ),
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Container(
+                      height: _animation.value,
                       width: double.infinity,
-                      child: child,
+                      color: AppStyles.backgroundColor,
                     ),
-                    Align(
-                      alignment: Alignment.bottomCenter,
-                      child: Container(
-                        height: _animation.value,
-                        width: double.infinity,
-                        color: AppStyles.backgroundColor,
-                      ),
-                    )
-                  ],
-                );
-              },
-              child: child,
-            );
-          } else {
-            // Display a loading indicator or placeholder while the image is loading.
-            return Center(child: Container());
-          }
-        },
-      ),
+                  )
+                ],
+              );
+            },
+            child: child,
+          );
+        } else {
+          // Display a loading indicator or placeholder while the image is loading.
+          return Center(child: Container());
+        }
+      },
     );
   }
 }
 
 class SecondPageImage extends StatefulWidget {
-  const SecondPageImage({super.key});
+  final double height;
+  const SecondPageImage({super.key, required this.height});
 
   @override
   State<SecondPageImage> createState() => _SecondPageImageState();
@@ -180,7 +181,7 @@ class _SecondPageImageState extends State<SecondPageImage>
   Widget build(BuildContext context) {
     return Image(
       image: const AssetImage('assets/images/fundo1.png'),
-      fit: BoxFit.contain,
+      fit: BoxFit.fitHeight,
       alignment: Alignment.topRight,
       loadingBuilder: (context, child, loadingProgress) {
         if (loadingProgress == null) {
@@ -196,6 +197,7 @@ class _SecondPageImageState extends State<SecondPageImage>
                 children: [
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 1.0),
+                    height: widget.height,
                     width: double.infinity,
                     child: child,
                   ),

@@ -84,13 +84,24 @@ class ResponsiveLayout extends StatelessWidget {
   static const double expandedContainerWidthTablet = 500.0;
 
 //Desktop
-  static const double childHeightDesktop = 260.0;
-  static const double childWidthDesktop = 400.0;
+  static const double childHeightDesktop = 850.0;
+  static const double childWidthDesktop = 650.0;
 
   // Wrap widget spacing:
 
   static const double wrapSpacing = 20.0;
   static const double wrapRunSpacing = 20.0;
+
+  // Third section project card sizes
+  //Tablet
+
+  static const double projectCardHeightTablet = 1100.0;
+  static const double projectCardWidthTablet = 700.0;
+
+  //Desktop
+
+  static const double projectCardHeightDesktop = 1300.0;
+  static const double projectCardWidthDesktop = 900.0;
 
 // Create method to calculate second section height
   static double secondSectionHeight(BuildContext context,
@@ -106,9 +117,12 @@ class ResponsiveLayout extends StatelessWidget {
             mobileValue: ResponsiveLayout.mainLettersSizeMobile + 10,
             tabletValue: ResponsiveLayout.mainLettersSizeTablet + 10,
             desktopValue: ResponsiveLayout.mainLettersSizeDesktop + 10)));
-    final projectsPerLine =
-        (screenWidth / (projectWidth + projectSpace)).floor();
-    final totalLine = skillsLength ~/ projectsPerLine;
+    final projectsPerLine = (screenWidth / (projectWidth + 5 + projectSpace))
+        .floor(); //5 is the margin of the skill  card
+    final totalLine = (skillsLength / projectsPerLine).ceil();
+    print(
+        'screen width: $screenWidth, total  line: $totalLine, skills length: $skillsLength  project  width total: ${projectWidth + 50 + projectSpace} per line: $projectsPerLine');
+
     final sectionHeight = textRevealHeight +
         (totalLine *
             getResponsiveCard(
@@ -118,7 +132,7 @@ class ResponsiveLayout extends StatelessWidget {
                     tabletValue: secondChildHeightTablet,
                     desktopValue: childHeightDesktop))) +
         screenHeight +
-        120; // 120 represents vertical margins in the sections
+        100; // 100 represents vertical margins in the sections
     return sectionHeight;
   }
 

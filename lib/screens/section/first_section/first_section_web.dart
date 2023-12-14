@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio_flutter_web/responsive/responsive_layout.dart';
 import '../../../constants/style.dart';
@@ -22,14 +23,16 @@ class FirstSectionWeb extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: MediaQuery.of(context).size.height,
       width: MediaQuery.of(context).size.width,
       child: Stack(
         children: [
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.9,
-            child: const SecondPageImage(),
+            child: SecondPageImage(
+              height: MediaQuery.of(context).size.height * 0.9,
+            ),
           ),
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.9,
@@ -47,7 +50,9 @@ class FirstSectionWeb extends StatelessWidget {
           ),
           SizedBox(
               height: MediaQuery.of(context).size.height * 0.9,
-              child: const FirstPageImage()),
+              child: FirstPageImage(
+                height: MediaQuery.of(context).size.height * 0.9,
+              )),
 
           //Page Content
           Row(
@@ -55,8 +60,9 @@ class FirstSectionWeb extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Expanded(
+                flex: 3,
                 child: Container(
-                  padding: const EdgeInsets.only(left: 50.0),
+                  padding: const EdgeInsets.only(left: 30.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -64,13 +70,16 @@ class FirstSectionWeb extends StatelessWidget {
                       TextReveal(
                         textOpacityAnimation: textOpacityAnimation,
                         textRevealAnimation: textRevealAnimation,
-                        maxHeight: ResponsiveLayout.mainLettersSizeDesktop + 10,
+                        maxHeight: ResponsiveLayout.getResponsiveSize(context,
+                            ResponsiveLayout.mainLettersSizeDesktop + 10),
                         controller: controller,
                         child: Text(
                           'Hello,',
                           style: AppStyles.fontStyle(
                             fontWeight: FontWeight.w900,
-                            fontSize: ResponsiveLayout.mainLettersSizeDesktop,
+                            fontSize: ResponsiveLayout.getResponsiveSize(
+                                context,
+                                ResponsiveLayout.mainLettersSizeDesktop),
                             color: AppStyles.bigLettersColor,
                           ),
                         ),
@@ -80,15 +89,17 @@ class FirstSectionWeb extends StatelessWidget {
                           TextReveal(
                             textOpacityAnimation: textOpacityAnimation,
                             textRevealAnimation: textRevealAnimation,
-                            maxHeight:
-                                ResponsiveLayout.mainLettersSizeDesktop + 10,
+                            maxHeight: ResponsiveLayout.getResponsiveSize(
+                                context,
+                                ResponsiveLayout.mainLettersSizeDesktop + 10),
                             controller: controller,
-                            child: Text(
+                            child: AutoSizeText(
                               "I'm ",
                               style: AppStyles.fontStyle(
                                 fontWeight: FontWeight.w900,
-                                fontSize:
-                                    ResponsiveLayout.mainLettersSizeDesktop,
+                                fontSize: ResponsiveLayout.getResponsiveSize(
+                                    context,
+                                    ResponsiveLayout.mainLettersSizeDesktop),
                                 color: AppStyles.bigLettersColor,
                               ).copyWith(
                                   shadows: [
@@ -104,15 +115,19 @@ class FirstSectionWeb extends StatelessWidget {
                           TextReveal(
                             textOpacityAnimation: textOpacityAnimation,
                             textRevealAnimation: textRevealAnimation,
-                            maxHeight:
-                                ResponsiveLayout.mainLettersSizeDesktop + 10,
+                            maxHeight: ResponsiveLayout.getResponsiveSize(
+                                context,
+                                ResponsiveLayout.mainLettersSizeDesktop + 10),
                             controller: controller,
-                            child: Text(
+                            child: AutoSizeText(
                               'Vinicius',
                               style: AppStyles.fontStyle(
                                       fontWeight: FontWeight.w900,
-                                      fontSize: ResponsiveLayout
-                                          .mainLettersSizeDesktop,
+                                      fontSize:
+                                          ResponsiveLayout.getResponsiveSize(
+                                              context,
+                                              ResponsiveLayout
+                                                  .mainLettersSizeDesktop),
                                       color: AppStyles.bigLettersColor)
                                   .copyWith(
                                       shadows: [
@@ -135,14 +150,16 @@ class FirstSectionWeb extends StatelessWidget {
                       TextReveal(
                         textOpacityAnimation: textOpacityAnimation,
                         textRevealAnimation: textRevealAnimation,
-                        maxHeight:
-                            ResponsiveLayout.occupationLettersSizeDesktop + 10,
+                        maxHeight: ResponsiveLayout.getResponsiveSize(context,
+                            ResponsiveLayout.occupationLettersSizeDesktop + 10),
                         controller: controller,
                         child: Text(
                           'Flutter Developer',
                           style: AppStyles.fontStyle(
-                              fontSize:
-                                  ResponsiveLayout.occupationLettersSizeDesktop,
+                              fontSize: ResponsiveLayout.getResponsiveSize(
+                                  context,
+                                  ResponsiveLayout
+                                      .occupationLettersSizeDesktop),
                               color: AppStyles.occupationLetterColor),
                         ),
                       ),
@@ -155,13 +172,17 @@ class FirstSectionWeb extends StatelessWidget {
                             child: TextReveal(
                               textOpacityAnimation: textOpacityAnimation,
                               textRevealAnimation: textRevealAnimation,
-                              maxHeight: 200.0,
+                              maxHeight: ResponsiveLayout.getResponsiveSize(
+                                  context, 220.0),
                               controller: controller,
-                              child: Text(
+                              child: AutoSizeText(
                                 'Hi, I\'m Vinicius, an aspiring Flutter developer passionate about crafting seamless and engaging cross-platform applications. Eager to merge creativity with code, I strive to bring innovative solutions to life in the ever-evolving world of mobile development.',
                                 style: AppStyles.fontStyle(
-                                    fontSize: ResponsiveLayout
-                                        .normalLettersSizeDesktop),
+                                    fontSize:
+                                        ResponsiveLayout.getResponsiveSize(
+                                            context,
+                                            ResponsiveLayout
+                                                .normalLettersSizeDesktop)),
                                 textAlign: TextAlign.justify,
                               ),
                             ),
@@ -182,7 +203,10 @@ class FirstSectionWeb extends StatelessWidget {
                             // Add your action here
                           },
                           style: ElevatedButton.styleFrom(
-                            fixedSize: const Size(200.0, 60.0),
+                            fixedSize: Size(
+                                ResponsiveLayout.getResponsiveSize(
+                                    context, 200.0),
+                                60.0),
                             backgroundColor: AppStyles.reachButtonColor,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10.0),
@@ -195,9 +219,11 @@ class FirstSectionWeb extends StatelessWidget {
                                 'Reach Me',
                                 style: AppStyles.fontStyle(
                                   color: AppStyles.reachButtonLettersColor,
-                                  fontSize: ResponsiveLayout
-                                          .cardTitleLettersSizeDesktop -
-                                      5,
+                                  fontSize: ResponsiveLayout.getResponsiveSize(
+                                      context,
+                                      ResponsiveLayout
+                                              .cardTitleLettersSizeDesktop -
+                                          5),
                                 ),
                               ),
                               const SizedBox(
@@ -216,7 +242,8 @@ class FirstSectionWeb extends StatelessWidget {
                 ),
               ),
               Expanded(
-                child: Container(),
+                flex: 2,
+                child: SizedBox(),
               ),
             ],
           ),

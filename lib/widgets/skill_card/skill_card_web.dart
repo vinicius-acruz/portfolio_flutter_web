@@ -32,7 +32,7 @@ class _SkillCardWebState extends State<SkillCardWeb> {
   @override
   Widget build(BuildContext context) {
     final startRange = MediaQuery.of(context).size.height + widget.index * 50;
-    final endRange = widget.sectionHeight * 1.2 +
+    final endRange = widget.sectionHeight * 1.4 +
         widget.index * 50; //  constants to adjust the range as needed
 
     return BlocBuilder<DisplayOffset, ScrollOffset>(
@@ -53,13 +53,17 @@ class _SkillCardWebState extends State<SkillCardWeb> {
         firstCurve: Curves.easeOut,
         secondCurve: Curves.easeOut,
         firstChild: Container(
-          height: ResponsiveLayout.childHeightDesktop,
-          width: ResponsiveLayout.childWidthDesktop,
+          height: ResponsiveLayout.getResponsiveCard(
+              context, ResponsiveLayout.childHeightDesktop),
+          width: ResponsiveLayout.getResponsiveCard(
+              context, ResponsiveLayout.childWidthDesktop),
           margin: const EdgeInsets.symmetric(vertical: 25.0, horizontal: 5.0),
         ),
         secondChild: Container(
-          height: ResponsiveLayout.childHeightDesktop,
-          width: ResponsiveLayout.childWidthDesktop,
+          height: ResponsiveLayout.getResponsiveCard(
+              context, ResponsiveLayout.childHeightDesktop),
+          width: ResponsiveLayout.getResponsiveCard(
+              context, ResponsiveLayout.childWidthDesktop),
           margin: const EdgeInsets.symmetric(vertical: 25.0, horizontal: 15.0),
           padding: const EdgeInsets.all(20.0),
           decoration: BoxDecoration(
@@ -75,36 +79,40 @@ class _SkillCardWebState extends State<SkillCardWeb> {
               ),
             ],
           ),
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Icon(
-                  widget.skill.iconData,
-                  size: 40.0,
-                  color: AppStyles.skillCardsIconsColor,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Icon(
+                widget.skill.iconData,
+                size: ResponsiveLayout.getResponsiveSize(context, 40),
+                color: AppStyles.skillCardsIconsColor,
+              ),
+              const SizedBox(height: 10.0),
+              Text(
+                widget.skill.title,
+                style: AppStyles.fontStyle(
+                  fontSize: ResponsiveLayout.getResponsiveSize(
+                      context, ResponsiveLayout.cardTitleLettersSizeTablet),
+                  fontWeight: FontWeight.bold,
+                  color: AppStyles.skillLettersColor,
                 ),
-                const SizedBox(height: 15.0),
-                Text(
-                  widget.skill.title,
-                  style: GoogleFonts.quicksand(
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.bold,
-                    color: AppStyles.skillLettersColor,
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 10.0),
+              Flexible(
+                child: SingleChildScrollView(
+                  child: Text(
+                    widget.skill.description,
+                    style: AppStyles.fontStyle(
+                        fontSize: ResponsiveLayout.getResponsiveSize(
+                            context, ResponsiveLayout.normalLettersSizeDesktop),
+                        color: AppStyles.skillLettersColor),
+                    textAlign: TextAlign.center,
                   ),
                 ),
-                const SizedBox(height: 10.0),
-                Text(
-                  widget.skill.description,
-                  style: GoogleFonts.quicksand(
-                    fontSize: 14.0,
-                    color: AppStyles.skillLettersColor,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       );

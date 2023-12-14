@@ -45,7 +45,7 @@ class _ProjectCardMobileState extends State<ProjectCardMobile>
 
   @override
   Widget build(BuildContext context) {
-    final startRange = widget.secondSectionHeight + 100 + widget.index * 600;
+    final startRange = widget.secondSectionHeight + 200 + widget.index * 600;
 
     return BlocBuilder<DisplayOffset, ScrollOffset>(
         buildWhen: (previous, current) {

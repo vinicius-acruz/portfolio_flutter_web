@@ -45,7 +45,8 @@ class _WholePageState extends State<WholePage> {
                 context, ResponsiveLayout.secondChildWidthMobile),
             tabletValue: ResponsiveLayout.getResponsiveCard(
                 context, ResponsiveLayout.secondChildWidthTablet),
-            desktopValue: ResponsiveLayout.childWidthDesktop));
+            desktopValue: ResponsiveLayout.getResponsiveCard(
+                context, ResponsiveLayout.childWidthDesktop)));
     print(
         ' Whole page: second section height: $secondSectionHeight + ${MediaQuery.of(context).size.height}');
 
