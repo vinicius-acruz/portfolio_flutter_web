@@ -8,8 +8,13 @@ import '../../modals/scroll_offset.dart';
 class ProjectCardWeb extends StatefulWidget {
   final Project project;
   final int index;
+  final double secondSectionHeight;
 
-  const ProjectCardWeb({super.key, required this.project, required this.index});
+  const ProjectCardWeb(
+      {super.key,
+      required this.project,
+      required this.index,
+      required this.secondSectionHeight});
 
   @override
   State<ProjectCardWeb> createState() => _ProjectCardWebState();

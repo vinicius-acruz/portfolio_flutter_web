@@ -30,13 +30,14 @@ class FirstSectionTablet extends StatelessWidget {
           child: const SecondPageImage(),
         ),
         Positioned(
-          top: -ResponsiveLayout.screenWidthSize(context) * 0.15,
-          left: ResponsiveLayout.screenWidthSize(context) * 0.1,
+          top: -ResponsiveLayout.screenWidthSize(context) * 0.05,
+          left: ResponsiveLayout.screenWidthSize(context) * 0.25,
           child: SizeTransition(
             sizeFactor: patternAnimation,
             axis: Axis.horizontal,
             child: SizedBox(
-              height: ResponsiveLayout.getResponsiveSize(context, 550),
+              height: ResponsiveLayout.getResponsiveSize(
+                  context, ResponsiveLayout.tableStripesSize),
               child: Image.asset(
                 'assets/images/listras_mobile.png',
                 fit: BoxFit.cover,

@@ -2,14 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_flutter_web/modals/scroll_offset.dart';
+import 'package:portfolio_flutter_web/responsive/responsive_layout.dart';
 import '../../constants/style.dart';
 import '../../modals/skills.dart';
 
 class SkillCardWeb extends StatefulWidget {
   final Skill skill;
   final int index;
+  final double sectionHeight;
 
-  const SkillCardWeb({super.key, required this.skill, required this.index});
+  const SkillCardWeb(
+      {super.key,
+      required this.skill,
+      required this.index,
+      required this.sectionHeight});
 
   @override
   State<SkillCardWeb> createState() => _SkillCardWebState();
@@ -25,8 +31,9 @@ class _SkillCardWebState extends State<SkillCardWeb> {
 
   @override
   Widget build(BuildContext context) {
-    final startRange = 1100 + widget.index * 50;
-    final endRange = 2200 + widget.index * 50; // Adjust the range as needed
+    final startRange = MediaQuery.of(context).size.height + widget.index * 50;
+    final endRange = widget.sectionHeight * 1.2 +
+        widget.index * 50; //  constants to adjust the range as needed
 
     return BlocBuilder<DisplayOffset, ScrollOffset>(
         buildWhen: (previous, current) {
@@ -46,13 +53,13 @@ class _SkillCardWebState extends State<SkillCardWeb> {
         firstCurve: Curves.easeOut,
         secondCurve: Curves.easeOut,
         firstChild: Container(
-          height: 260.0,
-          width: 400.0,
+          height: ResponsiveLayout.childHeightDesktop,
+          width: ResponsiveLayout.childWidthDesktop,
           margin: const EdgeInsets.symmetric(vertical: 25.0, horizontal: 5.0),
         ),
         secondChild: Container(
-          height: 260.0,
-          width: 400.0,
+          height: ResponsiveLayout.childHeightDesktop,
+          width: ResponsiveLayout.childWidthDesktop,
           margin: const EdgeInsets.symmetric(vertical: 25.0, horizontal: 15.0),
           padding: const EdgeInsets.all(20.0),
           decoration: BoxDecoration(

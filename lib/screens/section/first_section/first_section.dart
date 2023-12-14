@@ -25,7 +25,7 @@ class _FirstSectionState extends State<FirstSection>
   void initState() {
     controller = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 1000),
+      duration: const Duration(milliseconds: 2000),
       reverseDuration: const Duration(milliseconds: 375),
     );
 
@@ -96,7 +96,7 @@ class _FirstPageImageState extends State<FirstPageImage>
   void initState() {
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 1000),
+      duration: const Duration(milliseconds: 2000),
     );
     _animation = Tween<double>(begin: 1500, end: 0.0)
         .animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
@@ -106,45 +106,48 @@ class _FirstPageImageState extends State<FirstPageImage>
 
   @override
   Widget build(BuildContext context) {
-    return Image(
-      image: const AssetImage('assets/images/vini.png'),
-      fit: BoxFit.cover,
-      loadingBuilder: (context, child, loadingProgress) {
-        if (loadingProgress == null) {
-          Future.delayed(const Duration(milliseconds: 500), () {
-            if (_controller.isDismissed) {
-              _controller.forward();
-            }
-          });
-          return AnimatedBuilder(
-            animation: _animation,
-            builder: (context, child) {
-              return Stack(
-                children: [
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 1.0),
-                    height: ResponsiveLayout.imageSize(context),
-                    width: double.infinity,
-                    child: child,
-                  ),
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Container(
-                      height: _animation.value,
+    return Container(
+      color: Colors.transparent,
+      child: Image(
+        image: const AssetImage('assets/images/vini.png'),
+        fit: BoxFit.contain,
+        alignment: Alignment.topRight,
+        loadingBuilder: (context, child, loadingProgress) {
+          if (loadingProgress == null) {
+            Future.delayed(const Duration(milliseconds: 1000), () {
+              if (_controller.isDismissed) {
+                _controller.forward();
+              }
+            });
+            return AnimatedBuilder(
+              animation: _animation,
+              builder: (context, child) {
+                return Stack(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 1.0),
                       width: double.infinity,
-                      color: AppStyles.backgroundColor,
+                      child: child,
                     ),
-                  )
-                ],
-              );
-            },
-            child: child,
-          );
-        } else {
-          // Display a loading indicator or placeholder while the image is loading.
-          return Center(child: Container());
-        }
-      },
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Container(
+                        height: _animation.value,
+                        width: double.infinity,
+                        color: AppStyles.backgroundColor,
+                      ),
+                    )
+                  ],
+                );
+              },
+              child: child,
+            );
+          } else {
+            // Display a loading indicator or placeholder while the image is loading.
+            return Center(child: Container());
+          }
+        },
+      ),
     );
   }
 }
@@ -165,7 +168,7 @@ class _SecondPageImageState extends State<SecondPageImage>
   void initState() {
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 500),
+      duration: const Duration(milliseconds: 2000),
     );
     _animation = Tween<double>(begin: 1500, end: 0.0)
         .animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
@@ -177,7 +180,8 @@ class _SecondPageImageState extends State<SecondPageImage>
   Widget build(BuildContext context) {
     return Image(
       image: const AssetImage('assets/images/fundo1.png'),
-      fit: BoxFit.cover,
+      fit: BoxFit.contain,
+      alignment: Alignment.topRight,
       loadingBuilder: (context, child, loadingProgress) {
         if (loadingProgress == null) {
           Future.delayed(const Duration(milliseconds: 1000), () {
@@ -192,7 +196,6 @@ class _SecondPageImageState extends State<SecondPageImage>
                 children: [
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 1.0),
-                    height: ResponsiveLayout.imageSize(context),
                     width: double.infinity,
                     child: child,
                   ),

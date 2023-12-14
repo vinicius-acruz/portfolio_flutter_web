@@ -9,9 +9,13 @@ import 'package:lottie/lottie.dart';
 class ProjectCardMobile extends StatefulWidget {
   final Project project;
   final int index;
+  final double secondSectionHeight;
 
   const ProjectCardMobile(
-      {super.key, required this.project, required this.index});
+      {super.key,
+      required this.project,
+      required this.index,
+      required this.secondSectionHeight});
 
   @override
   State<ProjectCardMobile> createState() => _ProjectCardMobileState();
@@ -21,6 +25,9 @@ class _ProjectCardMobileState extends State<ProjectCardMobile>
     with TickerProviderStateMixin {
   late AnimationController controller;
   late Animation<double> animation;
+
+  late double startRange;
+
   double projectCardHeight = 650.0;
   double projectCardWidth = 500.0;
 
@@ -34,14 +41,11 @@ class _ProjectCardMobileState extends State<ProjectCardMobile>
         .animate(CurvedAnimation(parent: controller, curve: Curves.easeOut));
 
     super.initState();
-    // Future.delayed(const Duration(milliseconds: 1000), () {
-    //   controller.forward();
-    // });
   }
 
   @override
   Widget build(BuildContext context) {
-    final startRange = 1900 + widget.index * 600;
+    final startRange = widget.secondSectionHeight + 100 + widget.index * 600;
 
     return BlocBuilder<DisplayOffset, ScrollOffset>(
         buildWhen: (previous, current) {

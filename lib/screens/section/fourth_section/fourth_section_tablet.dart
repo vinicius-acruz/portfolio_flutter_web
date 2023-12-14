@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio_flutter_web/responsive/responsive_layout.dart';
@@ -73,15 +74,19 @@ class FourthSectionTablet extends StatelessWidget {
                         FaIcon(FontAwesomeIcons.envelopeCircleCheck,
                             size: 30.0, color: Colors.red),
                         SizedBox(width: 20.0),
-                        Text(
-                          "vinicius.a.cruz1@gmail.com",
-                          style: TextStyle(
-                            fontSize: ResponsiveLayout.getResponsiveSize(
-                                context,
-                                ResponsiveLayout.bottomSheetLetterSizeTablet -
-                                    10),
-                            fontWeight: FontWeight.bold,
-                            color: AppStyles.bottomLettersColor,
+                        Expanded(
+                          child: Text(
+                            "vinicius.a.cruz1@gmail.com",
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                              fontSize: ResponsiveLayout.getResponsiveSize(
+                                  context,
+                                  ResponsiveLayout.bottomSheetLetterSizeTablet -
+                                      11),
+                              fontWeight: FontWeight.bold,
+                              color: AppStyles.bottomLettersColor,
+                            ),
                           ),
                         ),
                       ],

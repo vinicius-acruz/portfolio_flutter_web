@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio_flutter_web/responsive/responsive_layout.dart';
 import '../../../constants/style.dart';
 import '../../../widgets/text_reveal.dart';
 import 'first_section.dart';
@@ -21,27 +22,35 @@ class FirstSectionWeb extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        const Positioned.fill(
-          child: SecondPageImage(),
-        ),
-        SizeTransition(
-          sizeFactor: patternAnimation,
-          axis: Axis.horizontal,
-          child: SizedBox(
-            height: 920,
-            child: Image.asset('assets/images/listraswide.png'),
+    return Container(
+      height: MediaQuery.of(context).size.height,
+      width: MediaQuery.of(context).size.width,
+      child: Stack(
+        children: [
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.9,
+            child: const SecondPageImage(),
           ),
-        ),
-        const Positioned.fill(
-          child: FirstPageImage(),
-        ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.9,
+            width: double.infinity,
+            child: SizeTransition(
+              sizeFactor: patternAnimation,
+              axis: Axis.horizontal,
+              axisAlignment: 1,
+              child: Image.asset(
+                'assets/images/listraswide.png',
+                fit: BoxFit.contain,
+                alignment: Alignment.topRight,
+              ),
+            ),
+          ),
+          SizedBox(
+              height: MediaQuery.of(context).size.height * 0.9,
+              child: const FirstPageImage()),
 
-        // Page Content
-        SizedBox(
-          height: 920,
-          child: Row(
+          //Page Content
+          Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -55,13 +64,13 @@ class FirstSectionWeb extends StatelessWidget {
                       TextReveal(
                         textOpacityAnimation: textOpacityAnimation,
                         textRevealAnimation: textRevealAnimation,
-                        maxHeight: 80.0,
+                        maxHeight: ResponsiveLayout.mainLettersSizeDesktop + 10,
                         controller: controller,
                         child: Text(
                           'Hello,',
                           style: AppStyles.fontStyle(
                             fontWeight: FontWeight.w900,
-                            fontSize: 70.0,
+                            fontSize: ResponsiveLayout.mainLettersSizeDesktop,
                             color: AppStyles.bigLettersColor,
                           ),
                         ),
@@ -71,13 +80,15 @@ class FirstSectionWeb extends StatelessWidget {
                           TextReveal(
                             textOpacityAnimation: textOpacityAnimation,
                             textRevealAnimation: textRevealAnimation,
-                            maxHeight: 80.0,
+                            maxHeight:
+                                ResponsiveLayout.mainLettersSizeDesktop + 10,
                             controller: controller,
                             child: Text(
                               "I'm ",
                               style: AppStyles.fontStyle(
                                 fontWeight: FontWeight.w900,
-                                fontSize: 70.0,
+                                fontSize:
+                                    ResponsiveLayout.mainLettersSizeDesktop,
                                 color: AppStyles.bigLettersColor,
                               ).copyWith(
                                   shadows: [
@@ -93,13 +104,15 @@ class FirstSectionWeb extends StatelessWidget {
                           TextReveal(
                             textOpacityAnimation: textOpacityAnimation,
                             textRevealAnimation: textRevealAnimation,
-                            maxHeight: 80.0,
+                            maxHeight:
+                                ResponsiveLayout.mainLettersSizeDesktop + 10,
                             controller: controller,
                             child: Text(
                               'Vinicius',
                               style: AppStyles.fontStyle(
                                       fontWeight: FontWeight.w900,
-                                      fontSize: 70.0,
+                                      fontSize: ResponsiveLayout
+                                          .mainLettersSizeDesktop,
                                       color: AppStyles.bigLettersColor)
                                   .copyWith(
                                       shadows: [
@@ -122,12 +135,14 @@ class FirstSectionWeb extends StatelessWidget {
                       TextReveal(
                         textOpacityAnimation: textOpacityAnimation,
                         textRevealAnimation: textRevealAnimation,
-                        maxHeight: 35.0,
+                        maxHeight:
+                            ResponsiveLayout.occupationLettersSizeDesktop + 10,
                         controller: controller,
                         child: Text(
                           'Flutter Developer',
                           style: AppStyles.fontStyle(
-                              fontSize: 25.0,
+                              fontSize:
+                                  ResponsiveLayout.occupationLettersSizeDesktop,
                               color: AppStyles.occupationLetterColor),
                         ),
                       ),
@@ -144,7 +159,9 @@ class FirstSectionWeb extends StatelessWidget {
                               controller: controller,
                               child: Text(
                                 'Hi, I\'m Vinicius, an aspiring Flutter developer passionate about crafting seamless and engaging cross-platform applications. Eager to merge creativity with code, I strive to bring innovative solutions to life in the ever-evolving world of mobile development.',
-                                style: AppStyles.fontStyle(fontSize: 16.0),
+                                style: AppStyles.fontStyle(
+                                    fontSize: ResponsiveLayout
+                                        .normalLettersSizeDesktop),
                                 textAlign: TextAlign.justify,
                               ),
                             ),
@@ -177,7 +194,11 @@ class FirstSectionWeb extends StatelessWidget {
                               Text(
                                 'Reach Me',
                                 style: AppStyles.fontStyle(
-                                    color: AppStyles.reachButtonLettersColor),
+                                  color: AppStyles.reachButtonLettersColor,
+                                  fontSize: ResponsiveLayout
+                                          .cardTitleLettersSizeDesktop -
+                                      5,
+                                ),
                               ),
                               const SizedBox(
                                 width: 20.0,
@@ -199,8 +220,8 @@ class FirstSectionWeb extends StatelessWidget {
               ),
             ],
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

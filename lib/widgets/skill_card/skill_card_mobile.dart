@@ -9,8 +9,13 @@ import '../../modals/skills.dart';
 class SkillCardMobile extends StatefulWidget {
   final Skill skill;
   final int index;
+  final double sectionHeight;
 
-  const SkillCardMobile({super.key, required this.skill, required this.index});
+  const SkillCardMobile(
+      {super.key,
+      required this.skill,
+      required this.index,
+      required this.sectionHeight});
 
   @override
   State<SkillCardMobile> createState() => _SkillCardMobileState();
@@ -29,17 +34,13 @@ class _SkillCardMobileState extends State<SkillCardMobile>
     super.initState();
   }
 
-  double getResponsiveCard(BuildContext context, double cardSize) {
-    double screenHeight = MediaQuery.of(context).size.height;
-    // Adjust this factor based on preference
-    const double scaleFactor = 0.0006;
-    return screenHeight * scaleFactor * cardSize;
-  }
-
   @override
   Widget build(BuildContext context) {
-    final startRange = 950 + widget.index * 100;
-    final endRange = 2000 + widget.index * 100; // Adjust the range as needed
+    final startRange = MediaQuery.of(context).size.height + widget.index * 100;
+    final endRange = widget.sectionHeight +
+        200 +
+        widget.index *
+            100; // 200 and 100 are just constants to adjust the range as needed
 
     return BlocBuilder<DisplayOffset, ScrollOffset>(
         buildWhen: (previous, current) {
@@ -48,9 +49,7 @@ class _SkillCardMobileState extends State<SkillCardMobile>
           current.scrollOffsetValue <= endRange);
     }, builder: (context, state) {
       print("skillcard: ${state.scrollOffsetValue}");
-      setState(() {
-        _isExpanded = false;
-      });
+
       return AnimatedCrossFade(
         crossFadeState: (state.scrollOffsetValue >= (startRange + 100) &&
                 state.scrollOffsetValue <= (endRange - 100))
@@ -63,18 +62,24 @@ class _SkillCardMobileState extends State<SkillCardMobile>
         secondCurve: Curves.easeOut,
         firstChild: Container(
           color: AppStyles.backgroundColor,
-          height: getResponsiveCard(context, 400),
-          width: getResponsiveCard(context, 280),
+          height: ResponsiveLayout.getResponsiveCard(
+              context, ResponsiveLayout.firstChildHeightMobile),
+          width: ResponsiveLayout.getResponsiveCard(
+              context, ResponsiveLayout.firstChildWidthMobile),
           margin: const EdgeInsets.symmetric(vertical: 25.0, horizontal: 5.0),
         ),
         secondChild: AnimatedContainer(
           duration: const Duration(milliseconds: 300),
           height: _isExpanded
-              ? getResponsiveCard(context, 800)
-              : getResponsiveCard(context, 500),
+              ? ResponsiveLayout.getResponsiveCard(
+                  context, ResponsiveLayout.expandedContainerHeightMobile)
+              : ResponsiveLayout.getResponsiveCard(
+                  context, ResponsiveLayout.secondChildHeightMobile),
           width: _isExpanded
-              ? getResponsiveCard(context, 420)
-              : getResponsiveCard(context, 300),
+              ? ResponsiveLayout.getResponsiveCard(
+                  context, ResponsiveLayout.expandedContainerWidthMobile)
+              : ResponsiveLayout.getResponsiveCard(
+                  context, ResponsiveLayout.secondChildWidthMobile),
           margin: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 5.0),
           padding: const EdgeInsets.all(10.0),
           decoration: BoxDecoration(
@@ -91,8 +96,10 @@ class _SkillCardMobileState extends State<SkillCardMobile>
           ),
           child: SizedBox(
             height: _isExpanded
-                ? getResponsiveCard(context, 800)
-                : getResponsiveCard(context, 400),
+                ? ResponsiveLayout.getResponsiveCard(
+                    context, ResponsiveLayout.expandedContainerHeightMobile)
+                : ResponsiveLayout.getResponsiveCard(
+                    context, ResponsiveLayout.secondChildHeightMobile),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,

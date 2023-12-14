@@ -33,12 +33,13 @@ class FirstSectionMobile extends StatelessWidget {
           child: SecondPageImage(),
         ),
         Positioned(
-          left: 30,
+          left: 50.0,
           child: SizeTransition(
             sizeFactor: patternAnimation,
             axis: Axis.horizontal,
             child: SizedBox(
-              height: ResponsiveLayout.getResponsiveSize(context, 470),
+              height: ResponsiveLayout.getResponsiveSize(
+                  context, ResponsiveLayout.mobileStripesSize),
               child: Image.asset(
                 'assets/images/listras_mobile.png',
                 fit: BoxFit.cover,

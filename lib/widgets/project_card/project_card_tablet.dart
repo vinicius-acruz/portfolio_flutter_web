@@ -9,9 +9,13 @@ import '../../modals/scroll_offset.dart';
 class ProjectCardTablet extends StatefulWidget {
   final Project project;
   final int index;
+  final double secondSectionHeight;
 
   const ProjectCardTablet(
-      {super.key, required this.project, required this.index});
+      {super.key,
+      required this.project,
+      required this.index,
+      required this.secondSectionHeight});
 
   @override
   State<ProjectCardTablet> createState() => _ProjectCardTabletState();
@@ -21,6 +25,9 @@ class _ProjectCardTabletState extends State<ProjectCardTablet>
     with TickerProviderStateMixin {
   late AnimationController controller;
   late Animation<double> animation;
+
+  late double startRange;
+
   double projectCardHeight = 850.0;
   double projectCardWidth = 400.0;
 
@@ -41,7 +48,8 @@ class _ProjectCardTabletState extends State<ProjectCardTablet>
     final lineIndex = ResponsiveLayout.getWidgetIndex(context,
         index: widget.index, projectWidth: projectCardWidth);
 
-    final startRange = 2300 + lineIndex * 600;
+    startRange =
+        widget.secondSectionHeight + 100 + lineIndex * projectCardHeight;
 
     return BlocBuilder<DisplayOffset, ScrollOffset>(
         buildWhen: (previous, current) {
