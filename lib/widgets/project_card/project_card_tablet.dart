@@ -1,38 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lottie/lottie.dart';
 import 'package:portfolio_flutter_web/responsive/responsive_layout.dart';
 import '../../constants/style.dart';
 import '../../modals/projects.dart';
 import '../../modals/scroll_offset.dart';
 
-class ProjectCardWeb extends StatefulWidget {
+class ProjectCardTablet extends StatefulWidget {
   final Project project;
   final int index;
   final double secondSectionHeight;
 
-  const ProjectCardWeb(
+  const ProjectCardTablet(
       {super.key,
       required this.project,
       required this.index,
       required this.secondSectionHeight});
 
   @override
-  State<ProjectCardWeb> createState() => _ProjectCardWebState();
+  State<ProjectCardTablet> createState() => _ProjectCardTabletState();
 }
 
-class _ProjectCardWebState extends State<ProjectCardWeb>
+class _ProjectCardTabletState extends State<ProjectCardTablet>
     with TickerProviderStateMixin {
   late AnimationController controller;
   late Animation<double> animation;
-  double projectCardHeight = 680.0;
-  double projectCardWidth = 500.0;
+
+  late double startRange;
+
   @override
   void initState() {
     controller = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 1000),
     );
-    animation = Tween(begin: ResponsiveLayout.projectCardWidthDesktop, end: 0.0)
+    animation = Tween(begin: ResponsiveLayout.projectCardWidthTablet, end: 0.0)
         .animate(CurvedAnimation(parent: controller, curve: Curves.easeOut));
 
     super.initState();
@@ -40,14 +42,16 @@ class _ProjectCardWebState extends State<ProjectCardWeb>
 
   @override
   Widget build(BuildContext context) {
-//call the responsive layout method to get the index of projects in same line
     final lineIndex = ResponsiveLayout.getWidgetIndex(context,
         index: widget.index,
-        projectWidth: ResponsiveLayout.getResponsiveCard(
-            context, ResponsiveLayout.projectCardWidthDesktop));
+        projectWidth: ((ResponsiveLayout.getResponsiveCard(
+            context, ResponsiveLayout.projectCardWidthTablet))));
 
-    final startRange =
-        widget.secondSectionHeight + 150 + lineIndex * projectCardHeight;
+    startRange = widget.secondSectionHeight +
+        100 +
+        lineIndex *
+            ((ResponsiveLayout.getResponsiveCard(
+                context, ResponsiveLayout.projectCardHeightTablet)));
 
     return BlocBuilder<DisplayOffset, ScrollOffset>(
         buildWhen: (previous, current) {
@@ -57,7 +61,8 @@ class _ProjectCardWebState extends State<ProjectCardWeb>
         return false;
       }
     }, builder: (context, state) {
-      print('Card ${widget.index}: project line $lineIndex ');
+      print(
+          'Card ${widget.index}: project line $lineIndex, scrolloffset: ${state.scrollOffsetValue}, ');
       state.scrollOffsetValue > (startRange + 100)
           ? controller.forward()
           : controller.reverse();
@@ -66,9 +71,9 @@ class _ProjectCardWebState extends State<ProjectCardWeb>
           builder: (context, child) {
             return Container(
               height: ResponsiveLayout.getResponsiveCard(
-                  context, ResponsiveLayout.projectCardHeightDesktop),
+                  context, ResponsiveLayout.projectCardHeightTablet),
               width: ResponsiveLayout.getResponsiveCard(
-                  context, ResponsiveLayout.projectCardWidthDesktop),
+                  context, ResponsiveLayout.projectCardWidthTablet),
               margin:
                   const EdgeInsets.symmetric(vertical: 15.0, horizontal: 5.0),
               decoration: BoxDecoration(
@@ -82,62 +87,42 @@ class _ProjectCardWebState extends State<ProjectCardWeb>
                 children: [
                   Expanded(
                     flex: 2,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
+                    child: Stack(
+                      alignment: AlignmentDirectional.center,
                       children: [
-                        Expanded(
-                          child: Stack(
-                            alignment: Alignment.center,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(1.0),
-                                child: Image.asset(
-                                  widget.project.imageUrl1,
-                                ),
-                              ),
-                              Align(
-                                alignment: Alignment(
-                                    widget.project.index % 2 == 1
-                                        ? 1.0
-                                        : -1.0, //Animation alignment
-                                    1.0),
-                                child: Container(
-                                  width: animation.value,
-                                  color: AppStyles.backgroundColor,
-                                ),
-                              ),
-                            ],
+                        Padding(
+                          padding: const EdgeInsets.all(1.0),
+                          child: Image.network(
+                            widget.project.imageUrl1,
+                            fit: BoxFit.cover,
                           ),
                         ),
-                        const SizedBox(
-                          width: 20.0,
+                        Container(
+                          child: Lottie.asset(
+                            'assets/images/projects/project1/project1_animation.json',
+                            fit: BoxFit.cover,
+                            width: (ResponsiveLayout.getResponsiveCard(context,
+                                    ResponsiveLayout.projectCardWidthTablet)) /
+                                2,
+                          ),
                         ),
-                        Expanded(
-                          child: Stack(
-                            alignment: Alignment.center,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(1.0),
-                                child: Image.asset(
-                                  widget.project.imageUrl2,
-                                ),
-                              ),
-                              Align(
-                                alignment: Alignment(
-                                    widget.project.index % 2 == 1
-                                        ? -1.0
-                                        : 1.0, //Animation alignment
-                                    1.0),
-                                child: Container(
-                                  width: animation.value,
-                                  color: AppStyles.backgroundColor,
-                                ),
-                              ),
-                            ],
+                        Align(
+                          alignment: Alignment(
+                            widget.project.index % 2 == 1
+                                ? 1.0
+                                : -1.0, //Animation alignment
+                            1.0,
+                          ),
+                          child: Container(
+                            width: animation.value,
+                            color: AppStyles.backgroundColor,
                           ),
                         ),
                       ],
                     ),
+                  ),
+                  const SizedBox(
+                    height: 8.0,
                   ),
                   Expanded(
                     flex: 1,
@@ -151,7 +136,7 @@ class _ProjectCardWebState extends State<ProjectCardWeb>
                             style: AppStyles.fontStyle(
                               fontSize: ResponsiveLayout.getResponsiveSize(
                                   context,
-                                  ResponsiveLayout.cardTitleLettersSizeDesktop),
+                                  ResponsiveLayout.cardTitleLettersSizeTablet),
                               fontWeight: FontWeight.w600,
                             ),
                           ),
@@ -167,7 +152,7 @@ class _ProjectCardWebState extends State<ProjectCardWeb>
                             style: AppStyles.fontStyle(
                               fontSize: ResponsiveLayout.getResponsiveSize(
                                   context,
-                                  ResponsiveLayout.normalLettersSizeDesktop),
+                                  ResponsiveLayout.normalLettersSizeTablet),
                               color: AppStyles.lettersColor,
                             ),
                             textAlign: TextAlign.justify,
