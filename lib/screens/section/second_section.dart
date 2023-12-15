@@ -39,7 +39,7 @@ class _SecondSectionState extends State<SecondSection>
   @override
   Widget build(BuildContext context) {
     startRange = MediaQuery.of(context).size.height;
-    endRange = startRange + 300;
+    endRange = 1.8 * startRange;
 
     return Column(
       children: [

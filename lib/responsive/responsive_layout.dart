@@ -32,24 +32,46 @@ class ResponsiveLayout extends StatelessWidget {
 
   static double getResponsiveSize(BuildContext context, double baseSize) {
     double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
+    if (screenHeight > screenWidth) {
+      const double scaleFactor = 0.0015;
+      return screenHeight * scaleFactor * baseSize;
+    } else {
+      const double scaleFactor = 0.0013;
+      return screenWidth * scaleFactor * baseSize;
+    }
     // Adjust this factor based on preference
-    const double scaleFactor = 0.0015;
-    return screenHeight * scaleFactor * baseSize;
   }
 
   static double getResponsiveCard(BuildContext context, double cardSize) {
     double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
     // Adjust this factor based on preference
-    const double scaleFactor = 0.0006;
-    return screenHeight * scaleFactor * cardSize;
+    if (screenHeight > screenWidth) {
+      const double scaleFactor = 0.0006;
+      return screenHeight * scaleFactor * cardSize;
+    } else {
+      const double scaleFactor = 0.0005;
+      return screenWidth * scaleFactor * cardSize;
+    }
+  }
+
+  static double getResponsiveImage(BuildContext context, double scaleFactor) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
+    if (screenHeight > screenWidth) {
+      return screenHeight * scaleFactor;
+    } else {
+      return screenWidth * scaleFactor;
+    }
   }
 
 //Desktop
-  static const double mainLettersSizeDesktop = 70.0;
-  static const double occupationLettersSizeDesktop = 26.0;
-  static const double normalLettersSizeDesktop = 16.0;
-  static const double cardTitleLettersSizeDesktop = 24.0;
-  static const double bottomSheetLetterSizeDesktop = 12.0;
+  static const double mainLettersSizeDesktop = 45.0;
+  static const double occupationLettersSizeDesktop = 20.0;
+  static const double normalLettersSizeDesktop = 12.0;
+  static const double cardTitleLettersSizeDesktop = 18.0;
+  static const double bottomSheetLetterSizeDesktop = 10.0;
 
 //Tablet
   static const double mainLettersSizeTablet = 35.0;
@@ -84,7 +106,7 @@ class ResponsiveLayout extends StatelessWidget {
   static const double expandedContainerWidthTablet = 500.0;
 
 //Desktop
-  static const double childHeightDesktop = 850.0;
+  static const double childHeightDesktop = 750.0;
   static const double childWidthDesktop = 650.0;
 
   // Wrap widget spacing:
@@ -100,7 +122,7 @@ class ResponsiveLayout extends StatelessWidget {
 
   //Desktop
 
-  static const double projectCardHeightDesktop = 1300.0;
+  static const double projectCardHeightDesktop = 1000.0;
   static const double projectCardWidthDesktop = 900.0;
 
 // Create method to calculate second section height

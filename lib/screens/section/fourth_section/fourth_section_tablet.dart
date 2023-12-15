@@ -11,7 +11,7 @@ class FourthSectionTablet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: ResponsiveLayout.getResponsiveSize(context, 250),
+      height: ResponsiveLayout.getResponsiveSize(context, 200),
       margin: const EdgeInsets.all(10.0),
       decoration: const BoxDecoration(
         color: AppStyles.bottomSheetColor,
@@ -20,7 +20,7 @@ class FourthSectionTablet extends StatelessWidget {
           topRight: Radius.circular(20),
         ), // Rounded edges
       ),
-      padding: const EdgeInsets.symmetric(vertical: 40.0, horizontal: 20.0),
+      padding: const EdgeInsets.symmetric(vertical: 30.0, horizontal: 20.0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -31,7 +31,7 @@ class FourthSectionTablet extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
+                    AutoSizeText(
                       "Contact me",
                       style: AppStyles.fontStyle(
                         fontSize: ResponsiveLayout.getResponsiveSize(context,
@@ -71,21 +71,23 @@ class FourthSectionTablet extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        FaIcon(FontAwesomeIcons.envelopeCircleCheck,
+                        const FaIcon(FontAwesomeIcons.envelopeCircleCheck,
                             size: 30.0, color: Colors.red),
-                        SizedBox(width: 20.0),
-                        Text(
-                          "vinicius.a.cruz1@gmail.com",
-                          textAlign: TextAlign.center,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: AppStyles.fontStyle(
-                            fontSize: ResponsiveLayout.getResponsiveSize(
-                                context,
-                                ResponsiveLayout.bottomSheetLetterSizeTablet -
-                                    7),
-                            fontWeight: FontWeight.bold,
-                            color: AppStyles.bottomLettersColor,
+                        const SizedBox(width: 20.0),
+                        Expanded(
+                          child: AutoSizeText(
+                            "vinicius.a.cruz1@gmail.com",
+                            textAlign: TextAlign.start,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: AppStyles.fontStyle(
+                              fontSize: ResponsiveLayout.getResponsiveSize(
+                                  context,
+                                  ResponsiveLayout.bottomSheetLetterSizeTablet -
+                                      5),
+                              fontWeight: FontWeight.bold,
+                              color: AppStyles.bottomLettersColor,
+                            ),
                           ),
                         ),
                       ],
@@ -95,17 +97,22 @@ class FourthSectionTablet extends StatelessWidget {
                       decoration: BoxDecoration(
                           color: Colors.grey.withOpacity(0.2),
                           borderRadius: BorderRadius.circular(10.0)),
-                      padding: const EdgeInsets.all(10.0),
-                      child: const Row(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           FaIcon(FontAwesomeIcons.linkedin,
-                              size: 30.0, color: Colors.blue),
+                              size: ResponsiveLayout.getResponsiveSize(
+                                  context, 30.0),
+                              color: Colors.blue),
                           SizedBox(
-                            width: 60.0,
+                            width: ResponsiveLayout.getResponsiveSize(
+                                context, 60.0),
                           ),
                           FaIcon(FontAwesomeIcons.github,
-                              size: 30.0, color: Colors.black),
+                              size: ResponsiveLayout.getResponsiveSize(
+                                  context, 30.0),
+                              color: Colors.black),
                         ],
                       ),
                     ),

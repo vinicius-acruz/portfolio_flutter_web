@@ -93,7 +93,7 @@ class _SkillCardWebState extends State<SkillCardWeb> {
                 widget.skill.title,
                 style: AppStyles.fontStyle(
                   fontSize: ResponsiveLayout.getResponsiveSize(
-                      context, ResponsiveLayout.cardTitleLettersSizeTablet),
+                      context, ResponsiveLayout.cardTitleLettersSizeDesktop),
                   fontWeight: FontWeight.bold,
                   color: AppStyles.skillLettersColor,
                 ),
