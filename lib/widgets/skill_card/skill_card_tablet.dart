@@ -8,8 +8,13 @@ import '../../responsive/responsive_layout.dart';
 class SkillCardTablet extends StatefulWidget {
   final Skill skill;
   final int index;
+  final double sectionHeight;
 
-  const SkillCardTablet({super.key, required this.skill, required this.index});
+  const SkillCardTablet(
+      {super.key,
+      required this.skill,
+      required this.index,
+      required this.sectionHeight});
 
   @override
   State<SkillCardTablet> createState() => _SkillCardTabletState();
@@ -28,17 +33,11 @@ class _SkillCardTabletState extends State<SkillCardTablet>
     super.initState();
   }
 
-  double getResponsiveCard(BuildContext context, double cardSize) {
-    double screenHeight = MediaQuery.of(context).size.height;
-    // Adjust this factor based on preference
-    const double scaleFactor = 0.0006;
-    return screenHeight * scaleFactor * cardSize;
-  }
-
   @override
   Widget build(BuildContext context) {
-    final startRange = 1400 + widget.index * 50;
-    final endRange = 3000 + widget.index * 50; // Adjust the range as needed
+    final startRange = MediaQuery.of(context).size.height + widget.index * 50;
+    final endRange = 1.4 * widget.sectionHeight +
+        widget.index * 100; //  constants to adjust the range as needed
 
     return BlocBuilder<DisplayOffset, ScrollOffset>(
         buildWhen: (previous, current) {
@@ -48,8 +47,8 @@ class _SkillCardTabletState extends State<SkillCardTablet>
     }, builder: (context, state) {
       print("skillcard: ${state.scrollOffsetValue}");
       return AnimatedCrossFade(
-        crossFadeState: (state.scrollOffsetValue >= (startRange + 100) &&
-                state.scrollOffsetValue <= (endRange - 100))
+        crossFadeState: (state.scrollOffsetValue >= (startRange + 50) &&
+                state.scrollOffsetValue <= (endRange - 200))
             ? CrossFadeState.showSecond
             : CrossFadeState.showFirst,
         duration: const Duration(milliseconds: 800),
@@ -59,18 +58,24 @@ class _SkillCardTabletState extends State<SkillCardTablet>
         secondCurve: Curves.easeOut,
         firstChild: Container(
           color: AppStyles.backgroundColor,
-          height: getResponsiveCard(context, 400),
-          width: getResponsiveCard(context, 280),
+          height: ResponsiveLayout.getResponsiveCard(
+              context, ResponsiveLayout.firstChildHeightTablet),
+          width: ResponsiveLayout.getResponsiveCard(
+              context, ResponsiveLayout.firstChildWidthTablet),
           margin: const EdgeInsets.symmetric(vertical: 25.0, horizontal: 5.0),
         ),
         secondChild: AnimatedContainer(
           duration: const Duration(milliseconds: 300),
           height: _isExpanded
-              ? getResponsiveCard(context, 950)
-              : getResponsiveCard(context, 450),
+              ? ResponsiveLayout.getResponsiveCard(
+                  context, ResponsiveLayout.expandedContainerHeightTablet)
+              : ResponsiveLayout.getResponsiveCard(
+                  context, ResponsiveLayout.secondChildHeightTablet),
           width: _isExpanded
-              ? getResponsiveCard(context, 500)
-              : getResponsiveCard(context, 300),
+              ? ResponsiveLayout.getResponsiveCard(
+                  context, ResponsiveLayout.expandedContainerWidthTablet)
+              : ResponsiveLayout.getResponsiveCard(
+                  context, ResponsiveLayout.secondChildWidthTablet),
           margin: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 5.0),
           padding: const EdgeInsets.all(10.0),
           decoration: BoxDecoration(
@@ -87,8 +92,10 @@ class _SkillCardTabletState extends State<SkillCardTablet>
           ),
           child: SizedBox(
             height: _isExpanded
-                ? getResponsiveCard(context, 940)
-                : getResponsiveCard(context, 490),
+                ? ResponsiveLayout.getResponsiveCard(
+                    context, ResponsiveLayout.expandedContainerHeightTablet)
+                : ResponsiveLayout.getResponsiveCard(
+                    context, ResponsiveLayout.secondChildHeightTablet),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -97,7 +104,7 @@ class _SkillCardTabletState extends State<SkillCardTablet>
                   widget.skill.iconData,
                   size: _isExpanded
                       ? ResponsiveLayout.getResponsiveSize(context, 40)
-                      : ResponsiveLayout.getResponsiveSize(context, 50),
+                      : ResponsiveLayout.getResponsiveSize(context, 45),
                   color: AppStyles.skillCardsIconsColor,
                 ),
                 const SizedBox(height: 10.0),
@@ -111,7 +118,6 @@ class _SkillCardTabletState extends State<SkillCardTablet>
                   ),
                   textAlign: TextAlign.center,
                 ),
-                const SizedBox(height: 10.0),
                 TextButton(
                   onPressed: () {
                     setState(() {
@@ -141,9 +147,6 @@ class _SkillCardTabletState extends State<SkillCardTablet>
                             decorationColor: AppStyles.skillLettersColor),
                     textAlign: TextAlign.center,
                   ),
-                ),
-                const SizedBox(
-                  height: 15.0,
                 ),
                 if (_isExpanded) // Shows expanded information
                   Flexible(

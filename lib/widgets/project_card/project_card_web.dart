@@ -8,8 +8,13 @@ import '../../modals/scroll_offset.dart';
 class ProjectCardWeb extends StatefulWidget {
   final Project project;
   final int index;
+  final double secondSectionHeight;
 
-  const ProjectCardWeb({super.key, required this.project, required this.index});
+  const ProjectCardWeb(
+      {super.key,
+      required this.project,
+      required this.index,
+      required this.secondSectionHeight});
 
   @override
   State<ProjectCardWeb> createState() => _ProjectCardWebState();
@@ -27,7 +32,7 @@ class _ProjectCardWebState extends State<ProjectCardWeb>
       vsync: this,
       duration: const Duration(milliseconds: 1000),
     );
-    animation = Tween(begin: 250.0, end: 0.0)
+    animation = Tween(begin: ResponsiveLayout.projectCardWidthDesktop, end: 0.0)
         .animate(CurvedAnimation(parent: controller, curve: Curves.easeOut));
 
     super.initState();
@@ -37,9 +42,12 @@ class _ProjectCardWebState extends State<ProjectCardWeb>
   Widget build(BuildContext context) {
 //call the responsive layout method to get the index of projects in same line
     final lineIndex = ResponsiveLayout.getWidgetIndex(context,
-        index: widget.index, projectWidth: projectCardWidth);
+        index: widget.index,
+        projectWidth: ResponsiveLayout.getResponsiveCard(
+            context, ResponsiveLayout.projectCardWidthDesktop));
 
-    final startRange = 2100 + lineIndex * 500;
+    final startRange =
+        widget.secondSectionHeight + 150 + lineIndex * projectCardHeight;
 
     return BlocBuilder<DisplayOffset, ScrollOffset>(
         buildWhen: (previous, current) {
@@ -57,10 +65,12 @@ class _ProjectCardWebState extends State<ProjectCardWeb>
           animation: animation,
           builder: (context, child) {
             return Container(
-              height: projectCardHeight,
-              width: projectCardWidth,
+              height: ResponsiveLayout.getResponsiveCard(
+                  context, ResponsiveLayout.projectCardHeightDesktop),
+              width: ResponsiveLayout.getResponsiveCard(
+                  context, ResponsiveLayout.projectCardWidthDesktop),
               margin:
-                  const EdgeInsets.symmetric(vertical: 25.0, horizontal: 5.0),
+                  const EdgeInsets.symmetric(vertical: 15.0, horizontal: 5.0),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15.0),
                 color: AppStyles
@@ -68,23 +78,21 @@ class _ProjectCardWebState extends State<ProjectCardWeb>
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SizedBox(
-                    height: 500.0,
-                    width: 500.0,
+                  Expanded(
+                    flex: 2,
                     child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Expanded(
                           child: Stack(
+                            alignment: Alignment.center,
                             children: [
                               Padding(
                                 padding: const EdgeInsets.all(1.0),
-                                child: Image.network(
+                                child: Image.asset(
                                   widget.project.imageUrl1,
-                                  fit: BoxFit.cover,
-                                  height: 500.0,
-                                  width: 250.0, // Adjusted width for two images
                                 ),
                               ),
                               Align(
@@ -94,7 +102,6 @@ class _ProjectCardWebState extends State<ProjectCardWeb>
                                         : -1.0, //Animation alignment
                                     1.0),
                                 child: Container(
-                                  height: 500,
                                   width: animation.value,
                                   color: AppStyles.backgroundColor,
                                 ),
@@ -107,14 +114,12 @@ class _ProjectCardWebState extends State<ProjectCardWeb>
                         ),
                         Expanded(
                           child: Stack(
+                            alignment: Alignment.center,
                             children: [
                               Padding(
                                 padding: const EdgeInsets.all(1.0),
-                                child: Image.network(
+                                child: Image.asset(
                                   widget.project.imageUrl2,
-                                  fit: BoxFit.cover,
-                                  height: 500.0,
-                                  width: 250.0, // Adjusted width for two images
                                 ),
                               ),
                               Align(
@@ -124,7 +129,6 @@ class _ProjectCardWebState extends State<ProjectCardWeb>
                                         : 1.0, //Animation alignment
                                     1.0),
                                 child: Container(
-                                  height: 500,
                                   width: animation.value,
                                   color: AppStyles.backgroundColor,
                                 ),
@@ -135,78 +139,38 @@ class _ProjectCardWebState extends State<ProjectCardWeb>
                       ],
                     ),
                   ),
-                  const SizedBox(
-                    height: 8.0,
-                  ),
-                  Text(
-                    widget.project.title,
-                    style: AppStyles.fontStyle(
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
                   Expanded(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      crossAxisAlignment: CrossAxisAlignment.center,
+                    flex: 1,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        TextButton(
-                          onPressed: () {},
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Container(
-                                padding: const EdgeInsets.only(
-                                    left: 10.0, right: 10.0),
-                                width: 100.0,
-                                child: Image.asset(
-                                  widget.project.projectIcon,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              const SizedBox(
-                                height: 10.0,
-                              ),
-                              Text(
-                                'Click the icon',
-                                style: AppStyles.fontStyle(
-                                  fontSize: 12.0,
-                                ).copyWith(
-                                    shadows: [
-                                      const Shadow(
-                                          color: Colors.black54,
-                                          offset: Offset(0, -3))
-                                    ],
-                                    color: Colors.transparent,
-                                    decoration: TextDecoration.underline,
-                                    decorationThickness: 2,
-                                    decorationColor: Colors.grey),
-                                textAlign: TextAlign.center,
-                              ),
-                            ],
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          child: Text(
+                            widget.project.title,
+                            style: AppStyles.fontStyle(
+                              fontSize: ResponsiveLayout.getResponsiveSize(
+                                  context,
+                                  ResponsiveLayout.cardTitleLettersSizeDesktop),
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
                         ),
                         const SizedBox(
-                          width: 20.0,
+                          height: 2.0,
                         ),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              SizedBox(
-                                height: 100.0,
-                                child: Text(
-                                  widget.project.description,
-                                  style: AppStyles.fontStyle(
-                                    fontSize: 16.0,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                  textAlign: TextAlign.justify,
-                                ),
-                              ),
-                            ],
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 8.0, vertical: 5.0),
+                          child: Text(
+                            widget.project.description,
+                            style: AppStyles.fontStyle(
+                              fontSize: ResponsiveLayout.getResponsiveSize(
+                                  context,
+                                  ResponsiveLayout.normalLettersSizeDesktop),
+                              color: AppStyles.lettersColor,
+                            ),
+                            textAlign: TextAlign.justify,
                           ),
                         ),
                       ],

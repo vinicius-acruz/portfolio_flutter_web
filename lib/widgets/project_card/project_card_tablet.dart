@@ -9,9 +9,13 @@ import '../../modals/scroll_offset.dart';
 class ProjectCardTablet extends StatefulWidget {
   final Project project;
   final int index;
+  final double secondSectionHeight;
 
   const ProjectCardTablet(
-      {super.key, required this.project, required this.index});
+      {super.key,
+      required this.project,
+      required this.index,
+      required this.secondSectionHeight});
 
   @override
   State<ProjectCardTablet> createState() => _ProjectCardTabletState();
@@ -21,8 +25,8 @@ class _ProjectCardTabletState extends State<ProjectCardTablet>
     with TickerProviderStateMixin {
   late AnimationController controller;
   late Animation<double> animation;
-  double projectCardHeight = 850.0;
-  double projectCardWidth = 400.0;
+
+  late double startRange;
 
   @override
   void initState() {
@@ -30,7 +34,7 @@ class _ProjectCardTabletState extends State<ProjectCardTablet>
       vsync: this,
       duration: const Duration(milliseconds: 1000),
     );
-    animation = Tween(begin: projectCardWidth, end: 0.0)
+    animation = Tween(begin: ResponsiveLayout.projectCardWidthTablet, end: 0.0)
         .animate(CurvedAnimation(parent: controller, curve: Curves.easeOut));
 
     super.initState();
@@ -39,9 +43,15 @@ class _ProjectCardTabletState extends State<ProjectCardTablet>
   @override
   Widget build(BuildContext context) {
     final lineIndex = ResponsiveLayout.getWidgetIndex(context,
-        index: widget.index, projectWidth: projectCardWidth);
+        index: widget.index,
+        projectWidth: ((ResponsiveLayout.getResponsiveCard(
+            context, ResponsiveLayout.projectCardWidthTablet))));
 
-    final startRange = 2300 + lineIndex * 600;
+    startRange = widget.secondSectionHeight +
+        100 +
+        lineIndex *
+            ((ResponsiveLayout.getResponsiveCard(
+                context, ResponsiveLayout.projectCardHeightTablet)));
 
     return BlocBuilder<DisplayOffset, ScrollOffset>(
         buildWhen: (previous, current) {
@@ -53,15 +63,17 @@ class _ProjectCardTabletState extends State<ProjectCardTablet>
     }, builder: (context, state) {
       print(
           'Card ${widget.index}: project line $lineIndex, scrolloffset: ${state.scrollOffsetValue}, ');
-      state.scrollOffsetValue > (startRange + 300)
+      state.scrollOffsetValue > (startRange + 100)
           ? controller.forward()
           : controller.reverse();
       return AnimatedBuilder(
           animation: animation,
           builder: (context, child) {
             return Container(
-              height: projectCardHeight,
-              width: projectCardWidth,
+              height: ResponsiveLayout.getResponsiveCard(
+                  context, ResponsiveLayout.projectCardHeightTablet),
+              width: ResponsiveLayout.getResponsiveCard(
+                  context, ResponsiveLayout.projectCardWidthTablet),
               margin:
                   const EdgeInsets.symmetric(vertical: 15.0, horizontal: 5.0),
               decoration: BoxDecoration(
@@ -89,7 +101,9 @@ class _ProjectCardTabletState extends State<ProjectCardTablet>
                           child: Lottie.asset(
                             'assets/images/projects/project1/project1_animation.json',
                             fit: BoxFit.cover,
-                            width: projectCardWidth / 2,
+                            width: (ResponsiveLayout.getResponsiveCard(context,
+                                    ResponsiveLayout.projectCardWidthTablet)) /
+                                2,
                           ),
                         ),
                         Align(
@@ -132,7 +146,7 @@ class _ProjectCardTabletState extends State<ProjectCardTablet>
                         ),
                         Padding(
                           padding: const EdgeInsets.symmetric(
-                              horizontal: 8.0, vertical: 10.0),
+                              horizontal: 8.0, vertical: 5.0),
                           child: Text(
                             widget.project.description,
                             style: AppStyles.fontStyle(

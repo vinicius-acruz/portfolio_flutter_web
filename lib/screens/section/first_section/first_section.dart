@@ -25,7 +25,7 @@ class _FirstSectionState extends State<FirstSection>
   void initState() {
     controller = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 1000),
+      duration: const Duration(milliseconds: 2000),
       reverseDuration: const Duration(milliseconds: 375),
     );
 
@@ -81,7 +81,9 @@ class _FirstSectionState extends State<FirstSection>
 }
 
 class FirstPageImage extends StatefulWidget {
-  const FirstPageImage({super.key});
+  final double height;
+
+  const FirstPageImage({super.key, required this.height});
 
   @override
   State<FirstPageImage> createState() => _FirstPageImageState();
@@ -96,7 +98,7 @@ class _FirstPageImageState extends State<FirstPageImage>
   void initState() {
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 1000),
+      duration: const Duration(milliseconds: 2000),
     );
     _animation = Tween<double>(begin: 1500, end: 0.0)
         .animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
@@ -108,10 +110,11 @@ class _FirstPageImageState extends State<FirstPageImage>
   Widget build(BuildContext context) {
     return Image(
       image: const AssetImage('assets/images/vini.png'),
-      fit: BoxFit.cover,
+      fit: BoxFit.contain,
+      alignment: Alignment.topRight,
       loadingBuilder: (context, child, loadingProgress) {
         if (loadingProgress == null) {
-          Future.delayed(const Duration(milliseconds: 500), () {
+          Future.delayed(const Duration(milliseconds: 1000), () {
             if (_controller.isDismissed) {
               _controller.forward();
             }
@@ -123,7 +126,7 @@ class _FirstPageImageState extends State<FirstPageImage>
                 children: [
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 1.0),
-                    height: ResponsiveLayout.imageSize(context),
+                    height: widget.height,
                     width: double.infinity,
                     child: child,
                   ),
@@ -150,7 +153,8 @@ class _FirstPageImageState extends State<FirstPageImage>
 }
 
 class SecondPageImage extends StatefulWidget {
-  const SecondPageImage({super.key});
+  final double height;
+  const SecondPageImage({super.key, required this.height});
 
   @override
   State<SecondPageImage> createState() => _SecondPageImageState();
@@ -165,7 +169,7 @@ class _SecondPageImageState extends State<SecondPageImage>
   void initState() {
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 500),
+      duration: const Duration(milliseconds: 2000),
     );
     _animation = Tween<double>(begin: 1500, end: 0.0)
         .animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
@@ -177,7 +181,8 @@ class _SecondPageImageState extends State<SecondPageImage>
   Widget build(BuildContext context) {
     return Image(
       image: const AssetImage('assets/images/fundo1.png'),
-      fit: BoxFit.cover,
+      fit: BoxFit.fitHeight,
+      alignment: Alignment.topRight,
       loadingBuilder: (context, child, loadingProgress) {
         if (loadingProgress == null) {
           Future.delayed(const Duration(milliseconds: 1000), () {
@@ -192,7 +197,7 @@ class _SecondPageImageState extends State<SecondPageImage>
                 children: [
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 1.0),
-                    height: ResponsiveLayout.imageSize(context),
+                    height: widget.height,
                     width: double.infinity,
                     child: child,
                   ),
