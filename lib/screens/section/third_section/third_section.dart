@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_flutter_web/responsive/responsive_layout.dart';
 import 'package:portfolio_flutter_web/widgets/project_card/project_card_mobile.dart';
+import 'package:portfolio_flutter_web/widgets/project_card/project_card_tablet.dart';
 import 'package:portfolio_flutter_web/widgets/text_reveal.dart';
+import '../../../constants/style.dart';
 import '../../../modals/projects.dart';
 import '../../../modals/scroll_offset.dart';
 import '../../../widgets/project_card/project_card_web.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ThirdSection extends StatefulWidget {
-  const ThirdSection({Key? key}) : super(key: key);
+  final double secondSectionHeight;
+
+  const ThirdSection({super.key, required this.secondSectionHeight});
 
   @override
   State<ThirdSection> createState() => _ThirdSectionState();
@@ -18,7 +21,8 @@ class ThirdSection extends StatefulWidget {
 class _ThirdSectionState extends State<ThirdSection>
     with TickerProviderStateMixin {
   late AnimationController controller;
-  late bool isMobile;
+  late double startRange;
+  late double endRange;
 
   @override
   void initState() {
@@ -34,10 +38,13 @@ class _ThirdSectionState extends State<ThirdSection>
 
   @override
   Widget build(BuildContext context) {
+    startRange = widget.secondSectionHeight;
+    endRange = startRange + 300;
+
     return BlocBuilder<DisplayOffset, ScrollOffset>(
         buildWhen: (previous, current) {
-      if ((current.scrollOffsetValue >= 1900 &&
-              current.scrollOffsetValue <= 2300) ||
+      if ((current.scrollOffsetValue >= startRange &&
+              current.scrollOffsetValue <= endRange) ||
           controller.isAnimating) {
         return true;
       } else {
@@ -45,7 +52,7 @@ class _ThirdSectionState extends State<ThirdSection>
       }
     }, builder: (context, state) {
       print("Scroll Offset: ${state.scrollOffsetValue}");
-      (state.scrollOffsetValue > 2000)
+      (state.scrollOffsetValue > startRange + 100)
           ? controller.forward()
           : controller.reverse();
       return Container(
@@ -54,34 +61,49 @@ class _ThirdSectionState extends State<ThirdSection>
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             TextReveal(
-              maxHeight: ResponsiveLayout.getResponsiveSize(context, 70.0),
+              maxHeight: ResponsiveLayout.getResponsiveSize(
+                  context,
+                  (ResponsiveLayout.buildWidgetValue(context,
+                      mobileValue: ResponsiveLayout.mainLettersSizeMobile + 10,
+                      tabletValue: ResponsiveLayout.mainLettersSizeTablet + 10,
+                      desktopValue:
+                          ResponsiveLayout.mainLettersSizeDesktop + 10))),
               controller: controller,
               child: Text(
-                'My projects ,',
-                style: GoogleFonts.roboto(
-                  fontWeight: FontWeight.w700,
-                  fontSize: ResponsiveLayout.getResponsiveSize(context, 40.0),
-                ),
+                'MY PROJECTS',
+                style: AppStyles.fontStyle(
+                    fontWeight: FontWeight.w900,
+                    fontSize: ResponsiveLayout.getResponsiveSize(
+                        context,
+                        (ResponsiveLayout.buildWidgetValue(context,
+                            mobileValue: ResponsiveLayout.mainLettersSizeMobile,
+                            tabletValue: ResponsiveLayout.mainLettersSizeTablet,
+                            desktopValue:
+                                ResponsiveLayout.mainLettersSizeDesktop - 5))),
+                    color: AppStyles.bigLettersColor),
               ),
             ),
-            SizedBox(height: 20.0),
+            const SizedBox(height: 20.0),
             Wrap(
               alignment: WrapAlignment.center,
-              spacing: 20.0,
+              spacing: 30.0,
               runSpacing: 20.0,
               children: projects
                   .map<Widget>((project) => ResponsiveLayout(
                       mobileLayout: ProjectCardMobile(
                         project: project,
                         index: projects.indexOf(project),
+                        secondSectionHeight: widget.secondSectionHeight,
                       ),
                       desktopLayout: ProjectCardWeb(
                         project: project,
                         index: projects.indexOf(project),
+                        secondSectionHeight: widget.secondSectionHeight,
                       ),
-                      tabletLayout: ProjectCardWeb(
+                      tabletLayout: ProjectCardTablet(
                         project: project,
                         index: projects.indexOf(project),
+                        secondSectionHeight: widget.secondSectionHeight,
                       )))
                   .toList(),
             ),
