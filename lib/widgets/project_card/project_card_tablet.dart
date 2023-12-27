@@ -92,18 +92,11 @@ class _ProjectCardTabletState extends State<ProjectCardTablet>
                       children: [
                         Padding(
                           padding: const EdgeInsets.all(1.0),
-                          child: Image.network(
-                            widget.project.imageUrl1,
+                          child: FadeInImage.assetNetwork(
+                            placeholder: widget.project.imageUrl1,
+                            image:
+                                'assets/images/projects/project1/project1_animation.gif',
                             fit: BoxFit.cover,
-                          ),
-                        ),
-                        Container(
-                          child: Lottie.asset(
-                            'assets/images/projects/project1/project1_animation.json',
-                            fit: BoxFit.cover,
-                            width: (ResponsiveLayout.getResponsiveCard(context,
-                                    ResponsiveLayout.projectCardWidthTablet)) /
-                                2,
                           ),
                         ),
                         Align(
@@ -121,6 +114,43 @@ class _ProjectCardTabletState extends State<ProjectCardTablet>
                       ],
                     ),
                   ),
+
+                  // Expanded(
+                  //   flex: 2,
+                  //   child: Stack(
+                  //     alignment: AlignmentDirectional.center,
+                  //     children: [
+                  //       Padding(
+                  //         padding: const EdgeInsets.all(1.0),
+                  //         child: Image.network(
+                  //           widget.project.imageUrl1,
+                  //           fit: BoxFit.cover,
+                  //         ),
+                  //       ),
+                  //       Container(
+                  //         child: Lottie.asset(
+                  //           'assets/images/projects/project1/project1_animation.json',
+                  //           fit: BoxFit.cover,
+                  //           width: (ResponsiveLayout.getResponsiveCard(context,
+                  //                   ResponsiveLayout.projectCardWidthTablet)) /
+                  //               2,
+                  //         ),
+                  //       ),
+                  //       Align(
+                  //         alignment: Alignment(
+                  //           widget.project.index % 2 == 1
+                  //               ? 1.0
+                  //               : -1.0, //Animation alignment
+                  //           1.0,
+                  //         ),
+                  //         child: Container(
+                  //           width: animation.value,
+                  //           color: AppStyles.backgroundColor,
+                  //         ),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
                   const SizedBox(
                     height: 8.0,
                   ),

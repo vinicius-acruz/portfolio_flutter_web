@@ -72,10 +72,9 @@ class _ProjectCardWebState extends State<ProjectCardWeb>
               margin:
                   const EdgeInsets.symmetric(vertical: 15.0, horizontal: 5.0),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15.0),
-                color: AppStyles
-                    .backgroundColor, // Added a background color for better visibility
-              ),
+                  borderRadius: BorderRadius.circular(15.0),
+                  color: AppStyles
+                      .backgroundColor), // Added a background color for better visibility),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -118,16 +117,22 @@ class _ProjectCardWebState extends State<ProjectCardWeb>
                             children: [
                               Padding(
                                 padding: const EdgeInsets.all(1.0),
-                                child: Image.asset(
-                                  widget.project.imageUrl2,
+                                child: FadeInImage.assetNetwork(
+                                  placeholder: widget.project.imageUrl1,
+                                  image:
+                                      'assets/images/projects/project1/project1_animation.gif',
+                                  fit: BoxFit.cover,
+                                  imageScale:
+                                      0.5, // Gif seems to have a fixed max size, so we need to scale it down to make it bigger
                                 ),
                               ),
                               Align(
                                 alignment: Alignment(
-                                    widget.project.index % 2 == 1
-                                        ? -1.0
-                                        : 1.0, //Animation alignment
-                                    1.0),
+                                  widget.project.index % 2 == 1
+                                      ? 1.0
+                                      : -1.0, //Animation alignment
+                                  1.0,
+                                ),
                                 child: Container(
                                   width: animation.value,
                                   color: AppStyles.backgroundColor,

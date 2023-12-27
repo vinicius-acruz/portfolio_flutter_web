@@ -77,46 +77,35 @@ class _ProjectCardMobileState extends State<ProjectCardMobile>
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Expanded(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                    child: Stack(
+                      alignment: AlignmentDirectional.center,
                       children: [
-                        Expanded(
-                          child: Stack(
-                            alignment: AlignmentDirectional.center,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(1.0),
-                                child: Image.network(
-                                  widget.project.imageUrl1,
-                                  fit: BoxFit.cover,
-                                  width: (projectCardWidth / 2),
-                                ),
-                              ),
-                              Container(
-                                child: Lottie.asset(
-                                    'assets/images/projects/project1/project1_animation.json',
-                                    fit: BoxFit.cover,
-                                    width: projectCardWidth / 2),
-                              ),
-                              Align(
-                                alignment: Alignment(
-                                    widget.project.index % 2 == 1
-                                        ? 1.0
-                                        : -1.0, //Animation alignment
-                                    1.0),
-                                child: Container(
-                                  width: animation.value,
-                                  color: AppStyles.backgroundColor,
-                                ),
-                              ),
-                            ],
+                        Padding(
+                          padding: const EdgeInsets.all(1.0),
+                          child: FadeInImage.assetNetwork(
+                            placeholder: widget.project.imageUrl1,
+                            image:
+                                'assets/images/projects/project1/project1_animation.gif',
+                            fit: BoxFit.cover,
                           ),
                         ),
-                        const SizedBox(
-                          width: 20.0,
+                        Align(
+                          alignment: Alignment(
+                            widget.project.index % 2 == 1
+                                ? 1.0
+                                : -1.0, //Animation alignment
+                            1.0,
+                          ),
+                          child: Container(
+                            width: animation.value,
+                            color: AppStyles.backgroundColor,
+                          ),
                         ),
                       ],
                     ),
+                  ),
+                  const SizedBox(
+                    width: 20.0,
                   ),
                   const SizedBox(
                     height: 8.0,

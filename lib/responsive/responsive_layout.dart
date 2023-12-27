@@ -122,7 +122,7 @@ class ResponsiveLayout extends StatelessWidget {
 
   //Desktop
 
-  static const double projectCardHeightDesktop = 1000.0;
+  static const double projectCardHeightDesktop = 1200.0;
   static const double projectCardWidthDesktop = 900.0;
 
 // Create method to calculate second section height

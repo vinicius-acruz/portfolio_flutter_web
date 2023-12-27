@@ -5,7 +5,7 @@ class AppStyles {
   //Tentativa 2
 
   // Background color
-  static const Color backgroundColor = Color.fromRGBO(232, 226, 219, 1.0);
+  static const Color backgroundColor = Color.fromRGBO(226, 219, 214, 1);
 
 // Normal letters and Button color
   static const Color lettersColor = Color.fromRGBO(26, 50, 99, 1.0);
@@ -25,7 +25,9 @@ class AppStyles {
   //for letters and icon color
   static const Color skillLettersColor = Color.fromRGBO(26, 50, 99, 1.0);
 
-  static const Color skillCardsColor = Color.fromRGBO(232, 226, 219, 1.0);
+  static const Color skillCardsColor = Color.fromRGBO(242, 242, 242, 1.0);
+
+  //static const Color skillCardsColor = Color.fromRGBO(232, 226, 219, 1.0);
 
   static const Color skillCardsIconsColor = Color.fromRGBO(241, 104, 33, 1.0);
 
