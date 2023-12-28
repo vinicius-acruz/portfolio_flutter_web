@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:portfolio_flutter_web/responsive/responsive_layout.dart';
@@ -27,6 +29,8 @@ class _ProjectCardMobileState extends State<ProjectCardMobile>
   late Animation<double> animation;
 
   late double startRange;
+  late String currentImage;
+  bool _isTimerActive = false;
 
   double projectCardHeight = 650.0;
   double projectCardWidth = 500.0;
@@ -41,6 +45,32 @@ class _ProjectCardMobileState extends State<ProjectCardMobile>
         .animate(CurvedAnimation(parent: controller, curve: Curves.easeOut));
 
     super.initState();
+    currentImage = widget.project.imageUrl1;
+  }
+
+  void _startImageTimer() {
+    if (!_isTimerActive &&
+        mounted &&
+        currentImage == widget.project.imageUrl1) {
+      _isTimerActive = true;
+      Timer(const Duration(seconds: 5), () {
+        if (mounted) {
+          setState(() {
+            currentImage = widget.project.projectAnimation;
+            _isTimerActive = false;
+          });
+        }
+      });
+    }
+  }
+
+  void _resetImage() {
+    if (currentImage != widget.project.imageUrl1) {
+      setState(() {
+        currentImage = widget.project.imageUrl1;
+        _isTimerActive = false;
+      });
+    }
   }
 
   @override
@@ -56,9 +86,15 @@ class _ProjectCardMobileState extends State<ProjectCardMobile>
       }
     }, builder: (context, state) {
       print('Card ${widget.index}: project line $startRange');
-      state.scrollOffsetValue > (startRange + 100)
-          ? controller.forward()
-          : controller.reverse();
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (state.scrollOffsetValue > (startRange + 100)) {
+          controller.forward();
+          _startImageTimer();
+        } else {
+          controller.reverse();
+          _resetImage();
+        }
+      });
       return AnimatedBuilder(
           animation: animation,
           builder: (context, child) {
@@ -83,15 +119,9 @@ class _ProjectCardMobileState extends State<ProjectCardMobile>
                         Padding(
                           padding: const EdgeInsets.all(1.0),
                           child: Image.network(
-                            'assets/images/projects/project1/project1_animation.gif',
-                            fit: BoxFit.cover,
+                            currentImage,
                             scale: 0.5,
-                            loadingBuilder: (BuildContext context, Widget child,
-                                ImageChunkEvent? loadingProgress) {
-                              if (loadingProgress == null) return child;
-                              return Image.asset(widget.project
-                                  .imageUrl1); // Display placeholder image while the network image is loading
-                            },
+                            fit: BoxFit.cover,
                           ),
                         ),
                         Align(
@@ -145,5 +175,11 @@ class _ProjectCardMobileState extends State<ProjectCardMobile>
             );
           });
     });
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
   }
 }

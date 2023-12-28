@@ -118,7 +118,7 @@ class _ProjectCardWebState extends State<ProjectCardWeb>
                               Padding(
                                 padding: const EdgeInsets.all(1.0),
                                 child: Image.network(
-                                  'assets/images/projects/project1/project1_animation.gif',
+                                  widget.project.projectAnimation,
                                   fit: BoxFit.cover,
                                   scale: 0.5,
                                   loadingBuilder: (BuildContext context,

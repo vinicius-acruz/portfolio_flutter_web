@@ -26,7 +26,7 @@ List<Project> projects = [
     imageUrl1: 'assets/images/projects/project1/project1_1.png',
     imageUrl2: 'assets/images/projects/project1/project1_2.png',
     projectIcon: 'assets/images/projects/project1/project1_icon.png',
-    projectAnimation: 'assets/images/projects/project1/project1_animation.json',
+    projectAnimation: 'assets/images/projects/project1/project1_animation.gif',
     index: 1,
   ),
   Project(
@@ -36,7 +36,7 @@ List<Project> projects = [
     imageUrl1: 'assets/images/projects/project1/project1_1.png',
     imageUrl2: 'assets/images/projects/project1/project1_2.png',
     projectIcon: 'assets/images/projects/project1/project1_icon.png',
-    projectAnimation: 'assets/images/projects/project1/project1_animation.json',
+    projectAnimation: 'assets/images/projects/project1/project1_animation.gif',
     index: 2,
   ),
   Project(
@@ -46,7 +46,7 @@ List<Project> projects = [
     imageUrl1: 'assets/images/projects/project1/project1_1.png',
     imageUrl2: 'assets/images/projects/project1/project1_2.png',
     projectIcon: 'assets/images/projects/project1/project1_icon.png',
-    projectAnimation: 'assets/images/projects/project1/project1_animation.json',
+    projectAnimation: 'assets/images/projects/project1/project1_animation.gif',
     index: 3,
   ),
   Project(
@@ -56,7 +56,7 @@ List<Project> projects = [
     imageUrl1: 'assets/images/projects/project1/project1_1.png',
     imageUrl2: 'assets/images/projects/project1/project1_2.png',
     projectIcon: 'assets/images/projects/project1/project1_icon.png',
-    projectAnimation: 'assets/images/projects/project1/project1_animation.json',
+    projectAnimation: 'assets/images/projects/project1/project1_animation.gif',
     index: 4,
   ),
   Project(
@@ -66,7 +66,7 @@ List<Project> projects = [
     imageUrl1: 'assets/images/projects/project1/project1_1.png',
     imageUrl2: 'assets/images/projects/project1/project1_2.png',
     projectIcon: 'assets/images/projects/project1/project1_icon.png',
-    projectAnimation: 'assets/images/projects/project1/project1_animation.json',
+    projectAnimation: 'assets/images/projects/project1/project1_animation.gif',
     index: 5,
   ),
   // Add more projects as needed

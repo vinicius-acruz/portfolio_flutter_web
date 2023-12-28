@@ -53,8 +53,7 @@ class _ProjectCardTabletState extends State<ProjectCardTablet>
       Timer(const Duration(seconds: 5), () {
         if (mounted) {
           setState(() {
-            currentImage =
-                'assets/images/projects/project1/project1_animation.gif';
+            currentImage = widget.project.projectAnimation;
             _isTimerActive = false;
           });
         }
@@ -131,6 +130,7 @@ class _ProjectCardTabletState extends State<ProjectCardTablet>
                           padding: const EdgeInsets.all(1.0),
                           child: Image.network(
                             currentImage,
+                            scale: 0.5,
                             fit: BoxFit.cover,
                           ),
                         ),
