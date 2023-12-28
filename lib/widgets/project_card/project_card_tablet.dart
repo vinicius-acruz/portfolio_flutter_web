@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
@@ -27,6 +29,8 @@ class _ProjectCardTabletState extends State<ProjectCardTablet>
   late Animation<double> animation;
 
   late double startRange;
+  late String currentImage;
+  bool _isTimerActive = false;
 
   @override
   void initState() {
@@ -38,6 +42,33 @@ class _ProjectCardTabletState extends State<ProjectCardTablet>
         .animate(CurvedAnimation(parent: controller, curve: Curves.easeOut));
 
     super.initState();
+    currentImage = widget.project.imageUrl1;
+  }
+
+  void _startImageTimer() {
+    if (!_isTimerActive &&
+        mounted &&
+        currentImage == widget.project.imageUrl1) {
+      _isTimerActive = true;
+      Timer(const Duration(seconds: 5), () {
+        if (mounted) {
+          setState(() {
+            currentImage =
+                'assets/images/projects/project1/project1_animation.gif';
+            _isTimerActive = false;
+          });
+        }
+      });
+    }
+  }
+
+  void _resetImage() {
+    if (currentImage != widget.project.imageUrl1) {
+      setState(() {
+        currentImage = widget.project.imageUrl1;
+        _isTimerActive = false;
+      });
+    }
   }
 
   @override
@@ -63,9 +94,15 @@ class _ProjectCardTabletState extends State<ProjectCardTablet>
     }, builder: (context, state) {
       print(
           'Card ${widget.index}: project line $lineIndex, scrolloffset: ${state.scrollOffsetValue}, ');
-      state.scrollOffsetValue > (startRange + 100)
-          ? controller.forward()
-          : controller.reverse();
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (state.scrollOffsetValue > (startRange + 100)) {
+          controller.forward();
+          _startImageTimer();
+        } else {
+          controller.reverse();
+          _resetImage();
+        }
+      });
       return AnimatedBuilder(
           animation: animation,
           builder: (context, child) {
@@ -93,15 +130,8 @@ class _ProjectCardTabletState extends State<ProjectCardTablet>
                         Padding(
                           padding: const EdgeInsets.all(1.0),
                           child: Image.network(
-                            'assets/images/projects/project1/project1_animation.gif',
+                            currentImage,
                             fit: BoxFit.cover,
-                            scale: 0.5,
-                            loadingBuilder: (BuildContext context, Widget child,
-                                ImageChunkEvent? loadingProgress) {
-                              if (loadingProgress == null) return child;
-                              return Image.asset(widget.project
-                                  .imageUrl1); // Display placeholder image while the network image is loading
-                            },
                           ),
                         ),
                         Align(
@@ -119,43 +149,6 @@ class _ProjectCardTabletState extends State<ProjectCardTablet>
                       ],
                     ),
                   ),
-
-                  // Expanded(
-                  //   flex: 2,
-                  //   child: Stack(
-                  //     alignment: AlignmentDirectional.center,
-                  //     children: [
-                  //       Padding(
-                  //         padding: const EdgeInsets.all(1.0),
-                  //         child: Image.network(
-                  //           widget.project.imageUrl1,
-                  //           fit: BoxFit.cover,
-                  //         ),
-                  //       ),
-                  //       Container(
-                  //         child: Lottie.asset(
-                  //           'assets/images/projects/project1/project1_animation.json',
-                  //           fit: BoxFit.cover,
-                  //           width: (ResponsiveLayout.getResponsiveCard(context,
-                  //                   ResponsiveLayout.projectCardWidthTablet)) /
-                  //               2,
-                  //         ),
-                  //       ),
-                  //       Align(
-                  //         alignment: Alignment(
-                  //           widget.project.index % 2 == 1
-                  //               ? 1.0
-                  //               : -1.0, //Animation alignment
-                  //           1.0,
-                  //         ),
-                  //         child: Container(
-                  //           width: animation.value,
-                  //           color: AppStyles.backgroundColor,
-                  //         ),
-                  //       ),
-                  //     ],
-                  //   ),
-                  // ),
                   const SizedBox(
                     height: 8.0,
                   ),
@@ -201,5 +194,11 @@ class _ProjectCardTabletState extends State<ProjectCardTablet>
             );
           });
     });
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
   }
 }
