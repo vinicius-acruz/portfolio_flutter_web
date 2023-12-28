@@ -92,11 +92,16 @@ class _ProjectCardTabletState extends State<ProjectCardTablet>
                       children: [
                         Padding(
                           padding: const EdgeInsets.all(1.0),
-                          child: FadeInImage.assetNetwork(
-                            placeholder: widget.project.imageUrl1,
-                            image:
-                                'assets/images/projects/project1/project1_animation.gif',
+                          child: Image.network(
+                            'assets/images/projects/project1/project1_animation.gif',
                             fit: BoxFit.cover,
+                            scale: 0.5,
+                            loadingBuilder: (BuildContext context, Widget child,
+                                ImageChunkEvent? loadingProgress) {
+                              if (loadingProgress == null) return child;
+                              return Image.asset(widget.project
+                                  .imageUrl1); // Display placeholder image while the network image is loading
+                            },
                           ),
                         ),
                         Align(
