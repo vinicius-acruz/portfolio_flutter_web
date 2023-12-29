@@ -109,7 +109,7 @@ class _FirstPageImageState extends State<FirstPageImage>
   @override
   Widget build(BuildContext context) {
     return Image(
-      image: const AssetImage('assets/images/vini.png'),
+      image: const AssetImage('images/vini.png'),
       fit: BoxFit.contain,
       alignment: Alignment.topRight,
       loadingBuilder: (context, child, loadingProgress) {
@@ -180,7 +180,7 @@ class _SecondPageImageState extends State<SecondPageImage>
   @override
   Widget build(BuildContext context) {
     return Image(
-      image: const AssetImage('assets/images/fundo1.png'),
+      image: const AssetImage('images/fundo1.png'),
       fit: BoxFit.fitHeight,
       alignment: Alignment.topRight,
       loadingBuilder: (context, child, loadingProgress) {

@@ -45,7 +45,7 @@ class FirstSectionWeb extends StatelessWidget {
               axis: Axis.horizontal,
               axisAlignment: 1,
               child: Image.asset(
-                'assets/images/listraswide.png',
+                'images/listraswide.png',
                 fit: BoxFit.contain,
                 alignment: Alignment.topRight,
               ),

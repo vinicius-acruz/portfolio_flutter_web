@@ -46,7 +46,7 @@ class FirstSectionMobile extends StatelessWidget {
                 height: ResponsiveLayout.getResponsiveSize(
                     context, ResponsiveLayout.mobileStripesSize),
                 child: Image.asset(
-                  'assets/images/listras_mobile.png',
+                  'images/listras_mobile.png',
                   fit: BoxFit.cover,
                 ),
               ),

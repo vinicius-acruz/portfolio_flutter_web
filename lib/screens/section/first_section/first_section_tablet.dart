@@ -40,7 +40,7 @@ class FirstSectionTablet extends StatelessWidget {
           //     sizeFactor: patternAnimation,
           //     axis: Axis.horizontal,
           //     child: Image.asset(
-          //       'assets/images/listraswide.png',
+          //       'images/listraswide.png',
           //       fit: BoxFit.contain,
           //       height: ResponsiveLayout.getResponsiveImage(context, 0.65),
           //     ),

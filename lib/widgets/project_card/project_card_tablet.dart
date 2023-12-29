@@ -128,7 +128,7 @@ class _ProjectCardTabletState extends State<ProjectCardTablet>
                       children: [
                         Padding(
                           padding: const EdgeInsets.all(1.0),
-                          child: Image.network(
+                          child: Image.asset(
                             currentImage,
                             scale: 0.5,
                             fit: BoxFit.cover,

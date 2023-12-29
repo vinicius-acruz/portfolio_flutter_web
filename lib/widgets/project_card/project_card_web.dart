@@ -117,17 +117,10 @@ class _ProjectCardWebState extends State<ProjectCardWeb>
                             children: [
                               Padding(
                                 padding: const EdgeInsets.all(1.0),
-                                child: Image.network(
+                                child: Image.asset(
                                   widget.project.projectAnimation,
                                   fit: BoxFit.cover,
                                   scale: 0.5,
-                                  loadingBuilder: (BuildContext context,
-                                      Widget child,
-                                      ImageChunkEvent? loadingProgress) {
-                                    if (loadingProgress == null) return child;
-                                    return Image.asset(widget.project
-                                        .imageUrl1); // Display placeholder image while the network image is loading
-                                  },
                                 ),
                               ),
                               Align(
