@@ -20,54 +20,54 @@ class Project {
 
 List<Project> projects = [
   Project(
-    title: 'Flutter App Showcase',
+    title: 'Caption Fetcher',
     description:
         'A showcase app built with Flutter to demonstrate various UI components and features. It includes animations, state management, and integration with external APIs.',
     imageUrl1: 'images/projects/project1/project1_1.png',
     imageUrl2: 'images/projects/project1/project1_2.png',
     projectIcon: 'images/projects/project1/project1_icon.png',
-    projectAnimation: 'images/projects/project1/project1_animation.gif',
+    projectAnimation: 'images/projects/project1/caption_fetcher_frame.gif',
     index: 1,
   ),
   Project(
-    title: 'Firebase Blog Platform',
+    title: 'Chat.Me',
     description:
-        'A blog platform built with Firebase, providing features like user authentication, real-time database, and cloud functions. Users can create, edit, and delete blog posts.',
-    imageUrl1: 'images/projects/project1/project1_1.png',
+        'Chat.Me is an advanced messaging application developed using Flutter and Firebase. Originally created as part of The Complete Flutter Development Bootcamp, by Dr. Angela Yu and App Brewery.',
+    imageUrl1: 'images/projects/project2/chat_me_image.png',
     imageUrl2: 'images/projects/project1/project1_2.png',
     projectIcon: 'images/projects/project1/project1_icon.png',
-    projectAnimation: 'images/projects/project1/project1_animation.gif',
+    projectAnimation: 'images/projects/project2/chat_me_frame.gif',
     index: 2,
   ),
   Project(
-    title: 'Weather App with BloC',
+    title: '2Do App',
     description:
         'A weather app built using the BloC pattern for state management. It fetches weather data from a third-party API and displays it in a user-friendly interface.',
-    imageUrl1: 'images/projects/project1/project1_1.png',
+    imageUrl1: 'images/projects/project3/2do_image.png',
     imageUrl2: 'images/projects/project1/project1_2.png',
     projectIcon: 'images/projects/project1/project1_icon.png',
-    projectAnimation: 'images/projects/project1/project1_animation.gif',
+    projectAnimation: 'images/projects/project3/2do_frame.gif',
     index: 3,
   ),
   Project(
-    title: 'Project Title 4',
+    title: 'Clima',
     description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce aliquet varius urna, id pharetra erat aliquam in. Aenean hendrerit, nulla ac sagittis vulputate, purus ligula efficitur justo.',
-    imageUrl1: 'images/projects/project1/project1_1.png',
+    imageUrl1: 'images/projects/project4/clima_image.png',
     imageUrl2: 'images/projects/project1/project1_2.png',
     projectIcon: 'images/projects/project1/project1_icon.png',
-    projectAnimation: 'images/projects/project1/project1_animation.gif',
+    projectAnimation: 'images/projects/project4/clima_frame.gif',
     index: 4,
-  ),
-  Project(
-    title: 'Project Title 5',
-    description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce aliquet varius urna, id pharetra erat aliquam in. Aenean hendrerit, nulla ac sagittis vulputate, purus ligula efficitur justo.',
-    imageUrl1: 'images/projects/project1/project1_1.png',
-    imageUrl2: 'images/projects/project1/project1_2.png',
-    projectIcon: 'images/projects/project1/project1_icon.png',
-    projectAnimation: 'images/projects/project1/project1_animation.gif',
-    index: 5,
+    // ),
+    // Project(
+    //   title: 'Project Title 5',
+    //   description:
+    //       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce aliquet varius urna, id pharetra erat aliquam in. Aenean hendrerit, nulla ac sagittis vulputate, purus ligula efficitur justo.',
+    //   imageUrl1: 'images/projects/project1/project1_1.png',
+    //   imageUrl2: 'images/projects/project1/project1_2.png',
+    //   projectIcon: 'images/projects/project1/project1_icon.png',
+    //   projectAnimation: 'images/projects/project1/project1_animation.gif',
+    //   index: 5,
   ),
   // Add more projects as needed
 ];
