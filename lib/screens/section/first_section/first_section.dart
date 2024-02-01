@@ -109,7 +109,7 @@ class _FirstPageImageState extends State<FirstPageImage>
   @override
   Widget build(BuildContext context) {
     return Image(
-      image: const AssetImage('images/vini.png'),
+      image: const AssetImage('assets/images/vini.png'),
       fit: BoxFit.contain,
       alignment: Alignment.topRight,
       loadingBuilder: (context, child, loadingProgress) {
