@@ -93,15 +93,67 @@ class _ProjectCardWebState extends State<ProjectCardWeb>
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Row(
-          children: [
-            Expanded(
-              child: Image.asset(widget.project.imageUrl1),
-            ),
-            Expanded(
-              child: Image.asset(widget.project.projectAnimation),
-            ),
-          ],
+        Expanded(
+          flex: 2,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Expanded(
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(1.0),
+                      child: Image.asset(
+                        widget.project.imageUrl1,
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment(
+                          widget.project.index % 2 == 1
+                              ? 1.0
+                              : -1.0, //Animation alignment
+                          1.0),
+                      child: Container(
+                        width: animation.value,
+                        color: AppStyles.backgroundColor,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                width: 20.0,
+              ),
+              Expanded(
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(1.0),
+                      child: Image.asset(
+                        widget.project.projectAnimation,
+                        fit: BoxFit.cover,
+                        scale: 0.5,
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment(
+                        widget.project.index % 2 == 1
+                            ? 1.0
+                            : -1.0, //Animation alignment
+                        1.0,
+                      ),
+                      child: Container(
+                        width: animation.value,
+                        color: AppStyles.backgroundColor,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
         buildProjectInfo(),
       ],
@@ -120,11 +172,58 @@ class _ProjectCardWebState extends State<ProjectCardWeb>
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Expanded(
-                child: Image.asset(widget.project.imageUrl1),
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(1.0),
+                      child: Image.asset(
+                        widget.project.imageUrl1,
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment(
+                          widget.project.index % 2 == 1
+                              ? 1.0
+                              : -1.0, //Animation alignment
+                          1.0),
+                      child: Container(
+                        width: animation.value,
+                        color: AppStyles.backgroundColor,
+                      ),
+                    ),
+                  ],
+                ),
               ),
-              const SizedBox(width: 20.0),
+              const SizedBox(
+                width: 20.0,
+              ),
               Expanded(
-                child: Image.asset(widget.project.projectAnimation),
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(1.0),
+                      child: Image.asset(
+                        widget.project.projectAnimation,
+                        fit: BoxFit.cover,
+                        scale: 0.5,
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment(
+                        widget.project.index % 2 == 1
+                            ? 1.0
+                            : -1.0, //Animation alignment
+                        1.0,
+                      ),
+                      child: Container(
+                        width: animation.value,
+                        color: AppStyles.backgroundColor,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
