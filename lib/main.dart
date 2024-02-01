@@ -8,22 +8,29 @@ import 'modals/scroll_offset.dart';
 import 'dart:async'; // Import this for async operations
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
+
+  bool debugOn = true;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Vinícius\' Portfolio',
       theme: ThemeData(
         useMaterial3: true,
       ),
       home: BlocProvider(
           create: (_) => DisplayOffset(ScrollOffset(scrollOffsetValue: 0)),
-          child: const LoadingScreen()), // Change to LoadingScreen
+          child: debugOn
+              ? (const Scaffold(
+                  backgroundColor: Colors.white,
+                  body: WholePage(),
+                ))
+              : const LoadingScreen()), // Disable loading screen when on testing mode
     );
   }
 }

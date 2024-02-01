@@ -97,7 +97,7 @@ class _ThirdSectionState extends State<ThirdSection>
               runSpacing: 20.0,
               children: projects
                   .map<Widget>((project) => ResponsiveLayout(
-                      mobileLayout: ProjectCardMobile(
+                      mobileLayout: ProjectCardWeb(
                         project: project,
                         index: projects.indexOf(project),
                         secondSectionHeight: widget.secondSectionHeight,

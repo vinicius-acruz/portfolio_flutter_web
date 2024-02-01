@@ -148,7 +148,7 @@ class FirstSectionWeb extends StatelessWidget {
                                                 10),
                                     controller: controller,
                                     child: AutoSizeText(
-                                      'Vinicius',
+                                      'Vinícius',
                                       style: AppStyles.fontStyle(
                                               fontWeight: FontWeight.w900,
                                               fontSize: ResponsiveLayout
@@ -262,7 +262,7 @@ class FirstSectionWeb extends StatelessWidget {
                                       context, 300.0),
                                   controller: controller,
                                   child: AutoSizeText(
-                                    'Hi, I\'m Vinicius, an aspiring Flutter developer passionate about crafting seamless and engaging cross-platform applications. Eager to merge creativity with code, I strive to bring innovative solutions to life in the ever-evolving world of mobile development.',
+                                    'Hi, I\'m Vinícius, an aspiring Flutter developer passionate about crafting seamless and engaging cross-platform applications. Eager to merge creativity with code, I strive to bring innovative solutions to life in the ever-evolving world of mobile development.',
                                     style: AppStyles.fontStyle(
                                         fontSize:
                                             ResponsiveLayout.getResponsiveSize(

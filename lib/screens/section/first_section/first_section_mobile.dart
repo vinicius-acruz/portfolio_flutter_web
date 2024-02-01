@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:flutter/material.dart';
 import 'package:portfolio_flutter_web/constants/style.dart';
 import '../../../responsive/responsive_layout.dart';
@@ -23,6 +25,7 @@ class FirstSectionMobile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
+    double positionAdjustment = 0;
 
     // function to calculate responsive size
 
@@ -31,11 +34,9 @@ class FirstSectionMobile extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       child: Stack(
         children: [
-          Positioned.fill(
-            right: ResponsiveLayout.getResponsiveSize(context, -130.0),
-            child: SecondPageImage(
-              height: MediaQuery.of(context).size.height * 0.73,
-            ),
+          SecondPageImage(
+            height: MediaQuery.of(context).size.height * 0.75,
+            fit: BoxFit.cover,
           ),
           Positioned(
             left: 50.0,
@@ -52,11 +53,11 @@ class FirstSectionMobile extends StatelessWidget {
               ),
             ),
           ),
-          Positioned.fill(
-            right: ResponsiveLayout.getResponsiveSize(context, -130.0),
-            child: FirstPageImage(
-                height: MediaQuery.of(context).size.height * 0.73),
+          FirstPageImage(
+            height: MediaQuery.of(context).size.height * 0.75,
+            fit: BoxFit.cover,
           ),
+
           // Page Content
           Container(
             height: screenHeight,
@@ -115,7 +116,7 @@ class FirstSectionMobile extends StatelessWidget {
                           context, ResponsiveLayout.mainLettersSizeMobile),
                       controller: controller,
                       child: Text(
-                        'Vinicius',
+                        'Vinícius',
                         style: AppStyles.fontStyle(
                                 fontWeight: FontWeight.w900,
                                 fontSize: ResponsiveLayout.getResponsiveSize(
@@ -211,7 +212,7 @@ class FirstSectionMobile extends StatelessWidget {
                     child: Container(
                       padding: const EdgeInsets.only(right: 30.0),
                       child: Text(
-                        'Hi, I\'m Vinicius, an aspiring Flutter developer passionate about crafting seamless and engaging cross-platform applications. Eager to merge creativity with code, I strive to bring innovative solutions to life in the ever-evolving world of mobile development.',
+                        'Hi, I\'m Vinícius, an aspiring Flutter developer passionate about crafting seamless and engaging cross-platform applications. Eager to merge creativity with code, I strive to bring innovative solutions to life in the ever-evolving world of mobile development.',
                         style: TextStyle(
                             fontSize: ResponsiveLayout.getResponsiveSize(
                                 context,

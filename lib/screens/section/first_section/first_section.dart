@@ -89,8 +89,9 @@ class _FirstSectionState extends State<FirstSection>
 
 class FirstPageImage extends StatefulWidget {
   final double height;
-
-  const FirstPageImage({super.key, required this.height});
+  final BoxFit fit;
+  const FirstPageImage(
+      {super.key, required this.height, this.fit = BoxFit.contain});
 
   @override
   State<FirstPageImage> createState() => _FirstPageImageState();
@@ -124,7 +125,7 @@ class _FirstPageImageState extends State<FirstPageImage>
   Widget build(BuildContext context) {
     return Image(
       image: const AssetImage('assets/images/vini.png'),
-      fit: BoxFit.contain,
+      fit: widget.fit,
       alignment: Alignment.topRight,
       loadingBuilder: (context, child, loadingProgress) {
         if (loadingProgress == null) {
@@ -168,7 +169,9 @@ class _FirstPageImageState extends State<FirstPageImage>
 
 class SecondPageImage extends StatefulWidget {
   final double height;
-  const SecondPageImage({super.key, required this.height});
+  final BoxFit fit;
+  const SecondPageImage(
+      {super.key, required this.height, this.fit = BoxFit.contain});
 
   @override
   State<SecondPageImage> createState() => _SecondPageImageState();
@@ -202,7 +205,7 @@ class _SecondPageImageState extends State<SecondPageImage>
   Widget build(BuildContext context) {
     return Image(
       image: const AssetImage('images/fundo1.png'),
-      fit: BoxFit.fitHeight,
+      fit: widget.fit,
       alignment: Alignment.topRight,
       loadingBuilder: (context, child, loadingProgress) {
         if (loadingProgress == null) {

@@ -117,7 +117,7 @@ class FirstSectionTablet extends StatelessWidget {
                               ResponsiveLayout.mainLettersSizeTablet + 10),
                           controller: controller,
                           child: Text(
-                            'Vinicius',
+                            'Vinícius',
                             style: AppStyles.fontStyle(
                                     fontWeight: FontWeight.w900,
                                     fontSize:
@@ -218,7 +218,7 @@ class FirstSectionTablet extends StatelessWidget {
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: AutoSizeText(
-                                'Hi, I\'m Vinicius, an aspiring Flutter developer passionate about crafting seamless and engaging cross-platform applications. Eager to merge creativity with code, I strive to bring innovative solutions to life in the ever-evolving world of mobile development.',
+                                'Hi, I\'m Vinícius, an aspiring Flutter developer passionate about crafting seamless and engaging cross-platform applications. Eager to merge creativity with code, I strive to bring innovative solutions to life in the ever-evolving world of mobile development.',
                                 style: AppStyles.fontStyle(
                                     fontSize:
                                         ResponsiveLayout.getResponsiveSize(
