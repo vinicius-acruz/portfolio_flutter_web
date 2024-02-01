@@ -107,7 +107,7 @@ class _ThirdSectionState extends State<ThirdSection>
                         index: projects.indexOf(project),
                         secondSectionHeight: widget.secondSectionHeight,
                       ),
-                      tabletLayout: ProjectCardTablet(
+                      tabletLayout: ProjectCardWeb(
                         project: project,
                         index: projects.indexOf(project),
                         secondSectionHeight: widget.secondSectionHeight,

@@ -8,13 +8,11 @@ import 'modals/scroll_offset.dart';
 import 'dart:async'; // Import this for async operations
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({super.key});
-
-  bool debugOn = false;
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,12 +23,8 @@ class MyApp extends StatelessWidget {
       ),
       home: BlocProvider(
           create: (_) => DisplayOffset(ScrollOffset(scrollOffsetValue: 0)),
-          child: debugOn
-              ? (const Scaffold(
-                  backgroundColor: Colors.white,
-                  body: WholePage(),
-                ))
-              : const LoadingScreen()), // Disable loading screen when on testing mode
+          child:
+              const LoadingScreen()), // Disable loading screen when on testing mode
     );
   }
 }
@@ -39,14 +33,18 @@ class LoadingScreen extends StatefulWidget {
   const LoadingScreen({super.key});
 
   @override
-  _LoadingScreenState createState() => _LoadingScreenState();
+  LoadingScreenState createState() => LoadingScreenState();
 }
 
-class _LoadingScreenState extends State<LoadingScreen>
+class LoadingScreenState extends State<LoadingScreen>
     with TickerProviderStateMixin {
   double loadingProgress = 0;
   late Future<void> _loadingFuture;
   late AnimationController _animationController;
+
+  BuildContext getContext() {
+    return context;
+  }
 
   Future<void> loadImages(BuildContext context) async {
     final List<AssetImage> images = preCacheImages;
@@ -54,7 +52,7 @@ class _LoadingScreenState extends State<LoadingScreen>
     int imagesLoaded = 0;
 
     for (var image in images) {
-      await precacheImage(image, context);
+      await precacheImage(image, getContext());
       await Future.delayed(const Duration(milliseconds: 100)); // Small delay
       imagesLoaded++;
       double newProgress = (imagesLoaded / totalImages);
@@ -91,7 +89,7 @@ class _LoadingScreenState extends State<LoadingScreen>
   Widget build(BuildContext context) {
     return FutureBuilder(
       future: _loadingFuture
-          .then((_) => Future.delayed(Duration(milliseconds: 100))),
+          .then((_) => Future.delayed(const Duration(milliseconds: 100))),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           return const Scaffold(
