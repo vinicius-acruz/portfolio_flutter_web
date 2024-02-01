@@ -25,18 +25,24 @@ class FirstSectionMobile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
     double positionAdjustment = 0;
 
     // function to calculate responsive size
 
-    return SizedBox(
-      height: MediaQuery.of(context).size.height,
-      width: MediaQuery.of(context).size.width,
+    return Center(
       child: Stack(
         children: [
-          SecondPageImage(
-            height: MediaQuery.of(context).size.height * 0.75,
-            fit: BoxFit.cover,
+          Positioned.fill(
+            right: ResponsiveLayout.getResponsiveSize(context, -130.0),
+            child: SizedBox(
+              height: screenHeight,
+              width: screenWidth,
+              child: SecondPageImage(
+                height: screenHeight * 0.75,
+                fit: BoxFit.cover,
+              ),
+            ),
           ),
           Positioned(
             left: 50.0,
@@ -47,15 +53,22 @@ class FirstSectionMobile extends StatelessWidget {
                 height: ResponsiveLayout.getResponsiveSize(
                     context, ResponsiveLayout.mobileStripesSize),
                 child: Image.asset(
-                  'images/listras_mobile.png',
+                  'assets/images/listras_mobile.png',
                   fit: BoxFit.cover,
                 ),
               ),
             ),
           ),
-          FirstPageImage(
-            height: MediaQuery.of(context).size.height * 0.75,
-            fit: BoxFit.cover,
+          Positioned.fill(
+            right: ResponsiveLayout.getResponsiveSize(context, -130.0),
+            child: SizedBox(
+              height: screenHeight,
+              width: screenWidth,
+              child: FirstPageImage(
+                height: screenHeight * 0.75,
+                fit: BoxFit.cover,
+              ),
+            ),
           ),
 
           // Page Content

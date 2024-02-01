@@ -204,7 +204,7 @@ class _SecondPageImageState extends State<SecondPageImage>
   @override
   Widget build(BuildContext context) {
     return Image(
-      image: const AssetImage('images/fundo1.png'),
+      image: const AssetImage('assets/images/fundo1.png'),
       fit: widget.fit,
       alignment: Alignment.topRight,
       loadingBuilder: (context, child, loadingProgress) {

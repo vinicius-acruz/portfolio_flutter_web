@@ -14,7 +14,7 @@ void main() {
 class MyApp extends StatelessWidget {
   MyApp({super.key});
 
-  bool debugOn = true;
+  bool debugOn = false;
 
   @override
   Widget build(BuildContext context) {
