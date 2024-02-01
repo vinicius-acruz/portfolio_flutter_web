@@ -38,7 +38,7 @@ class FirstSectionWeb extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: screenHeight * 0.9,
+            height: screenHeight * 0.95,
             width: double.infinity,
             child: SizeTransition(
               sizeFactor: patternAnimation,

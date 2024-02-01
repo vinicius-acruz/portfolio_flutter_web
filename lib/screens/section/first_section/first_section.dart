@@ -50,9 +50,16 @@ class _FirstSectionState extends State<FirstSection>
             curve: const Interval(0, 1, curve: Curves.easeOut)));
 
     super.initState();
-    Future.delayed(const Duration(milliseconds: 800), () {
+    Future.delayed(const Duration(milliseconds: 500), () {
       controller.forward();
     });
+  }
+
+  // dispose the controller
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -104,6 +111,13 @@ class _FirstPageImageState extends State<FirstPageImage>
         .animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
 
     super.initState();
+  }
+
+  // dispose the controller
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -175,6 +189,13 @@ class _SecondPageImageState extends State<SecondPageImage>
         .animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
 
     super.initState();
+  }
+
+  // dispose the controller
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   @override

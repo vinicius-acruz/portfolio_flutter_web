@@ -47,16 +47,17 @@ class _LoadingScreenState extends State<LoadingScreen>
     int imagesLoaded = 0;
 
     for (var image in images) {
-      await precacheImage(image, context).then((_) {
-        imagesLoaded++;
-        double newProgress = (imagesLoaded / totalImages);
+      await precacheImage(image, context);
+      await Future.delayed(const Duration(milliseconds: 100)); // Small delay
+      imagesLoaded++;
+      double newProgress = (imagesLoaded / totalImages);
 
-        _animationController.animateTo(
-          newProgress,
-          duration: const Duration(milliseconds: 500),
-          curve: Curves.easeOut,
-        );
-      });
+      _animationController.animateTo(
+        newProgress,
+        duration:
+            const Duration(milliseconds: 300), // Longer duration for smoothness
+        curve: Curves.easeOut,
+      );
     }
   }
 

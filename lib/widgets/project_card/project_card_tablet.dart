@@ -70,6 +70,13 @@ class _ProjectCardTabletState extends State<ProjectCardTablet>
     }
   }
 
+  // dispose the controller
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final lineIndex = ResponsiveLayout.getWidgetIndex(context,
@@ -194,11 +201,5 @@ class _ProjectCardTabletState extends State<ProjectCardTablet>
             );
           });
     });
-  }
-
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
   }
 }

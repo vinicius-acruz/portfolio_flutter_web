@@ -36,6 +36,13 @@ class _SecondSectionState extends State<SecondSection>
     super.initState();
   }
 
+  // dispose the controller
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     startRange = MediaQuery.of(context).size.height;

@@ -38,6 +38,13 @@ class _ProjectCardWebState extends State<ProjectCardWeb>
     super.initState();
   }
 
+  // dispose the controller
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
 //call the responsive layout method to get the index of projects in same line

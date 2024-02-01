@@ -74,6 +74,12 @@ class _ProjectCardMobileState extends State<ProjectCardMobile>
   }
 
   @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final startRange = widget.secondSectionHeight + 200 + widget.index * 600;
 
@@ -175,11 +181,5 @@ class _ProjectCardMobileState extends State<ProjectCardMobile>
             );
           });
     });
-  }
-
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
   }
 }
