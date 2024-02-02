@@ -9,7 +9,7 @@ import 'modals/scroll_offset.dart';
 import 'dart:async'; // Import this for async operations
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -56,23 +56,14 @@ class _LoadingScreenState extends State<LoadingScreen> {
 
     for (var image in images) {
       await precacheImage(image, context);
-      await Future.delayed(const Duration(milliseconds: 100)); // Small delay
+      await Future.delayed(const Duration(
+          milliseconds: 100)); // Small delay to a more smooth transition
       imagesLoaded++;
       loadingProgress = (imagesLoaded / totalImages) * 100;
       setState(() {
         print('Loading progress: $loadingProgress%');
       });
     }
-  }
-
-  TweenAnimationBuilder<double> _buildCircularProgressIndicator() {
-    return TweenAnimationBuilder(
-      tween: Tween<double>(begin: 0, end: loadingProgress),
-      duration: const Duration(milliseconds: 200),
-      builder: (context, progress, child) {
-        return AnimatedProgressBubbles(progressValue: progress);
-      },
-    );
   }
 
   @override
@@ -102,9 +93,13 @@ class _LoadingScreenState extends State<LoadingScreen> {
                 children: [
                   AnimatedProgressBubbles(
                     progressValue: loadingProgress,
+                    progressColor: const Color.fromRGBO(26, 50, 99, 1.0),
+                    progressBackgroundColor:
+                        const Color.fromRGBO(175, 169, 150, 1.0),
+                    particleColor: const Color.fromRGBO(241, 104, 33, 1.0),
+                    progressStrokeWidth: 40,
                   ),
                   const SizedBox(height: 20),
-                  Text('${loadingProgress.toStringAsFixed(0)}% Loaded'),
                 ],
               ),
             ),

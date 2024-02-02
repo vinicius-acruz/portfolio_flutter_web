@@ -13,6 +13,8 @@ class AnimatedProgressBubbles extends StatelessWidget {
   final Duration animationDuration;
   final Duration particleAnimationDuration;
   final double progressValue;
+  final double progressStrokeWidth;
+  final bool displayPercentage;
 
   const AnimatedProgressBubbles({
     super.key,
@@ -25,6 +27,8 @@ class AnimatedProgressBubbles extends StatelessWidget {
     this.backgroundColor = Colors.transparent,
     this.animationDuration = const Duration(seconds: 5),
     this.particleAnimationDuration = const Duration(milliseconds: 1700),
+    this.progressStrokeWidth = 30.0,
+    this.displayPercentage = false,
     required this.progressValue,
   });
 
@@ -39,7 +43,9 @@ class AnimatedProgressBubbles extends StatelessWidget {
         children: [
           TweenAnimationBuilder<double>(
             tween: Tween<double>(begin: 0, end: progressValue),
-            duration: const Duration(milliseconds: 200),
+            duration: const Duration(
+                milliseconds:
+                    200), // adjust here to change the speed that the animation will follow progress
             builder: (context, progress, child) {
               return Padding(
                 padding: const EdgeInsets.all(10.0),
@@ -47,6 +53,8 @@ class AnimatedProgressBubbles extends StatelessWidget {
                   progressColor: progressColor,
                   progressBackgroundColor: progressBackgroundColor,
                   progressValue: progress,
+                  progressStrokeWidth: progressStrokeWidth,
+                  displayPercentage: displayPercentage,
                 ),
               );
             },
@@ -70,6 +78,7 @@ class CircularProgressIndicatorCustom extends StatelessWidget {
   final Color progressBackgroundColor;
   final double progressValue; // Value from 0 to 100
   final bool displayPercentage;
+  final double progressStrokeWidth;
 
   const CircularProgressIndicatorCustom({
     super.key,
@@ -77,6 +86,7 @@ class CircularProgressIndicatorCustom extends StatelessWidget {
     this.progressBackgroundColor = Colors.grey,
     required this.progressValue, // Required value
     this.displayPercentage = false,
+    this.progressStrokeWidth = 30.0,
   });
 
   @override
@@ -86,6 +96,7 @@ class CircularProgressIndicatorCustom extends StatelessWidget {
         progress: progressValue / 100, // Convert to a fraction
         progressColor: progressColor,
         progressBackgroundColor: progressBackgroundColor,
+        strokeWidth: progressStrokeWidth,
       ),
       child: Container(
         color: Colors.transparent,
@@ -109,16 +120,17 @@ class CircularProgressPainter extends CustomPainter {
   final double progress;
   final Color progressColor;
   final Color progressBackgroundColor;
+  final double strokeWidth;
 
   CircularProgressPainter({
     required this.progress,
     this.progressColor = Colors.blue,
     this.progressBackgroundColor = Colors.grey,
+    this.strokeWidth = 30.0,
   });
 
   @override
   void paint(Canvas canvas, Size size) {
-    double strokeWidth = 30;
     Offset center = Offset(size.width / 2, size.height / 2);
     double radius = size.width / 2 - strokeWidth / 2;
     double backgroundRadius = radius + strokeWidth / 2;
