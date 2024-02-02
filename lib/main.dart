@@ -14,7 +14,7 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  final bool debugOn = true;
+  final bool debugOn = false; // Set to true to disable loading screen
 
   @override
   Widget build(BuildContext context) {

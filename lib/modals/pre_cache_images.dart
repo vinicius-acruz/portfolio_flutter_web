@@ -4,9 +4,6 @@ import 'package:flutter/material.dart';
 List<AssetImage> preCacheImages = [
   const AssetImage('assets/images/projects/project1/caption_fetcher_frame.gif'),
   const AssetImage('assets/images/projects/project1/project1_1.png'),
-
-  const AssetImage('assets/images/projects/project1/project1_animation.gif'),
-
   const AssetImage('assets/images/projects/project2/chat_me_frame.gif'),
   const AssetImage('assets/images/projects/project2/chat_me_image.png'),
   const AssetImage('assets/images/projects/project3/2do_frame.gif'),
@@ -16,7 +13,6 @@ List<AssetImage> preCacheImages = [
   const AssetImage('assets/images/projects/project5/pixel_adventure_frame.gif'),
   const AssetImage('assets/images/projects/project5/pixel_adventure_image.png'),
   const AssetImage('assets/images/projects/project_frame.png'),
-  const AssetImage('assets/images/3itens.png'),
   const AssetImage('assets/images/fundo1.png'),
   const AssetImage('assets/images/listras_mobile.png'),
   const AssetImage('assets/images/listraswide.png'),
