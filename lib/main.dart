@@ -4,6 +4,7 @@ import 'package:lottie/lottie.dart';
 import 'package:portfolio_flutter_web/constants/style.dart';
 import 'package:portfolio_flutter_web/modals/pre_cache_images.dart';
 import 'package:portfolio_flutter_web/screens/whole_page.dart';
+import 'package:portfolio_flutter_web/widgets/animated_progress_bubbes.dart';
 import 'modals/scroll_offset.dart';
 import 'dart:async'; // Import this for async operations
 
@@ -42,14 +43,14 @@ class LoadingScreen extends StatefulWidget {
   _LoadingScreenState createState() => _LoadingScreenState();
 }
 
-class _LoadingScreenState extends State<LoadingScreen>
-    with TickerProviderStateMixin {
+class _LoadingScreenState extends State<LoadingScreen> {
   double loadingProgress = 0;
   late Future<void> _loadingFuture;
-  late AnimationController _animationController;
 
   Future<void> loadImages(BuildContext context) async {
+    // List of your image assets
     final List<AssetImage> images = preCacheImages;
+
     int totalImages = images.length;
     int imagesLoaded = 0;
 
@@ -57,22 +58,21 @@ class _LoadingScreenState extends State<LoadingScreen>
       await precacheImage(image, context);
       await Future.delayed(const Duration(milliseconds: 100)); // Small delay
       imagesLoaded++;
-      double newProgress = (imagesLoaded / totalImages);
-
-      _animationController.animateTo(
-        newProgress,
-        duration:
-            const Duration(milliseconds: 300), // Longer duration for smoothness
-        curve: Curves.easeOut,
-      );
+      loadingProgress = (imagesLoaded / totalImages) * 100;
+      setState(() {
+        print('Loading progress: $loadingProgress%');
+      });
     }
   }
 
-  @override
-  void initState() {
-    super.initState();
-    _animationController = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 500));
+  TweenAnimationBuilder<double> _buildCircularProgressIndicator() {
+    return TweenAnimationBuilder(
+      tween: Tween<double>(begin: 0, end: loadingProgress),
+      duration: const Duration(milliseconds: 200),
+      builder: (context, progress, child) {
+        return AnimatedProgressBubbles(progressValue: progress);
+      },
+    );
   }
 
   @override
@@ -82,37 +82,29 @@ class _LoadingScreenState extends State<LoadingScreen>
   } // loadImages is called in didChangeDependencies to ensure that it has access to the complete BuildContext.
 
   @override
-  void dispose() {
-    _animationController.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: _loadingFuture
-          .then((_) => Future.delayed(Duration(milliseconds: 100))),
+      future: _loadingFuture,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
+          // When the loading is done, navigate to the main page
           return const Scaffold(
-            backgroundColor: Colors.white,
+            backgroundColor: AppStyles.backgroundColor,
             body: WholePage(),
           );
         } else {
+          // While loading, show a loading spinner and progress percentage
           return Scaffold(
             backgroundColor: AppStyles.backgroundColor,
             body: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Lottie.asset(
-                    'assets/images/loading_animation.json', // Path to your Lottie file
-                    controller: _animationController,
-                    frameRate: FrameRate.max,
-                    repeat: false,
-                    reverse: false,
-                    // ... other Lottie parameters
+                  AnimatedProgressBubbles(
+                    progressValue: loadingProgress,
                   ),
+                  const SizedBox(height: 20),
+                  Text('${loadingProgress.toStringAsFixed(0)}% Loaded'),
                 ],
               ),
             ),
