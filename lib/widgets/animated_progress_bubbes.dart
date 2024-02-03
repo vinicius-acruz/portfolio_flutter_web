@@ -1,4 +1,5 @@
 import 'dart:math' as math;
+import 'dart:math';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 
@@ -45,7 +46,7 @@ class AnimatedProgressBubbles extends StatelessWidget {
             tween: Tween<double>(begin: 0, end: progressValue),
             duration: const Duration(
                 milliseconds:
-                    200), // adjust here to change the speed that the animation will follow progress
+                    400), // adjust here to change the speed that the animation will follow progress
             builder: (context, progress, child) {
               return Padding(
                 padding: const EdgeInsets.all(10.0),
@@ -60,8 +61,8 @@ class AnimatedProgressBubbles extends StatelessWidget {
             },
           ),
           MovingCircle(
-            ellipseWidth: size * 0.6,
-            ellipseHeight: size * 0.3,
+            ellipseWidth: size * 0.30,
+            ellipseHeight: size * 0.2,
             particleSize: particleSize,
             particlesNumber: particlesNumber,
             particleColor: particleColor,
@@ -162,12 +163,16 @@ class LottieLikeAnimation extends StatefulWidget {
   final double particleSize;
   final Color color;
   final Duration animationDuration;
+  final double animationBegin;
+  final double animationEnd;
 
   const LottieLikeAnimation({
     super.key,
     this.particleSize = 100,
     this.color = Colors.blue,
     this.animationDuration = const Duration(milliseconds: 1700),
+    this.animationBegin = 1.0,
+    this.animationEnd = 0.3,
   });
 
   @override
@@ -179,6 +184,8 @@ class _LottieLikeAnimationState extends State<LottieLikeAnimation>
   late AnimationController _controller;
   late Animation<double> _scaleAnimation;
   late Animation<double> _opacityAnimation;
+  late double animationBegin;
+  late double animationEnd;
 
   @override
   void initState() {
@@ -187,8 +194,13 @@ class _LottieLikeAnimationState extends State<LottieLikeAnimation>
       duration: widget.animationDuration,
       vsync: this,
     )..repeat(reverse: true);
+    animationBegin = widget.animationBegin;
 
-    _scaleAnimation = Tween<double>(begin: 1.0, end: 0.7).animate(
+    animationEnd = widget.animationEnd;
+    print('animationBegin: $animationBegin');
+    print('animationEnd: $animationEnd');
+    _scaleAnimation =
+        Tween<double>(begin: animationBegin, end: animationEnd).animate(
       CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
     );
 
@@ -238,7 +250,7 @@ class MovingCircle extends StatefulWidget {
 
   const MovingCircle({
     super.key,
-    this.ellipseWidth = 500,
+    this.ellipseWidth = 350,
     this.ellipseHeight = 200,
     this.particleSize = 100,
     this.particleColor = Colors.blue,
@@ -248,10 +260,10 @@ class MovingCircle extends StatefulWidget {
   });
 
   @override
-  _MovingCircleState createState() => _MovingCircleState();
+  MovingCircleState createState() => MovingCircleState();
 }
 
-class _MovingCircleState extends State<MovingCircle>
+class MovingCircleState extends State<MovingCircle>
     with TickerProviderStateMixin {
   final List<AnimationController> _controllers = [];
   final List<Path> _paths = [];
@@ -262,18 +274,22 @@ class _MovingCircleState extends State<MovingCircle>
     super.initState();
 
     for (int i = 0; i < widget.particlesNumber; i++) {
+      // function to change elipsis width, height and angulation
+
+      double angle = (i / widget.particlesNumber) * 2 * math.pi;
       int incrementA = 20;
-      int incrementB = 40;
+      int incrementB = 50;
       double ellipseWidth = i.isEven
-          ? widget.ellipseWidth - i * incrementA
-          : -widget.ellipseWidth + i * incrementB;
+          ? widget.ellipseWidth * math.cos(angle) - i * incrementA
+          : -widget.ellipseWidth * math.sin(angle) + i * incrementA;
       double ellipseHeight = i.isEven
-          ? widget.ellipseHeight + i * incrementA
-          : -widget.ellipseHeight - i * incrementB;
+          ? widget.ellipseHeight + i * incrementB
+          : -widget.ellipseHeight + i * incrementB;
 
       Path path = Path()
         ..addOval(Rect.fromCenter(
             center: widget.offset, width: ellipseWidth, height: ellipseHeight));
+
       _paths.add(path);
 
       final duration = const Duration(seconds: 4);
@@ -311,12 +327,19 @@ class _MovingCircleState extends State<MovingCircle>
                 .getTangentForOffset(pathMetric.length * progress)!
                 .position;
 
+            double animationBegin =
+                index.isEven ? 0.3 : 1.0; // Use index instead of [index]
+            double animationEnd =
+                index.isEven ? 1.0 : 0.3; // Use index instead of [index]
+
             return Transform.translate(
               offset: position,
               child: LottieLikeAnimation(
                 particleSize: widget.particleSize,
                 color: widget.particleColor,
                 animationDuration: widget.particleAnimationDuration,
+                animationBegin: animationBegin,
+                animationEnd: animationEnd,
               ),
             );
           },

@@ -1,5 +1,3 @@
-import 'dart:collection';
-
 import 'package:flutter/material.dart';
 import 'package:portfolio_flutter_web/constants/style.dart';
 import '../../../responsive/responsive_layout.dart';
@@ -26,7 +24,6 @@ class FirstSectionMobile extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
-    double positionAdjustment = 0;
 
     // function to calculate responsive size
 

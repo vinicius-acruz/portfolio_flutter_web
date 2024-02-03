@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lottie/lottie.dart';
+
 import 'package:portfolio_flutter_web/constants/style.dart';
 import 'package:portfolio_flutter_web/modals/pre_cache_images.dart';
+import 'package:portfolio_flutter_web/responsive/responsive_layout.dart';
 import 'package:portfolio_flutter_web/screens/whole_page.dart';
 import 'package:portfolio_flutter_web/widgets/animated_progress_bubbes.dart';
 import 'modals/scroll_offset.dart';
@@ -40,10 +41,10 @@ class LoadingScreen extends StatefulWidget {
   const LoadingScreen({super.key});
 
   @override
-  _LoadingScreenState createState() => _LoadingScreenState();
+  LoadingScreenState createState() => LoadingScreenState();
 }
 
-class _LoadingScreenState extends State<LoadingScreen> {
+class LoadingScreenState extends State<LoadingScreen> {
   double loadingProgress = 0;
   late Future<void> _loadingFuture;
 
@@ -56,13 +57,11 @@ class _LoadingScreenState extends State<LoadingScreen> {
 
     for (var image in images) {
       await precacheImage(image, context);
-      await Future.delayed(const Duration(
-          milliseconds: 100)); // Small delay to a more smooth transition
+      // await Future.delayed(const Duration(
+      //     milliseconds: 200)); // Small delay to a more smooth transition
       imagesLoaded++;
       loadingProgress = (imagesLoaded / totalImages) * 100;
-      setState(() {
-        print('Loading progress: $loadingProgress%');
-      });
+      setState(() {});
     }
   }
 
@@ -91,13 +90,37 @@ class _LoadingScreenState extends State<LoadingScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  AnimatedProgressBubbles(
-                    progressValue: loadingProgress,
-                    progressColor: const Color.fromRGBO(26, 50, 99, 1.0),
-                    progressBackgroundColor:
-                        const Color.fromRGBO(175, 169, 150, 1.0),
-                    particleColor: const Color.fromRGBO(241, 104, 33, 1.0),
-                    progressStrokeWidth: 40,
+                  ResponsiveLayout(
+                    mobileLayout: AnimatedProgressBubbles(
+                      size: 300,
+                      progressValue: loadingProgress,
+                      progressColor: const Color.fromRGBO(175, 169, 150, 1.0),
+                      progressBackgroundColor: Colors.white,
+                      particleColor: const Color.fromARGB(175, 169, 150, 103),
+                      progressStrokeWidth: 20,
+                      particleSize: 30,
+                      particlesNumber: 6,
+                    ),
+                    desktopLayout: AnimatedProgressBubbles(
+                      size: 400,
+                      progressValue: loadingProgress,
+                      progressColor: const Color.fromRGBO(175, 169, 150, 1.0),
+                      progressBackgroundColor: Colors.white,
+                      particleColor: const Color.fromARGB(175, 169, 150, 103),
+                      progressStrokeWidth: 30,
+                      particleSize: 60,
+                      particlesNumber: 6,
+                    ),
+                    tabletLayout: AnimatedProgressBubbles(
+                      size: 600,
+                      progressValue: loadingProgress,
+                      progressColor: const Color.fromRGBO(175, 169, 150, 1.0),
+                      progressBackgroundColor: Colors.white,
+                      particleColor: const Color.fromARGB(175, 169, 150, 103),
+                      progressStrokeWidth: 30,
+                      particleSize: 65,
+                      particlesNumber: 6,
+                    ),
                   ),
                   const SizedBox(height: 20),
                 ],

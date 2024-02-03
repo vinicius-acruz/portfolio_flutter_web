@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../modals/scroll_offset.dart';
-
 class ResponsiveLayout extends StatelessWidget {
   final Widget mobileLayout;
   final Widget tabletLayout;
