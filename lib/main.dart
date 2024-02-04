@@ -50,7 +50,13 @@ class LoadingScreenState extends State<LoadingScreen> {
 
   Future<void> loadImages(BuildContext context) async {
     // List of your image assets
-    final List<AssetImage> images = preCacheImages;
+    final List<AssetImage> assetImages = preCacheImages;
+    final List<NetworkImage> networkImages = preCacheNetworkImages;
+
+    final List<ImageProvider> images = <ImageProvider>[]
+      ..addAll(assetImages)
+      ..addAll(networkImages);
+    print(images);
 
     int totalImages = images.length;
     int imagesLoaded = 0;
@@ -74,7 +80,9 @@ class LoadingScreenState extends State<LoadingScreen> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: _loadingFuture,
+      future: _loadingFuture.then((_) => Future.delayed(const Duration(
+          milliseconds:
+              400))), // Delay added to smoothen the final progress circle animation
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           // When the loading is done, navigate to the main page

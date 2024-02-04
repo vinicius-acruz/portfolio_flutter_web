@@ -1,7 +1,4 @@
-enum ProjectOrientation {
-  vertical,
-  horizontal,
-}
+enum ProjectOrientation { vertical, horizontal, ipadHorizontal }
 
 class Project {
   final String title;
@@ -32,6 +29,7 @@ List<Project> projects = [
     index: 1,
     orientation: ProjectOrientation.vertical,
   ),
+
   Project(
     title: 'Chat.Me',
     description:
@@ -66,18 +64,18 @@ List<Project> projects = [
     imageUrl1: 'assets/images/projects/project5/pixel_adventure_image.png',
     projectAnimation:
         'assets/images/projects/project5/pixel_adventure_frame.gif',
-    index: 4,
+    index: 5,
     orientation: ProjectOrientation.horizontal,
   ),
   Project(
-    title: 'Pixel Adventure',
+    title: 'Bakery Website',
     description:
         'A fun and addictive game built using the Flame game engine. It features stunning graphics, smooth animations, and challenging gameplay. Test your skills!',
-    imageUrl1: 'assets/images/projects/project5/pixel_adventure_image.png',
+    imageUrl1: 'assets/images/projects/project6/bakery_website_frame.gif',
     projectAnimation:
-        'assets/images/projects/project5/pixel_adventure_frame.gif',
-    index: 4,
-    orientation: ProjectOrientation.horizontal,
+        'assets/images/projects/project6/bakery_website_frame.gif',
+    index: 6,
+    orientation: ProjectOrientation.ipadHorizontal,
   ),
   // Add more projects as needed
 ];

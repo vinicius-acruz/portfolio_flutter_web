@@ -20,3 +20,9 @@ List<AssetImage> preCacheImages = [
 
   // Add more images here as needed
 ];
+
+List<NetworkImage> preCacheNetworkImages = [
+  const NetworkImage('https://i.imgur.com/R3eQQpG.gif'),
+
+  // Add more images here as needed
+];

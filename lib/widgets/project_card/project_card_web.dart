@@ -25,7 +25,7 @@ class _ProjectCardWebState extends State<ProjectCardWeb>
     with TickerProviderStateMixin {
   late AnimationController controller;
   late Animation<double> animation;
-  double projectCardHeight = 680.0;
+  double projectCardHeight = 650.0;
   double projectCardWidth = 500.0;
 
   @override
@@ -82,7 +82,9 @@ class _ProjectCardWebState extends State<ProjectCardWeb>
               ),
               child: widget.project.orientation == ProjectOrientation.vertical
                   ? buildVerticalLayout()
-                  : buildHorizontalLayout(),
+                  : widget.project.orientation == ProjectOrientation.horizontal
+                      ? buildHorizontalLayout()
+                      : buildIpadLayout(),
             );
           });
     });
@@ -223,6 +225,45 @@ class _ProjectCardWebState extends State<ProjectCardWeb>
                       ),
                     ),
                   ],
+                ),
+              ),
+            ],
+          ),
+        ),
+        buildProjectInfo(),
+      ],
+    );
+  }
+
+  Widget buildIpadLayout() {
+    // Existing design for ipad projects
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Expanded(
+          flex: 2,
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(1.0),
+                child: Image.asset(
+                  widget.project.projectAnimation,
+                  fit: BoxFit.cover,
+                  scale: 0.4,
+                ),
+              ),
+              Align(
+                alignment: Alignment(
+                  widget.project.index % 2 == 1
+                      ? 1.0
+                      : -1.0, //Animation alignment
+                  1.0,
+                ),
+                child: Container(
+                  width: animation.value,
+                  color: AppStyles.backgroundColor,
                 ),
               ),
             ],
