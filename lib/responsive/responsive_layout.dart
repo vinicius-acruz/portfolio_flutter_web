@@ -66,17 +66,17 @@ class ResponsiveLayout extends StatelessWidget {
 
 //Desktop
   static const double mainLettersSizeDesktop = 45.0;
-  static const double occupationLettersSizeDesktop = 20.0;
-  static const double normalLettersSizeDesktop = 12.0;
-  static const double cardTitleLettersSizeDesktop = 18.0;
-  static const double bottomSheetLetterSizeDesktop = 10.0;
+  static const double occupationLettersSizeDesktop = 26.0;
+  static const double normalLettersSizeDesktop = 15.0;
+  static const double cardTitleLettersSizeDesktop = 24.0;
+  static const double bottomSheetLetterSizeDesktop = 16.0;
 
 //Tablet
-  static const double mainLettersSizeTablet = 35.0;
-  static const double occupationLettersSizeTablet = 22.0;
-  static const double normalLettersSizeTablet = 12.0;
-  static const double cardTitleLettersSizeTablet = 15.0;
-  static const double bottomSheetLetterSizeTablet = 24.0;
+  static const double mainLettersSizeTablet = 38.0;
+  static const double occupationLettersSizeTablet = 25.0;
+  static const double normalLettersSizeTablet = 15.0;
+  static const double cardTitleLettersSizeTablet = 18.0;
+  static const double bottomSheetLetterSizeTablet = 27.0;
 
 //Mobile
   static const double mainLettersSizeMobile = 40.0;
@@ -120,8 +120,8 @@ class ResponsiveLayout extends StatelessWidget {
 
   //Desktop
 
-  static const double projectCardHeightDesktop = 1200.0;
-  static const double projectCardWidthDesktop = 900.0;
+  static const double projectCardHeightDesktop = 900.0;
+  static const double projectCardWidthDesktop = 800.0;
 
 // Create method to calculate second section height
   static double secondSectionHeight(BuildContext context,

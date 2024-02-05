@@ -84,20 +84,15 @@ class FirstSectionWeb extends StatelessWidget {
                               TextReveal(
                                 textOpacityAnimation: textOpacityAnimation,
                                 textRevealAnimation: textRevealAnimation,
-                                maxHeight: ResponsiveLayout.getResponsiveSize(
-                                    context,
-                                    ResponsiveLayout.mainLettersSizeDesktop -
-                                        5),
+                                maxHeight:
+                                    ResponsiveLayout.mainLettersSizeDesktop - 5,
                                 controller: controller,
                                 child: AutoSizeText(
                                   'Hello,',
                                   style: AppStyles.fontStyle(
                                     fontWeight: FontWeight.w900,
                                     fontSize:
-                                        ResponsiveLayout.getResponsiveSize(
-                                            context,
-                                            ResponsiveLayout
-                                                .mainLettersSizeDesktop),
+                                        ResponsiveLayout.mainLettersSizeDesktop,
                                     color: AppStyles.bigLettersColor,
                                   ),
                                 ),
@@ -107,22 +102,16 @@ class FirstSectionWeb extends StatelessWidget {
                                   TextReveal(
                                     textOpacityAnimation: textOpacityAnimation,
                                     textRevealAnimation: textRevealAnimation,
-                                    maxHeight:
-                                        ResponsiveLayout.getResponsiveSize(
-                                            context,
-                                            ResponsiveLayout
-                                                    .mainLettersSizeDesktop -
-                                                10),
+                                    maxHeight: ResponsiveLayout
+                                            .mainLettersSizeDesktop -
+                                        10,
                                     controller: controller,
                                     child: AutoSizeText(
                                       "I'm ",
                                       style: AppStyles.fontStyle(
                                         fontWeight: FontWeight.w900,
-                                        fontSize:
-                                            ResponsiveLayout.getResponsiveSize(
-                                                context,
-                                                ResponsiveLayout
-                                                    .mainLettersSizeDesktop),
+                                        fontSize: ResponsiveLayout
+                                            .mainLettersSizeDesktop,
                                         color: AppStyles.bigLettersColor,
                                       ).copyWith(
                                           shadows: [
@@ -140,22 +129,16 @@ class FirstSectionWeb extends StatelessWidget {
                                   TextReveal(
                                     textOpacityAnimation: textOpacityAnimation,
                                     textRevealAnimation: textRevealAnimation,
-                                    maxHeight:
-                                        ResponsiveLayout.getResponsiveSize(
-                                            context,
-                                            ResponsiveLayout
-                                                    .mainLettersSizeDesktop -
-                                                10),
+                                    maxHeight: ResponsiveLayout
+                                            .mainLettersSizeDesktop -
+                                        10,
                                     controller: controller,
                                     child: AutoSizeText(
                                       'Vinícius',
                                       style: AppStyles.fontStyle(
                                               fontWeight: FontWeight.w900,
                                               fontSize: ResponsiveLayout
-                                                  .getResponsiveSize(
-                                                      context,
-                                                      ResponsiveLayout
-                                                          .mainLettersSizeDesktop),
+                                                  .mainLettersSizeDesktop,
                                               color: AppStyles.bigLettersColor)
                                           .copyWith(
                                               shadows: [
@@ -177,20 +160,15 @@ class FirstSectionWeb extends StatelessWidget {
                               TextReveal(
                                 textOpacityAnimation: textOpacityAnimation,
                                 textRevealAnimation: textRevealAnimation,
-                                maxHeight: ResponsiveLayout.getResponsiveSize(
-                                    context,
-                                    ResponsiveLayout
-                                            .occupationLettersSizeDesktop -
-                                        5),
+                                maxHeight: ResponsiveLayout
+                                        .occupationLettersSizeDesktop -
+                                    5,
                                 controller: controller,
                                 child: AutoSizeText(
                                   'Flutter Developer',
                                   style: AppStyles.fontStyle(
-                                      fontSize:
-                                          ResponsiveLayout.getResponsiveSize(
-                                              context,
-                                              ResponsiveLayout
-                                                  .occupationLettersSizeDesktop),
+                                      fontSize: ResponsiveLayout
+                                          .occupationLettersSizeDesktop,
                                       color: AppStyles.occupationLetterColor),
                                 ),
                               ),
@@ -226,11 +204,8 @@ class FirstSectionWeb extends StatelessWidget {
                                             color: AppStyles
                                                 .reachButtonLettersColor,
                                             fontSize: ResponsiveLayout
-                                                .getResponsiveSize(
-                                                    context,
-                                                    ResponsiveLayout
-                                                            .cardTitleLettersSizeDesktop -
-                                                        10),
+                                                    .cardTitleLettersSizeDesktop -
+                                                10,
                                           ),
                                         ),
                                         const SizedBox(
@@ -246,7 +221,7 @@ class FirstSectionWeb extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 20.0,
                               ),
                               SizedBox(
@@ -258,18 +233,14 @@ class FirstSectionWeb extends StatelessWidget {
                                 child: TextReveal(
                                   textOpacityAnimation: textOpacityAnimation,
                                   textRevealAnimation: textRevealAnimation,
-                                  maxHeight: ResponsiveLayout.getResponsiveSize(
-                                      context, 300.0),
+                                  maxHeight: 300.0,
                                   controller: controller,
                                   child: AutoSizeText(
                                     'Hi, I\'m Vinícius, an aspiring Flutter developer passionate about crafting seamless and engaging cross-platform applications. Eager to merge creativity with code, I strive to bring innovative solutions to life in the ever-evolving world of mobile development.',
                                     style: AppStyles.fontStyle(
-                                        fontSize:
-                                            ResponsiveLayout.getResponsiveSize(
-                                                context,
-                                                ResponsiveLayout
-                                                        .normalLettersSizeDesktop -
-                                                    5)),
+                                        fontSize: ResponsiveLayout
+                                                .normalLettersSizeDesktop -
+                                            5),
                                     textAlign: TextAlign.justify,
                                   ),
                                 ),
@@ -279,7 +250,7 @@ class FirstSectionWeb extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Expanded(
+                    const Expanded(
                       flex: 3,
                       child: SizedBox(),
                     ),

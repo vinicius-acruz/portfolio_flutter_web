@@ -25,8 +25,6 @@ class _ProjectCardWebState extends State<ProjectCardWeb>
     with TickerProviderStateMixin {
   late AnimationController controller;
   late Animation<double> animation;
-  double projectCardHeight = 650.0;
-  double projectCardWidth = 500.0;
 
   @override
   void initState() {
@@ -52,8 +50,9 @@ class _ProjectCardWebState extends State<ProjectCardWeb>
         projectWidth: ResponsiveLayout.getResponsiveCard(
             context, ResponsiveLayout.projectCardWidthDesktop));
 
-    final startRange =
-        widget.secondSectionHeight + 150 + lineIndex * projectCardHeight;
+    final startRange = widget.secondSectionHeight +
+        150 +
+        lineIndex * ResponsiveLayout.projectCardHeightDesktop;
 
     return BlocBuilder<DisplayOffset, ScrollOffset>(
         buildWhen: (previous, current) {
