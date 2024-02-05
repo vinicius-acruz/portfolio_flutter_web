@@ -68,25 +68,19 @@ class _ThirdSectionState extends State<ThirdSection>
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             TextReveal(
-              maxHeight: ResponsiveLayout.getResponsiveSize(
-                  context,
-                  (ResponsiveLayout.buildWidgetValue(context,
-                      mobileValue: ResponsiveLayout.mainLettersSizeMobile + 10,
-                      tabletValue: ResponsiveLayout.mainLettersSizeTablet + 10,
-                      desktopValue:
-                          ResponsiveLayout.mainLettersSizeDesktop + 10))),
+              maxHeight: (ResponsiveLayout.buildWidgetValue(context,
+                  mobileValue: ResponsiveLayout.mainLettersSizeMobile + 10,
+                  tabletValue: ResponsiveLayout.mainLettersSizeTablet + 10,
+                  desktopValue: ResponsiveLayout.mainLettersSizeDesktop + 10)),
               controller: controller,
               child: Text(
                 'MY PROJECTS',
                 style: AppStyles.fontStyle(
                     fontWeight: FontWeight.w900,
-                    fontSize: ResponsiveLayout.getResponsiveSize(
-                        context,
-                        (ResponsiveLayout.buildWidgetValue(context,
-                            mobileValue: ResponsiveLayout.mainLettersSizeMobile,
-                            tabletValue: ResponsiveLayout.mainLettersSizeTablet,
-                            desktopValue:
-                                ResponsiveLayout.mainLettersSizeDesktop - 5))),
+                    fontSize: (ResponsiveLayout.buildWidgetValue(context,
+                        mobileValue: ResponsiveLayout.mainLettersSizeMobile,
+                        tabletValue: ResponsiveLayout.mainLettersSizeTablet,
+                        desktopValue: ResponsiveLayout.mainLettersSizeDesktop)),
                     color: AppStyles.bigLettersColor),
               ),
             ),

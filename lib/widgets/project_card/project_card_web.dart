@@ -47,13 +47,27 @@ class _ProjectCardWebState extends State<ProjectCardWeb>
   Widget build(BuildContext context) {
     final lineIndex = ResponsiveLayout.getWidgetIndex(context,
         index: widget.index,
-        projectWidth: ResponsiveLayout.getResponsiveCard(
-            context, ResponsiveLayout.projectCardWidthDesktop));
+        projectWidth: ResponsiveLayout.buildWidgetValue(context,
+            mobileValue: ResponsiveLayout.projectCardWidthMobile,
+            tabletValue: ResponsiveLayout.projectCardWidthTablet,
+            desktopValue: ResponsiveLayout.projectCardWidthDesktop));
 
-    final startRange = widget.secondSectionHeight +
+    final startRangeDesktop = widget.secondSectionHeight +
         150 +
-        lineIndex * ResponsiveLayout.projectCardHeightDesktop;
+        lineIndex *
+            ResponsiveLayout.buildWidgetValue(context,
+                mobileValue: ResponsiveLayout.projectCardHeightMobile,
+                tabletValue: ResponsiveLayout.projectCardHeightTablet,
+                desktopValue: ResponsiveLayout.projectCardHeightDesktop);
 
+    final startRangeMobile = widget.secondSectionHeight +
+        100 +
+        widget.index * ResponsiveLayout.projectCardHeightMobile;
+
+    final startRange = ResponsiveLayout.buildWidgetValue(context,
+        mobileValue: startRangeMobile,
+        tabletValue: startRangeDesktop,
+        desktopValue: startRangeDesktop);
     return BlocBuilder<DisplayOffset, ScrollOffset>(
         buildWhen: (previous, current) {
       if (current.scrollOffsetValue >= startRange) {
@@ -69,10 +83,14 @@ class _ProjectCardWebState extends State<ProjectCardWeb>
           animation: animation,
           builder: (context, child) {
             return Container(
-              height: ResponsiveLayout.getResponsiveCard(
-                  context, ResponsiveLayout.projectCardHeightDesktop),
-              width: ResponsiveLayout.getResponsiveCard(
-                  context, ResponsiveLayout.projectCardWidthDesktop),
+              height: ResponsiveLayout.buildWidgetValue(context,
+                  mobileValue: ResponsiveLayout.projectCardHeightMobile,
+                  tabletValue: ResponsiveLayout.projectCardHeightTablet,
+                  desktopValue: ResponsiveLayout.projectCardHeightDesktop),
+              width: ResponsiveLayout.buildWidgetValue(context,
+                  mobileValue: ResponsiveLayout.projectCardWidthMobile,
+                  tabletValue: ResponsiveLayout.projectCardWidthTablet,
+                  desktopValue: ResponsiveLayout.projectCardWidthDesktop),
               margin:
                   const EdgeInsets.symmetric(vertical: 15.0, horizontal: 5.0),
               decoration: BoxDecoration(
@@ -284,10 +302,11 @@ class _ProjectCardWebState extends State<ProjectCardWeb>
             child: Text(
               widget.project.title,
               style: AppStyles.fontStyle(
-                fontSize: ResponsiveLayout.getResponsiveSize(
-                  context,
-                  ResponsiveLayout.cardTitleLettersSizeDesktop,
-                ),
+                fontSize: (ResponsiveLayout.buildWidgetValue(context,
+                    mobileValue: ResponsiveLayout.cardTitleLettersSizeMobile,
+                    tabletValue: ResponsiveLayout.cardTitleLettersSizeTablet,
+                    desktopValue:
+                        ResponsiveLayout.cardTitleLettersSizeDesktop)),
                 fontWeight: FontWeight.w600,
               ),
             ),
@@ -298,10 +317,10 @@ class _ProjectCardWebState extends State<ProjectCardWeb>
             child: Text(
               widget.project.description,
               style: AppStyles.fontStyle(
-                fontSize: ResponsiveLayout.getResponsiveSize(
-                  context,
-                  ResponsiveLayout.normalLettersSizeDesktop,
-                ),
+                fontSize: (ResponsiveLayout.buildWidgetValue(context,
+                    mobileValue: ResponsiveLayout.normalLettersSizeMobile,
+                    tabletValue: ResponsiveLayout.normalLettersSizeTablet,
+                    desktopValue: ResponsiveLayout.normalLettersSizeDesktop)),
                 color: AppStyles.lettersColor,
               ),
               textAlign: TextAlign.justify,

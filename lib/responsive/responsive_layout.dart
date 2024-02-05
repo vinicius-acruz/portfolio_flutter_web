@@ -79,10 +79,10 @@ class ResponsiveLayout extends StatelessWidget {
   static const double bottomSheetLetterSizeTablet = 27.0;
 
 //Mobile
-  static const double mainLettersSizeMobile = 40.0;
-  static const double occupationLettersSizeMobile = 18.0;
-  static const double normalLettersSizeMobile = 13.0;
-  static const double cardTitleLettersSizeMobile = 15.0;
+  static const double mainLettersSizeMobile = 45.0;
+  static const double occupationLettersSizeMobile = 25.0;
+  static const double normalLettersSizeMobile = 16.0;
+  static const double cardTitleLettersSizeMobile = 20.0;
   static const double bottomSheetLetterSizeMobile = 23.0;
 
 // Second section skill card sizes
@@ -113,6 +113,12 @@ class ResponsiveLayout extends StatelessWidget {
   static const double wrapRunSpacing = 20.0;
 
   // Third section project card sizes
+
+//Mobile
+
+  static const double projectCardHeightMobile = 500.0;
+  static const double projectCardWidthMobile = 500.0;
+
   //Tablet
 
   static const double projectCardHeightTablet = 1100.0;

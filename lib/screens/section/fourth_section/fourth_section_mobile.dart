@@ -10,7 +10,7 @@ class FourthSectionMobile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 280.0,
+      height: 220.0,
       //margin: const EdgeInsets.all(10.0),
       decoration: const BoxDecoration(
         color: AppStyles.bottomSheetColor,
@@ -29,8 +29,7 @@ class FourthSectionMobile extends StatelessWidget {
               Text(
                 "Contact me",
                 style: AppStyles.fontStyle(
-                  fontSize: ResponsiveLayout.getResponsiveSize(context,
-                      ResponsiveLayout.bottomSheetLetterSizeMobile - 5),
+                  fontSize: ResponsiveLayout.bottomSheetLetterSizeMobile,
                   fontWeight: FontWeight.w500,
                   color: AppStyles.bottomLettersContactColor,
                 ),
@@ -40,8 +39,7 @@ class FourthSectionMobile extends StatelessWidget {
                 'Got a project?',
                 style: AppStyles.fontStyle(
                   fontWeight: FontWeight.w600,
-                  fontSize: ResponsiveLayout.getResponsiveSize(
-                      context, ResponsiveLayout.bottomSheetLetterSizeMobile),
+                  fontSize: ResponsiveLayout.bottomSheetLetterSizeMobile,
                   color: AppStyles.bottomLettersColor,
                 ),
               ),
@@ -49,15 +47,14 @@ class FourthSectionMobile extends StatelessWidget {
                 'Let\'s talk!',
                 style: AppStyles.fontStyle(
                   fontWeight: FontWeight.w600,
-                  fontSize: ResponsiveLayout.getResponsiveSize(
-                      context, ResponsiveLayout.bottomSheetLetterSizeMobile),
+                  fontSize: ResponsiveLayout.bottomSheetLetterSizeMobile,
                   color: AppStyles.bottomLettersColor,
                 ),
               ),
             ],
           ),
-          const SizedBox(height: 20.0),
-          Row(
+          const SizedBox(height: 5.0),
+          const Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               FaIcon(FontAwesomeIcons.envelopeCircleCheck,
@@ -66,8 +63,7 @@ class FourthSectionMobile extends StatelessWidget {
               Text(
                 "vinicius.a.cruz1@gmail.com",
                 style: TextStyle(
-                  fontSize: ResponsiveLayout.getResponsiveSize(
-                      context, ResponsiveLayout.normalLettersSizeMobile),
+                  fontSize: ResponsiveLayout.normalLettersSizeMobile,
                   fontWeight: FontWeight.bold,
                   color: AppStyles.bottomLettersColor,
                 ),

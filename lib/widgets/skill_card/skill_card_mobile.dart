@@ -115,8 +115,7 @@ class _SkillCardMobileState extends State<SkillCardMobile>
                 Text(
                   widget.skill.title,
                   style: AppStyles.fontStyle(
-                    fontSize: ResponsiveLayout.getResponsiveSize(
-                        context, ResponsiveLayout.cardTitleLettersSizeMobile),
+                    fontSize: ResponsiveLayout.cardTitleLettersSizeMobile,
                     fontWeight: FontWeight.bold,
                     color: AppStyles.skillLettersColor,
                   ),
@@ -137,9 +136,8 @@ class _SkillCardMobileState extends State<SkillCardMobile>
                   child: Text(
                     _isExpanded ? 'View less' : 'View more',
                     style: AppStyles.fontStyle(
-                            fontSize: ResponsiveLayout.getResponsiveSize(
-                                context,
-                                ResponsiveLayout.normalLettersSizeMobile - 3))
+                            fontSize:
+                                ResponsiveLayout.normalLettersSizeMobile - 3)
                         .copyWith(
                             shadows: [
                           const Shadow(
@@ -159,9 +157,7 @@ class _SkillCardMobileState extends State<SkillCardMobile>
                       child: Text(
                         widget.skill.description,
                         style: AppStyles.fontStyle(
-                            fontSize: ResponsiveLayout.getResponsiveSize(
-                                context,
-                                ResponsiveLayout.normalLettersSizeMobile),
+                            fontSize: ResponsiveLayout.normalLettersSizeMobile,
                             color: AppStyles.skillLettersColor),
                         textAlign: TextAlign.center,
                       ),
