@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio_flutter_web/responsive/responsive_layout.dart';
 import 'package:portfolio_flutter_web/screens/section/fourth_section/fourth_section_web.dart';
+import 'package:portfolio_flutter_web/widgets/stamp_animation.dart';
 import '../../../constants/style.dart';
 import '../../../widgets/text_reveal.dart';
 import 'first_section.dart';
@@ -57,7 +58,11 @@ class FirstSectionWeb extends StatelessWidget {
               child: FirstPageImage(
                 height: ResponsiveLayout.getResponsiveImage(context, 0.9),
               )),
-
+          Positioned(
+              top: 20,
+              left: -100,
+              child: const SizedBox(
+                  height: 250, child: const FlutterStampAnimation())),
           //Page Content
           Container(
             height: MediaQuery.of(context).size.height,
@@ -274,7 +279,7 @@ class FirstSectionWeb extends StatelessWidget {
                             ),
                           ),
                         ),
-                        SizedBox(),
+                        const SizedBox(),
                       ],
                     ),
                   ),

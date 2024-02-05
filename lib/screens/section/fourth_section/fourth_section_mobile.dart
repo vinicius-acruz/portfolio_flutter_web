@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:portfolio_flutter_web/constants/my_data.dart';
 import 'package:portfolio_flutter_web/responsive/responsive_layout.dart';
+import 'package:portfolio_flutter_web/widgets/social_links.dart';
 
 import '../../../constants/style.dart';
 
@@ -76,16 +78,10 @@ class FourthSectionMobile extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10.0)),
             padding: const EdgeInsets.all(10.0),
             margin: const EdgeInsets.only(left: 30.0, right: 30.0),
-            child: const Row(
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                FaIcon(FontAwesomeIcons.linkedin,
-                    size: 30.0, color: Colors.blue),
-                SizedBox(
-                  width: 60.0,
-                ),
-                FaIcon(FontAwesomeIcons.github,
-                    size: 30.0, color: Colors.black),
+                MySocialLinks(),
               ],
             ),
           ),

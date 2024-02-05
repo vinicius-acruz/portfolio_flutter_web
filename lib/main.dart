@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:lottie/lottie.dart';
 import 'package:portfolio_flutter_web/constants/style.dart';
 import 'package:portfolio_flutter_web/modals/pre_cache_images.dart';
-import 'package:portfolio_flutter_web/responsive/responsive_layout.dart';
 import 'package:portfolio_flutter_web/screens/whole_page.dart';
-import 'package:portfolio_flutter_web/widgets/animated_progress_bubbes.dart';
 import 'modals/scroll_offset.dart';
 import 'dart:async'; // Import this for async operations
 
@@ -16,7 +14,7 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  final bool debugOn = true; // Set to true to disable loading screen
+  final bool debugOn = false; // Set to true to disable loading screen
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +27,7 @@ class MyApp extends StatelessWidget {
           create: (_) => DisplayOffset(ScrollOffset(scrollOffsetValue: 0)),
           child: debugOn
               ? (const Scaffold(
-                  backgroundColor: Colors.white,
+                  backgroundColor: AppStyles.backgroundColor,
                   body: WholePage(),
                 ))
               : const LoadingScreen()), // Disable loading screen when on testing mode
@@ -44,31 +42,58 @@ class LoadingScreen extends StatefulWidget {
   LoadingScreenState createState() => LoadingScreenState();
 }
 
-class LoadingScreenState extends State<LoadingScreen> {
+class LoadingScreenState extends State<LoadingScreen>
+    with TickerProviderStateMixin {
   double loadingProgress = 0;
   late Future<void> _loadingFuture;
+  late AnimationController _animationController;
+  final double initialAnimationFraction =
+      0.35; // 35% of the animation running based on duration
+  bool initialAnimationCompleted = false;
 
   Future<void> loadImages(BuildContext context) async {
-    // List of your image assets
-    final List<AssetImage> assetImages = preCacheImages;
-    final List<NetworkImage> networkImages = preCacheNetworkImages;
-
-    final List<ImageProvider> images = <ImageProvider>[]
-      ..addAll(assetImages)
-      ..addAll(networkImages);
-    print(images);
-
+    final List<AssetImage> images = preCacheImages;
     int totalImages = images.length;
     int imagesLoaded = 0;
 
+    // Start with the initial animation
+    _animationController.animateTo(
+      initialAnimationFraction,
+      duration: const Duration(
+          milliseconds: 1500), // Duration for the initialAnimationFraction
+      curve: Curves.easeOut,
+    );
+
     for (var image in images) {
-      await precacheImage(image, context);
-      // await Future.delayed(const Duration(
-      //     milliseconds: 200)); // Small delay to a more smooth transition
+      await precacheImage(image, getContext());
+      await Future.delayed(const Duration(milliseconds: 100)); // Small delay
       imagesLoaded++;
-      loadingProgress = (imagesLoaded / totalImages) * 100;
-      setState(() {});
+      double newProgress =
+          (imagesLoaded / totalImages) * (1 - initialAnimationFraction) +
+              initialAnimationFraction;
+
+      if (newProgress > initialAnimationFraction) {
+        // Only use the progress to animate if the newProgress is greater than the initialAnimationFraction
+        _animationController.animateTo(
+          newProgress,
+          duration: const Duration(
+              milliseconds: 400), // Adjust duration as needed for smoothness
+          curve: Curves.easeOut,
+        );
+      }
     }
+  }
+
+  // create a method to get context
+  BuildContext getContext() {
+    return context;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _animationController = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 500));
   }
 
   @override
@@ -78,59 +103,37 @@ class LoadingScreenState extends State<LoadingScreen> {
   } // loadImages is called in didChangeDependencies to ensure that it has access to the complete BuildContext.
 
   @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: _loadingFuture.then((_) => Future.delayed(const Duration(
-          milliseconds:
-              400))), // Delay added to smoothen the final progress circle animation
+      future: _loadingFuture
+          .then((_) => Future.delayed(const Duration(milliseconds: 200))),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
-          // When the loading is done, navigate to the main page
           return const Scaffold(
-            backgroundColor: AppStyles.backgroundColor,
+            backgroundColor: Colors.white,
             body: WholePage(),
           );
         } else {
-          // While loading, show a loading spinner and progress percentage
           return Scaffold(
             backgroundColor: AppStyles.backgroundColor,
             body: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  ResponsiveLayout(
-                    mobileLayout: AnimatedProgressBubbles(
-                      size: 300,
-                      progressValue: loadingProgress,
-                      progressColor: const Color.fromRGBO(175, 169, 150, 1.0),
-                      progressBackgroundColor: Colors.white,
-                      particleColor: const Color.fromARGB(175, 169, 150, 103),
-                      progressStrokeWidth: 20,
-                      particleSize: 30,
-                      particlesNumber: 6,
-                    ),
-                    desktopLayout: AnimatedProgressBubbles(
-                      size: 400,
-                      progressValue: loadingProgress,
-                      progressColor: const Color.fromRGBO(175, 169, 150, 1.0),
-                      progressBackgroundColor: Colors.white,
-                      particleColor: const Color.fromARGB(175, 169, 150, 103),
-                      progressStrokeWidth: 30,
-                      particleSize: 60,
-                      particlesNumber: 6,
-                    ),
-                    tabletLayout: AnimatedProgressBubbles(
-                      size: 600,
-                      progressValue: loadingProgress,
-                      progressColor: const Color.fromRGBO(175, 169, 150, 1.0),
-                      progressBackgroundColor: Colors.white,
-                      particleColor: const Color.fromARGB(175, 169, 150, 103),
-                      progressStrokeWidth: 30,
-                      particleSize: 65,
-                      particlesNumber: 6,
-                    ),
+                  Lottie.asset(
+                    'assets/images/loading_animation.json', // Path to your Lottie file
+                    controller: _animationController,
+                    frameRate: FrameRate.max,
+                    repeat: false,
+                    reverse: false,
+                    // ... other Lottie parameters
                   ),
-                  const SizedBox(height: 20),
                 ],
               ),
             ),

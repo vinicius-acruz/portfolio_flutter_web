@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio_flutter_web/constants/style.dart';
 import 'package:portfolio_flutter_web/screens/section/fourth_section/fourth_section_mobile.dart';
+import 'package:portfolio_flutter_web/widgets/stamp_animation.dart';
 import '../../../responsive/responsive_layout.dart';
 import '../../../widgets/text_reveal.dart';
 import 'first_section.dart';
@@ -68,7 +69,10 @@ class FirstSectionMobile extends StatelessWidget {
               ),
             ),
           ),
-
+          const Positioned(
+              top: 20,
+              left: -120,
+              child: SizedBox(height: 180, child: FlutterStampAnimation())),
           // Page Content
           Container(
             height: screenHeight,

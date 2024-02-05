@@ -1,7 +1,9 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:portfolio_flutter_web/constants/my_data.dart';
 import 'package:portfolio_flutter_web/responsive/responsive_layout.dart';
+import 'package:portfolio_flutter_web/widgets/social_links.dart';
 
 import '../../../constants/style.dart';
 
@@ -93,18 +95,7 @@ class FourthSectionTablet extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          FaIcon(FontAwesomeIcons.linkedin,
-                              size: ResponsiveLayout.getResponsiveSize(
-                                  context, 30.0),
-                              color: Colors.blue),
-                          SizedBox(
-                            width: ResponsiveLayout.getResponsiveSize(
-                                context, 60.0),
-                          ),
-                          FaIcon(FontAwesomeIcons.github,
-                              size: ResponsiveLayout.getResponsiveSize(
-                                  context, 30.0),
-                              color: Colors.black),
+                          MySocialLinks(),
                         ],
                       ),
                     ),

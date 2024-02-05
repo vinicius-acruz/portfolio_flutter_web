@@ -1,6 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio_flutter_web/responsive/responsive_layout.dart';
+import 'package:portfolio_flutter_web/screens/section/fourth_section/fourth_section_tablet.dart';
+import 'package:portfolio_flutter_web/widgets/stamp_animation.dart';
 import '../../../constants/style.dart';
 import '../../../widgets/text_reveal.dart';
 import 'first_section.dart';
@@ -51,7 +53,10 @@ class FirstSectionTablet extends StatelessWidget {
             child: FirstPageImage(
                 height: ResponsiveLayout.getResponsiveImage(context, 0.85)),
           ),
-
+          const Positioned(
+              top: 20,
+              left: -100,
+              child: SizedBox(height: 250, child: FlutterStampAnimation())),
           // Page Content
           Container(
             height: MediaQuery.of(context).size.height,
@@ -152,7 +157,19 @@ class FirstSectionTablet extends StatelessWidget {
                     axis: Axis.horizontal,
                     child: ElevatedButton(
                       onPressed: () {
-                        // Add your action here
+                        showModalBottomSheet(
+                          context: context,
+                          builder: (context) {
+                            return const FourthSectionTablet();
+                          },
+                          isScrollControlled: true,
+                          backgroundColor: Colors.transparent,
+                          constraints: BoxConstraints(
+                            minWidth: MediaQuery.of(context)
+                                .size
+                                .width, // This forces the bottom sheet to take full width
+                          ),
+                        );
                       },
                       style: ElevatedButton.styleFrom(
                         fixedSize: Size(
@@ -217,7 +234,7 @@ class FirstSectionTablet extends StatelessWidget {
                     ],
                   ),
                   SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.03,
+                    height: MediaQuery.of(context).size.height * 0.05,
                   ),
                 ],
               ),
