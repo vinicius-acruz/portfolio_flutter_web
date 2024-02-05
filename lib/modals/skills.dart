@@ -33,7 +33,7 @@ List<Skill> skills = [
     iconData: FontAwesomeIcons.gears,
   ),
   Skill(
-    title: 'HTML/CSS/Javascript',
+    title: 'HTML/CSS/\nJavascript',
     description:
         'HTML, CSS, and JavaScript are foundational for web development. HTML structures content, CSS styles it, and JavaScript adds interactivity, essential for creating responsive and visually appealing web applications.',
     iconData: FontAwesomeIcons.code,

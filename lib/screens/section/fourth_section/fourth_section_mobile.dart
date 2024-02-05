@@ -11,7 +11,6 @@ class FourthSectionMobile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 220.0,
-      //margin: const EdgeInsets.all(10.0),
       decoration: const BoxDecoration(
         color: AppStyles.bottomSheetColor,
         borderRadius: BorderRadius.only(

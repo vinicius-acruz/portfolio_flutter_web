@@ -53,193 +53,173 @@ class FirstSectionTablet extends StatelessWidget {
           ),
 
           // Page Content
-          SizedBox(
+          Container(
             height: MediaQuery.of(context).size.height,
-            child: Container(
-              padding: const EdgeInsets.only(left: 25.0),
-              child: FittedBox(
-                alignment: Alignment.bottomCenter,
-                fit: BoxFit.contain,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.25,
-                    ),
-                    TextReveal(
-                      textOpacityAnimation: textOpacityAnimation,
-                      textRevealAnimation: textRevealAnimation,
-                      maxHeight: ResponsiveLayout.getResponsiveSize(
-                          context, ResponsiveLayout.mainLettersSizeTablet + 10),
-                      controller: controller,
-                      child: Text(
-                        'Hello,',
-                        style: AppStyles.fontStyle(
-                          fontWeight: FontWeight.w900,
-                          fontSize: ResponsiveLayout.getResponsiveSize(
-                              context, ResponsiveLayout.mainLettersSizeTablet),
-                          color: AppStyles.bigLettersColor,
-                        ),
+            padding: const EdgeInsets.only(left: 25.0),
+            child: FittedBox(
+              alignment: Alignment.bottomCenter,
+              fit: BoxFit.contain,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  TextReveal(
+                    textOpacityAnimation: textOpacityAnimation,
+                    textRevealAnimation: textRevealAnimation,
+                    maxHeight: ResponsiveLayout.mainLettersSizeTablet + 30,
+                    controller: controller,
+                    child: Text(
+                      'Hello,',
+                      style: AppStyles.fontStyle(
+                        fontWeight: FontWeight.w900,
+                        fontSize: ResponsiveLayout.mainLettersSizeTablet + 20,
+                        color: AppStyles.bigLettersColor,
                       ),
                     ),
-                    Row(
-                      children: [
-                        TextReveal(
-                          textOpacityAnimation: textOpacityAnimation,
-                          textRevealAnimation: textRevealAnimation,
-                          maxHeight: ResponsiveLayout.getResponsiveSize(context,
-                              ResponsiveLayout.mainLettersSizeTablet + 10),
-                          controller: controller,
-                          child: Text(
-                            "I'm ",
-                            style: AppStyles.fontStyle(
-                              fontWeight: FontWeight.w900,
-                              fontSize: ResponsiveLayout.getResponsiveSize(
-                                  context,
-                                  ResponsiveLayout.mainLettersSizeTablet),
-                              color: AppStyles.bigLettersColor,
-                            ).copyWith(
-                                shadows: [
-                                  const Shadow(
-                                      color: AppStyles.bigLettersColor,
-                                      offset: Offset(0, -5))
-                                ],
-                                color: Colors.transparent,
-                                decorationThickness: 2,
-                                decorationColor: AppStyles.bigLettersColor),
-                          ),
+                  ),
+                  Row(
+                    children: [
+                      TextReveal(
+                        textOpacityAnimation: textOpacityAnimation,
+                        textRevealAnimation: textRevealAnimation,
+                        maxHeight: ResponsiveLayout.mainLettersSizeTablet + 10,
+                        controller: controller,
+                        child: Text(
+                          "I'm ",
+                          style: AppStyles.fontStyle(
+                            fontWeight: FontWeight.w900,
+                            fontSize: ResponsiveLayout.mainLettersSizeTablet,
+                            color: AppStyles.bigLettersColor,
+                          ).copyWith(
+                              shadows: [
+                                const Shadow(
+                                    color: AppStyles.bigLettersColor,
+                                    offset: Offset(0, -5))
+                              ],
+                              color: Colors.transparent,
+                              decorationThickness: 2,
+                              decorationColor: AppStyles.bigLettersColor),
                         ),
-                        TextReveal(
-                          textOpacityAnimation: textOpacityAnimation,
-                          textRevealAnimation: textRevealAnimation,
-                          maxHeight: ResponsiveLayout.getResponsiveSize(context,
-                              ResponsiveLayout.mainLettersSizeTablet + 10),
-                          controller: controller,
-                          child: Text(
-                            'Vinícius',
-                            style: AppStyles.fontStyle(
-                                    fontWeight: FontWeight.w900,
-                                    fontSize:
-                                        ResponsiveLayout.getResponsiveSize(
-                                            context,
-                                            ResponsiveLayout
-                                                .mainLettersSizeTablet),
-                                    color: AppStyles.bigLettersColor)
-                                .copyWith(
-                                    shadows: [
-                                  const Shadow(
-                                      color: AppStyles.bigLettersColor,
-                                      offset: Offset(0, -5))
-                                ],
-                                    color: Colors.transparent,
-                                    decoration: TextDecoration.underline,
-                                    decorationThickness: 2,
-                                    decorationColor: AppStyles.bigLettersColor),
-                          ),
+                      ),
+                      TextReveal(
+                        textOpacityAnimation: textOpacityAnimation,
+                        textRevealAnimation: textRevealAnimation,
+                        maxHeight: ResponsiveLayout.mainLettersSizeTablet + 10,
+                        controller: controller,
+                        child: Text(
+                          'Vinícius',
+                          style: AppStyles.fontStyle(
+                                  fontWeight: FontWeight.w900,
+                                  fontSize:
+                                      ResponsiveLayout.mainLettersSizeTablet,
+                                  color: AppStyles.bigLettersColor)
+                              .copyWith(
+                                  shadows: [
+                                const Shadow(
+                                    color: AppStyles.bigLettersColor,
+                                    offset: Offset(0, -5))
+                              ],
+                                  color: Colors.transparent,
+                                  decoration: TextDecoration.underline,
+                                  decorationThickness: 3,
+                                  decorationColor: AppStyles.bigLettersColor),
                         ),
-                      ],
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: ResponsiveLayout.getResponsiveSize(context, 10.0),
+                  ),
+                  TextReveal(
+                    textOpacityAnimation: textOpacityAnimation,
+                    textRevealAnimation: textRevealAnimation,
+                    maxHeight:
+                        ResponsiveLayout.occupationLettersSizeTablet + 10,
+                    controller: controller,
+                    child: Text(
+                      'Flutter Developer',
+                      style: AppStyles.fontStyle(
+                          fontSize:
+                              ResponsiveLayout.occupationLettersSizeTablet,
+                          color: AppStyles.occupationLetterColor),
                     ),
-                    const SizedBox(
-                      height: 10.0,
-                    ),
-                    TextReveal(
-                      textOpacityAnimation: textOpacityAnimation,
-                      textRevealAnimation: textRevealAnimation,
-                      maxHeight: ResponsiveLayout.getResponsiveSize(context,
-                          ResponsiveLayout.occupationLettersSizeTablet + 10),
-                      controller: controller,
-                      child: Text(
-                        'Flutter Developer',
-                        style: AppStyles.fontStyle(
-                            fontSize: ResponsiveLayout.getResponsiveSize(
-                                context,
-                                ResponsiveLayout.occupationLettersSizeTablet),
-                            color: AppStyles.occupationLetterColor),
+                  ),
+                  SizedBox(
+                    height: ResponsiveLayout.getResponsiveSize(context, 10.0),
+                  ),
+                  SizeTransition(
+                    sizeFactor: buttonAnimation,
+                    axis: Axis.horizontal,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        // Add your action here
+                      },
+                      style: ElevatedButton.styleFrom(
+                        fixedSize: Size(
+                            ResponsiveLayout.getResponsiveSize(context, 170.0),
+                            40),
+                        backgroundColor: AppStyles.reachButtonColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Reach Me',
+                            style: AppStyles.fontStyle(
+                                color: AppStyles.reachButtonLettersColor,
+                                fontSize: ResponsiveLayout
+                                        .cardTitleLettersSizeTablet -
+                                    5),
+                          ),
+                          const SizedBox(
+                            width: 20.0,
+                          ),
+                          const Icon(
+                            Icons.send,
+                            color: AppStyles.reachButtonLettersColor,
+                          ),
+                        ],
                       ),
                     ),
-                    const SizedBox(
-                      height: 10.0,
-                    ),
-                    SizeTransition(
-                      sizeFactor: buttonAnimation,
-                      axis: Axis.horizontal,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          // Add your action here
-                        },
-                        style: ElevatedButton.styleFrom(
-                          fixedSize: Size(
-                              ResponsiveLayout.getResponsiveSize(
-                                  context, 170.0),
-                              60.0),
-                          backgroundColor: AppStyles.reachButtonColor,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                          ),
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              'Reach Me',
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.01,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        width:
+                            ResponsiveLayout.getResponsiveSize(context, 300.0),
+                        child: TextReveal(
+                          textOpacityAnimation: textOpacityAnimation,
+                          textRevealAnimation: textRevealAnimation,
+                          maxHeight: double.infinity,
+                          controller: controller,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              'Hi, I\'m Vinícius, an aspiring Flutter developer passionate about crafting seamless and engaging cross-platform applications. Eager to merge creativity with code, I strive to bring innovative solutions to life in the ever-evolving world of mobile development.',
                               style: AppStyles.fontStyle(
-                                  color: AppStyles.reachButtonLettersColor,
-                                  fontSize: ResponsiveLayout.getResponsiveSize(
-                                      context,
-                                      ResponsiveLayout
-                                          .cardTitleLettersSizeTablet)),
-                            ),
-                            const SizedBox(
-                              width: 20.0,
-                            ),
-                            const Icon(
-                              Icons.send,
-                              color: AppStyles.reachButtonLettersColor,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.01,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          width: ResponsiveLayout.getResponsiveSize(
-                              context, 300.0),
-                          child: TextReveal(
-                            textOpacityAnimation: textOpacityAnimation,
-                            textRevealAnimation: textRevealAnimation,
-                            maxHeight: double.infinity,
-                            controller: controller,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: AutoSizeText(
-                                'Hi, I\'m Vinícius, an aspiring Flutter developer passionate about crafting seamless and engaging cross-platform applications. Eager to merge creativity with code, I strive to bring innovative solutions to life in the ever-evolving world of mobile development.',
-                                style: AppStyles.fontStyle(
-                                    fontSize:
-                                        ResponsiveLayout.getResponsiveSize(
-                                            context,
-                                            ResponsiveLayout
-                                                .normalLettersSizeTablet)),
-                                textAlign: TextAlign.justify,
-                              ),
+                                  fontSize:
+                                      ResponsiveLayout.normalLettersSizeTablet),
+                              textAlign: TextAlign.justify,
                             ),
                           ),
                         ),
-                        Container(
-                          width: MediaQuery.of(context).size.width * 0.50,
-                        )
-                      ],
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.03,
-                    ),
-                  ],
-                ),
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width * 0.50,
+                      )
+                    ],
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.03,
+                  ),
+                ],
               ),
             ),
           ),

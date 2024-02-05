@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:portfolio_flutter_web/responsive/responsive_layout.dart';
 
 import '../../../constants/style.dart';
 
@@ -9,8 +10,8 @@ class FourthSectionWeb extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 300.0,
-      margin: const EdgeInsets.all(10.0),
+      width: MediaQuery.of(context).size.width,
+      height: 250.0,
       decoration: const BoxDecoration(
         color: AppStyles.bottomSheetColor,
         borderRadius: BorderRadius.only(
@@ -32,7 +33,8 @@ class FourthSectionWeb extends StatelessWidget {
                     Text(
                       "Contact me",
                       style: AppStyles.fontStyle(
-                        fontSize: 25.0,
+                        fontSize:
+                            ResponsiveLayout.bottomSheetLetterSizeDesktop - 10,
                         fontWeight: FontWeight.w500,
                         color: AppStyles.bottomLettersContactColor,
                       ),
@@ -42,7 +44,7 @@ class FourthSectionWeb extends StatelessWidget {
                       'Got a project?',
                       style: AppStyles.fontStyle(
                         fontWeight: FontWeight.w600,
-                        fontSize: 40.0,
+                        fontSize: ResponsiveLayout.bottomSheetLetterSizeDesktop,
                         color: AppStyles.bottomLettersColor,
                       ),
                     ),
@@ -50,7 +52,7 @@ class FourthSectionWeb extends StatelessWidget {
                       'Let\'s talk!',
                       style: AppStyles.fontStyle(
                         fontWeight: FontWeight.w600,
-                        fontSize: 40.0,
+                        fontSize: ResponsiveLayout.bottomSheetLetterSizeDesktop,
                         color: AppStyles.bottomLettersColor,
                       ),
                     ),
@@ -72,7 +74,7 @@ class FourthSectionWeb extends StatelessWidget {
                         Text(
                           "vinicius.a.cruz1@gmail.com",
                           style: TextStyle(
-                            fontSize: 20.0,
+                            fontSize: ResponsiveLayout.normalLettersSizeDesktop,
                             fontWeight: FontWeight.bold,
                             color: AppStyles.bottomLettersColor,
                           ),

@@ -11,8 +11,7 @@ class FourthSectionTablet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: ResponsiveLayout.getResponsiveSize(context, 200),
-      margin: const EdgeInsets.all(10.0),
+      height: 250,
       decoration: const BoxDecoration(
         color: AppStyles.bottomSheetColor,
         borderRadius: BorderRadius.only(
@@ -27,15 +26,15 @@ class FourthSectionTablet extends StatelessWidget {
           Row(
             children: [
               Expanded(
-                flex: 1,
+                flex: 2,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     AutoSizeText(
                       "Contact me",
                       style: AppStyles.fontStyle(
-                        fontSize: ResponsiveLayout.getResponsiveSize(context,
-                            ResponsiveLayout.bottomSheetLetterSizeTablet - 5),
+                        fontSize:
+                            ResponsiveLayout.bottomSheetLetterSizeTablet - 5,
                         fontWeight: FontWeight.w500,
                         color: AppStyles.bottomLettersContactColor,
                       ),
@@ -45,8 +44,7 @@ class FourthSectionTablet extends StatelessWidget {
                       'Got a project?',
                       style: AppStyles.fontStyle(
                         fontWeight: FontWeight.w600,
-                        fontSize: ResponsiveLayout.getResponsiveSize(context,
-                            ResponsiveLayout.bottomSheetLetterSizeTablet),
+                        fontSize: ResponsiveLayout.bottomSheetLetterSizeTablet,
                         color: AppStyles.bottomLettersColor,
                       ),
                     ),
@@ -54,8 +52,7 @@ class FourthSectionTablet extends StatelessWidget {
                       'Let\'s talk!',
                       style: AppStyles.fontStyle(
                         fontWeight: FontWeight.w600,
-                        fontSize: ResponsiveLayout.getResponsiveSize(context,
-                            ResponsiveLayout.bottomSheetLetterSizeTablet),
+                        fontSize: ResponsiveLayout.bottomSheetLetterSizeTablet,
                         color: AppStyles.bottomLettersColor,
                       ),
                     ),
@@ -64,7 +61,7 @@ class FourthSectionTablet extends StatelessWidget {
               ),
               const SizedBox(width: 20.0),
               Expanded(
-                flex: 1,
+                flex: 3,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -74,20 +71,15 @@ class FourthSectionTablet extends StatelessWidget {
                         const FaIcon(FontAwesomeIcons.envelopeCircleCheck,
                             size: 30.0, color: Colors.red),
                         const SizedBox(width: 20.0),
-                        Expanded(
-                          child: AutoSizeText(
-                            "vinicius.a.cruz1@gmail.com",
-                            textAlign: TextAlign.start,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: AppStyles.fontStyle(
-                              fontSize: ResponsiveLayout.getResponsiveSize(
-                                  context,
-                                  ResponsiveLayout.bottomSheetLetterSizeTablet -
-                                      5),
-                              fontWeight: FontWeight.bold,
-                              color: AppStyles.bottomLettersColor,
-                            ),
+                        Text(
+                          "vinicius.a.cruz1@gmail.com",
+                          textAlign: TextAlign.start,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: AppStyles.fontStyle(
+                            fontSize: ResponsiveLayout.normalLettersSizeTablet,
+                            fontWeight: FontWeight.w500,
+                            color: AppStyles.bottomLettersColor,
                           ),
                         ),
                       ],

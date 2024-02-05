@@ -65,18 +65,18 @@ class ResponsiveLayout extends StatelessWidget {
   }
 
 //Desktop
-  static const double mainLettersSizeDesktop = 45.0;
-  static const double occupationLettersSizeDesktop = 26.0;
-  static const double normalLettersSizeDesktop = 15.0;
-  static const double cardTitleLettersSizeDesktop = 24.0;
-  static const double bottomSheetLetterSizeDesktop = 16.0;
+  static const double mainLettersSizeDesktop = 75.0;
+  static const double occupationLettersSizeDesktop = 32.0;
+  static const double normalLettersSizeDesktop = 20.0;
+  static const double cardTitleLettersSizeDesktop = 25.0;
+  static const double bottomSheetLetterSizeDesktop = 40.0;
 
 //Tablet
-  static const double mainLettersSizeTablet = 38.0;
-  static const double occupationLettersSizeTablet = 25.0;
-  static const double normalLettersSizeTablet = 15.0;
-  static const double cardTitleLettersSizeTablet = 18.0;
-  static const double bottomSheetLetterSizeTablet = 27.0;
+  static const double mainLettersSizeTablet = 75.0;
+  static const double occupationLettersSizeTablet = 32.0;
+  static const double normalLettersSizeTablet = 18.0;
+  static const double cardTitleLettersSizeTablet = 23.0;
+  static const double bottomSheetLetterSizeTablet = 37.0;
 
 //Mobile
   static const double mainLettersSizeMobile = 45.0;
@@ -96,16 +96,16 @@ class ResponsiveLayout extends StatelessWidget {
   static const double expandedContainerWidthMobile = 420.0;
 
 //Tablet
-  static const double firstChildHeightTablet = 400.0;
-  static const double firstChildWidthTablet = 280.0;
-  static const double secondChildHeightTablet = 450.0;
-  static const double secondChildWidthTablet = 300.0;
-  static const double expandedContainerHeightTablet = 800.0;
-  static const double expandedContainerWidthTablet = 500.0;
+  static const double firstChildHeightTablet = 280.0;
+  static const double firstChildWidthTablet = 180.0;
+  static const double secondChildHeightTablet = 280.0;
+  static const double secondChildWidthTablet = 180.0;
+  static const double expandedContainerHeightTablet = 500.0;
+  static const double expandedContainerWidthTablet = 350.0;
 
 //Desktop
-  static const double childHeightDesktop = 750.0;
-  static const double childWidthDesktop = 650.0;
+  static const double childHeightDesktop = 450.0;
+  static const double childWidthDesktop = 400.0;
 
   // Wrap widget spacing:
 
@@ -121,13 +121,13 @@ class ResponsiveLayout extends StatelessWidget {
 
   //Tablet
 
-  static const double projectCardHeightTablet = 1100.0;
+  static const double projectCardHeightTablet = 600.0;
   static const double projectCardWidthTablet = 700.0;
 
   //Desktop
 
-  static const double projectCardHeightDesktop = 900.0;
-  static const double projectCardWidthDesktop = 800.0;
+  static const double projectCardHeightDesktop = 600.0;
+  static const double projectCardWidthDesktop = 700.0;
 
 // Create method to calculate second section height
   static double secondSectionHeight(BuildContext context,

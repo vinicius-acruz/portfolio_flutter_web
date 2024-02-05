@@ -53,17 +53,13 @@ class _SkillCardWebState extends State<SkillCardWeb> {
         firstCurve: Curves.easeOut,
         secondCurve: Curves.easeOut,
         firstChild: Container(
-          height: ResponsiveLayout.getResponsiveCard(
-              context, ResponsiveLayout.childHeightDesktop),
-          width: ResponsiveLayout.getResponsiveCard(
-              context, ResponsiveLayout.childWidthDesktop),
+          height: ResponsiveLayout.childHeightDesktop,
+          width: ResponsiveLayout.childWidthDesktop,
           margin: const EdgeInsets.symmetric(vertical: 25.0, horizontal: 5.0),
         ),
         secondChild: Container(
-          height: ResponsiveLayout.getResponsiveCard(
-              context, ResponsiveLayout.childHeightDesktop),
-          width: ResponsiveLayout.getResponsiveCard(
-              context, ResponsiveLayout.childWidthDesktop),
+          height: ResponsiveLayout.childHeightDesktop,
+          width: ResponsiveLayout.childWidthDesktop,
           margin: const EdgeInsets.symmetric(vertical: 25.0, horizontal: 15.0),
           padding: const EdgeInsets.all(20.0),
           decoration: BoxDecoration(
@@ -85,15 +81,14 @@ class _SkillCardWebState extends State<SkillCardWeb> {
             children: [
               Icon(
                 widget.skill.iconData,
-                size: ResponsiveLayout.getResponsiveSize(context, 40),
+                size: 40,
                 color: AppStyles.skillCardsIconsColor,
               ),
               const SizedBox(height: 10.0),
               Text(
                 widget.skill.title,
                 style: AppStyles.fontStyle(
-                  fontSize: ResponsiveLayout.getResponsiveSize(
-                      context, ResponsiveLayout.cardTitleLettersSizeDesktop),
+                  fontSize: ResponsiveLayout.cardTitleLettersSizeDesktop,
                   fontWeight: FontWeight.bold,
                   color: AppStyles.skillLettersColor,
                 ),
@@ -105,8 +100,7 @@ class _SkillCardWebState extends State<SkillCardWeb> {
                   child: Text(
                     widget.skill.description,
                     style: AppStyles.fontStyle(
-                        fontSize: ResponsiveLayout.getResponsiveSize(
-                            context, ResponsiveLayout.normalLettersSizeDesktop),
+                        fontSize: ResponsiveLayout.normalLettersSizeDesktop,
                         color: AppStyles.skillLettersColor),
                     textAlign: TextAlign.center,
                   ),

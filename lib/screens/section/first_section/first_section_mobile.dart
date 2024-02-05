@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio_flutter_web/constants/style.dart';
+import 'package:portfolio_flutter_web/screens/section/fourth_section/fourth_section_mobile.dart';
 import '../../../responsive/responsive_layout.dart';
 import '../../../widgets/text_reveal.dart';
 import 'first_section.dart';
@@ -161,7 +162,19 @@ class FirstSectionMobile extends StatelessWidget {
                   axis: Axis.horizontal,
                   child: ElevatedButton(
                     onPressed: () {
-                      // Add your action here
+                      showModalBottomSheet(
+                        context: context,
+                        builder: (context) {
+                          return const FourthSectionMobile();
+                        },
+                        isScrollControlled: true,
+                        backgroundColor: Colors.transparent,
+                        constraints: BoxConstraints(
+                          minWidth: MediaQuery.of(context)
+                              .size
+                              .width, // This forces the bottom sheet to take full width
+                        ),
+                      );
                     },
                     style: ElevatedButton.styleFrom(
                       fixedSize: Size(
