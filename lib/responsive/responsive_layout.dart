@@ -88,20 +88,20 @@ class ResponsiveLayout extends StatelessWidget {
 // Second section skill card sizes
 
 //Mobile
-  static const double firstChildHeightMobile = 400.0;
-  static const double firstChildWidthMobile = 280.0;
-  static const double secondChildHeightMobile = 500.0;
-  static const double secondChildWidthMobile = 300.0;
-  static const double expandedContainerHeightMobile = 800.0;
-  static const double expandedContainerWidthMobile = 420.0;
+  static const double firstChildHeightMobile = 230.0;
+  static const double firstChildWidthMobile = 150.0;
+  static const double secondChildHeightMobile = 230.0;
+  static const double secondChildWidthMobile = 150.0;
+  static const double expandedContainerHeightMobile = 400.0;
+  static const double expandedContainerWidthMobile = 280.0;
 
 //Tablet
   static const double firstChildHeightTablet = 280.0;
-  static const double firstChildWidthTablet = 180.0;
+  static const double firstChildWidthTablet = 160.0;
   static const double secondChildHeightTablet = 280.0;
-  static const double secondChildWidthTablet = 180.0;
-  static const double expandedContainerHeightTablet = 500.0;
-  static const double expandedContainerWidthTablet = 350.0;
+  static const double secondChildWidthTablet = 160.0;
+  static const double expandedContainerHeightTablet = 400.0;
+  static const double expandedContainerWidthTablet = 340.0;
 
 //Desktop
   static const double childHeightDesktop = 450.0;
@@ -116,17 +116,17 @@ class ResponsiveLayout extends StatelessWidget {
 
 //Mobile
 
-  static const double projectCardHeightMobile = 500.0;
+  static const double projectCardHeightMobile = 600.0;
   static const double projectCardWidthMobile = 500.0;
 
   //Tablet
 
-  static const double projectCardHeightTablet = 600.0;
+  static const double projectCardHeightTablet = 650.0;
   static const double projectCardWidthTablet = 700.0;
 
   //Desktop
 
-  static const double projectCardHeightDesktop = 600.0;
+  static const double projectCardHeightDesktop = 750.0;
   static const double projectCardWidthDesktop = 700.0;
 
 // Create method to calculate second section height
@@ -137,12 +137,10 @@ class ResponsiveLayout extends StatelessWidget {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
 
-    final textRevealHeight = ResponsiveLayout.getResponsiveSize(
-        context,
-        (ResponsiveLayout.buildWidgetValue(context,
-            mobileValue: ResponsiveLayout.mainLettersSizeMobile + 10,
-            tabletValue: ResponsiveLayout.mainLettersSizeTablet + 10,
-            desktopValue: ResponsiveLayout.mainLettersSizeDesktop + 10)));
+    final textRevealHeight = ResponsiveLayout.buildWidgetValue(context,
+        mobileValue: ResponsiveLayout.mainLettersSizeMobile + 10,
+        tabletValue: ResponsiveLayout.mainLettersSizeTablet + 10,
+        desktopValue: ResponsiveLayout.mainLettersSizeDesktop + 10);
     final projectsPerLine = (screenWidth / (projectWidth + 5 + projectSpace))
         .floor(); //5 is the margin of the skill  card
     final totalLine = (skillsLength / projectsPerLine).ceil();
@@ -151,12 +149,10 @@ class ResponsiveLayout extends StatelessWidget {
 
     final sectionHeight = textRevealHeight +
         (totalLine *
-            getResponsiveCard(
-                context,
-                buildWidgetValue(context,
-                    mobileValue: secondChildHeightMobile,
-                    tabletValue: secondChildHeightTablet,
-                    desktopValue: childHeightDesktop))) +
+            buildWidgetValue(context,
+                mobileValue: secondChildHeightMobile,
+                tabletValue: secondChildHeightTablet,
+                desktopValue: childHeightDesktop)) +
         screenHeight +
         100; // 100 represents vertical margins in the sections
     return sectionHeight;
@@ -194,6 +190,7 @@ class ResponsiveLayout extends StatelessWidget {
     final projectsPerLine =
         (screenWidth / (projectWidth + projectSpace)).floor();
     final lineIndex = projectsPerLine == 0 ? 0 : index ~/ projectsPerLine;
+    print('projects per line: $projectsPerLine, line index: $lineIndex');
     return lineIndex;
   }
 

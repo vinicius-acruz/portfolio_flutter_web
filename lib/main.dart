@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 import 'package:portfolio_flutter_web/constants/style.dart';
 import 'package:portfolio_flutter_web/modals/pre_cache_images.dart';
+import 'package:portfolio_flutter_web/responsive/responsive_layout.dart';
 import 'package:portfolio_flutter_web/screens/whole_page.dart';
 import 'modals/scroll_offset.dart';
 import 'dart:async'; // Import this for async operations
@@ -48,8 +49,9 @@ class LoadingScreenState extends State<LoadingScreen>
   late Future<void> _loadingFuture;
   late AnimationController _animationController;
   final double initialAnimationFraction =
-      0.35; // 35% of the animation running based on duration
-  bool initialAnimationCompleted = false;
+      0.4; // 40% of the animation running based on duration
+  final double finalAnimationFraction =
+      0.2; // 20% of the animation running based on duration
 
   Future<void> loadImages(BuildContext context) async {
     final List<AssetImage> images = preCacheImages;
@@ -60,7 +62,7 @@ class LoadingScreenState extends State<LoadingScreen>
     _animationController.animateTo(
       initialAnimationFraction,
       duration: const Duration(
-          milliseconds: 1500), // Duration for the initialAnimationFraction
+          milliseconds: 2000), // Duration for the initialAnimationFraction
       curve: Curves.easeOut,
     );
 
@@ -68,18 +70,27 @@ class LoadingScreenState extends State<LoadingScreen>
       await precacheImage(image, getContext());
       await Future.delayed(const Duration(milliseconds: 100)); // Small delay
       imagesLoaded++;
-      double newProgress =
-          (imagesLoaded / totalImages) * (1 - initialAnimationFraction) +
-              initialAnimationFraction;
+      double newProgress = (imagesLoaded / totalImages);
 
-      if (newProgress > initialAnimationFraction) {
+      if (newProgress > initialAnimationFraction &&
+          newProgress <= (1 - finalAnimationFraction)) {
         // Only use the progress to animate if the newProgress is greater than the initialAnimationFraction
         _animationController.animateTo(
           newProgress,
           duration: const Duration(
-              milliseconds: 400), // Adjust duration as needed for smoothness
+              milliseconds: 700), // Adjust duration as needed for smoothness
           curve: Curves.easeOut,
         );
+      } else if (newProgress > (1 - finalAnimationFraction)) {
+        // Start the final animation phase based on fixed duration
+        await _animationController.animateTo(
+          1.0,
+          duration: const Duration(
+              milliseconds:
+                  1000), // Calculate duration based on remaining fraction
+          curve: Curves.easeOut,
+        );
+        break; // Exit the loop as the final animation has been triggered
       }
     }
   }
@@ -112,7 +123,7 @@ class LoadingScreenState extends State<LoadingScreen>
   Widget build(BuildContext context) {
     return FutureBuilder(
       future: _loadingFuture
-          .then((_) => Future.delayed(const Duration(milliseconds: 200))),
+          .then((_) => Future.delayed(const Duration(milliseconds: 100))),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           return const Scaffold(
@@ -126,13 +137,17 @@ class LoadingScreenState extends State<LoadingScreen>
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Lottie.asset(
-                    'assets/images/loading_animation.json', // Path to your Lottie file
-                    controller: _animationController,
-                    frameRate: FrameRate.max,
-                    repeat: false,
-                    reverse: false,
-                    // ... other Lottie parameters
+                  SizedBox(
+                    height: ResponsiveLayout.buildWidgetValue(context,
+                        mobileValue: 200, tabletValue: 300, desktopValue: 300),
+                    child: Lottie.asset(
+                      'assets/images/loading_animation.json', // Path to your Lottie file
+                      controller: _animationController,
+                      frameRate: FrameRate.max,
+                      repeat: false,
+                      reverse: false,
+                      // ... other Lottie parameters
+                    ),
                   ),
                 ],
               ),

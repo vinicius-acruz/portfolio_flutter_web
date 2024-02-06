@@ -72,7 +72,7 @@ class FirstSectionMobile extends StatelessWidget {
           const Positioned(
               top: 20,
               left: -120,
-              child: SizedBox(height: 180, child: FlutterStampAnimation())),
+              child: SizedBox(height: 150, child: FlutterStampAnimation())),
           // Page Content
           Container(
             height: screenHeight,

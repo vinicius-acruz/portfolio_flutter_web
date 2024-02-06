@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:portfolio_flutter_web/constants/my_data.dart';
 import 'package:portfolio_flutter_web/constants/style.dart';
 import 'package:portfolio_flutter_web/modals/projects.dart';
 import 'package:portfolio_flutter_web/modals/scroll_offset.dart';
 import 'package:portfolio_flutter_web/responsive/responsive_layout.dart';
+import 'package:portfolio_flutter_web/widgets/custom_plus_button.dart';
 
 class ProjectCardWeb extends StatefulWidget {
   final Project project;
@@ -76,7 +79,17 @@ class _ProjectCardWebState extends State<ProjectCardWeb>
         return false;
       }
     }, builder: (context, state) {
-      state.scrollOffsetValue > (startRange + 100)
+      (state.scrollOffsetValue > (startRange + 100) &&
+              state.scrollOffsetValue <
+                  (startRange +
+                      3 *
+                          ResponsiveLayout.buildWidgetValue(context,
+                              mobileValue:
+                                  ResponsiveLayout.projectCardHeightMobile,
+                              tabletValue:
+                                  ResponsiveLayout.projectCardHeightTablet,
+                              desktopValue:
+                                  ResponsiveLayout.projectCardHeightDesktop)))
           ? controller.forward()
           : controller.reverse();
       return AnimatedBuilder(
@@ -324,6 +337,13 @@ class _ProjectCardWebState extends State<ProjectCardWeb>
                 color: AppStyles.lettersColor,
               ),
               textAlign: TextAlign.justify,
+            ),
+          ),
+          SizedBox(
+            height: 40,
+            child: CustomPlusButton(
+              projectUrl: widget.project.projectUrl,
+              viewMoreMessage: widget.project.viewMoreMessage,
             ),
           ),
         ],

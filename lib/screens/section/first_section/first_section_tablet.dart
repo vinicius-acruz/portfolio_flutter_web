@@ -56,7 +56,7 @@ class FirstSectionTablet extends StatelessWidget {
           const Positioned(
               top: 20,
               left: -100,
-              child: SizedBox(height: 250, child: FlutterStampAnimation())),
+              child: SizedBox(height: 200, child: FlutterStampAnimation())),
           // Page Content
           Container(
             height: MediaQuery.of(context).size.height,
@@ -68,6 +68,9 @@ class FirstSectionTablet extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
+                  const SizedBox(
+                    height: 200,
+                  ),
                   TextReveal(
                     textOpacityAnimation: textOpacityAnimation,
                     textRevealAnimation: textRevealAnimation,
@@ -172,9 +175,7 @@ class FirstSectionTablet extends StatelessWidget {
                         );
                       },
                       style: ElevatedButton.styleFrom(
-                        fixedSize: Size(
-                            ResponsiveLayout.getResponsiveSize(context, 170.0),
-                            40),
+                        fixedSize: Size(180.0, 45),
                         backgroundColor: AppStyles.reachButtonColor,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0),

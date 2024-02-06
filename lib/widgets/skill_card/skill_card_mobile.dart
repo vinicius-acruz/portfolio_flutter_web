@@ -37,10 +37,8 @@ class _SkillCardMobileState extends State<SkillCardMobile>
   @override
   Widget build(BuildContext context) {
     final startRange = MediaQuery.of(context).size.height + widget.index * 100;
-    final endRange = widget.sectionHeight +
-        200 +
-        widget.index *
-            100; // 200 and 100 are just constants to adjust the range as needed
+    final endRange = 1.5 * widget.sectionHeight +
+        widget.index * 150; //  constants to adjust the range as needed
 
     return BlocBuilder<DisplayOffset, ScrollOffset>(
         buildWhen: (previous, current) {
@@ -51,8 +49,8 @@ class _SkillCardMobileState extends State<SkillCardMobile>
       print("skillcard: ${state.scrollOffsetValue}");
 
       return AnimatedCrossFade(
-        crossFadeState: (state.scrollOffsetValue >= (startRange + 100) &&
-                state.scrollOffsetValue <= (endRange - 100))
+        crossFadeState: (state.scrollOffsetValue >= (startRange + 50) &&
+                state.scrollOffsetValue <= (endRange - 200))
             ? CrossFadeState.showSecond
             : CrossFadeState.showFirst,
         duration: const Duration(milliseconds: 800),
@@ -62,24 +60,18 @@ class _SkillCardMobileState extends State<SkillCardMobile>
         secondCurve: Curves.easeOut,
         firstChild: Container(
           color: AppStyles.backgroundColor,
-          height: ResponsiveLayout.getResponsiveCard(
-              context, ResponsiveLayout.firstChildHeightMobile),
-          width: ResponsiveLayout.getResponsiveCard(
-              context, ResponsiveLayout.firstChildWidthMobile),
+          height: ResponsiveLayout.firstChildHeightMobile,
+          width: ResponsiveLayout.firstChildWidthMobile,
           margin: const EdgeInsets.symmetric(vertical: 25.0, horizontal: 5.0),
         ),
         secondChild: AnimatedContainer(
           duration: const Duration(milliseconds: 300),
           height: _isExpanded
-              ? ResponsiveLayout.getResponsiveCard(
-                  context, ResponsiveLayout.expandedContainerHeightMobile)
-              : ResponsiveLayout.getResponsiveCard(
-                  context, ResponsiveLayout.secondChildHeightMobile),
+              ? ResponsiveLayout.expandedContainerHeightMobile
+              : ResponsiveLayout.secondChildHeightMobile,
           width: _isExpanded
-              ? ResponsiveLayout.getResponsiveCard(
-                  context, ResponsiveLayout.expandedContainerWidthMobile)
-              : ResponsiveLayout.getResponsiveCard(
-                  context, ResponsiveLayout.secondChildWidthMobile),
+              ? ResponsiveLayout.expandedContainerWidthMobile
+              : ResponsiveLayout.secondChildWidthMobile,
           margin: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 5.0),
           padding: const EdgeInsets.all(10.0),
           decoration: BoxDecoration(
@@ -96,19 +88,15 @@ class _SkillCardMobileState extends State<SkillCardMobile>
           ),
           child: SizedBox(
             height: _isExpanded
-                ? ResponsiveLayout.getResponsiveCard(
-                    context, ResponsiveLayout.expandedContainerHeightMobile)
-                : ResponsiveLayout.getResponsiveCard(
-                    context, ResponsiveLayout.secondChildHeightMobile),
+                ? ResponsiveLayout.expandedContainerHeightMobile
+                : ResponsiveLayout.secondChildHeightMobile,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Icon(
                   widget.skill.iconData,
-                  size: _isExpanded
-                      ? ResponsiveLayout.getResponsiveSize(context, 25)
-                      : ResponsiveLayout.getResponsiveSize(context, 40),
+                  size: _isExpanded ? 25 : 40,
                   color: AppStyles.skillCardsIconsColor,
                 ),
                 const SizedBox(height: 10.0),

@@ -58,11 +58,10 @@ class FirstSectionWeb extends StatelessWidget {
               child: FirstPageImage(
                 height: ResponsiveLayout.getResponsiveImage(context, 0.9),
               )),
-          Positioned(
+          const Positioned(
               top: 20,
               left: -100,
-              child: const SizedBox(
-                  height: 250, child: const FlutterStampAnimation())),
+              child: SizedBox(height: 200, child: FlutterStampAnimation())),
           //Page Content
           Container(
             height: MediaQuery.of(context).size.height,
