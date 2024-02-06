@@ -32,7 +32,7 @@ class FourthSectionTablet extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    AutoSizeText(
+                    Text(
                       "Contact me",
                       style: AppStyles.fontStyle(
                         fontSize:

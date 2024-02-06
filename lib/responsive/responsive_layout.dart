@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio_flutter_web/modals/projects.dart';
 
 class ResponsiveLayout extends StatelessWidget {
   final Widget mobileLayout;
@@ -99,7 +100,7 @@ class ResponsiveLayout extends StatelessWidget {
   static const double firstChildHeightTablet = 280.0;
   static const double firstChildWidthTablet = 160.0;
   static const double secondChildHeightTablet = 280.0;
-  static const double secondChildWidthTablet = 160.0;
+  static const double secondChildWidthTablet = 180.0;
   static const double expandedContainerHeightTablet = 400.0;
   static const double expandedContainerWidthTablet = 340.0;
 
@@ -145,7 +146,7 @@ class ResponsiveLayout extends StatelessWidget {
         .floor(); //5 is the margin of the skill  card
     final totalLine = (skillsLength / projectsPerLine).ceil();
     print(
-        'screen width: $screenWidth, total  line: $totalLine, skills length: $skillsLength  project  width total: ${projectWidth + 50 + projectSpace} per line: $projectsPerLine');
+        'screen width: $screenWidth, total  line: $totalLine, skills length: $skillsLength  skill  width total: ${projectWidth + 50 + projectSpace} per line: $projectsPerLine');
 
     final sectionHeight = textRevealHeight +
         (totalLine *
@@ -187,9 +188,11 @@ class ResponsiveLayout extends StatelessWidget {
       required int index,
       required double projectWidth}) {
     final screenWidth = MediaQuery.of(context).size.width;
-    final projectsPerLine =
-        (screenWidth / (projectWidth + projectSpace)).floor();
-    final lineIndex = projectsPerLine == 0 ? 0 : index ~/ projectsPerLine;
+    int projectsPerLine = (screenWidth / (projectWidth + projectSpace)).floor();
+    if (projectsPerLine == 0) {
+      projectsPerLine = 1;
+    }
+    final lineIndex = index ~/ projectsPerLine;
     print('projects per line: $projectsPerLine, line index: $lineIndex');
     return lineIndex;
   }
