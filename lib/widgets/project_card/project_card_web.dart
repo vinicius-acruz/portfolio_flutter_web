@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:portfolio_flutter_web/constants/my_data.dart';
+
 import 'package:portfolio_flutter_web/constants/style.dart';
 import 'package:portfolio_flutter_web/modals/projects.dart';
 import 'package:portfolio_flutter_web/modals/scroll_offset.dart';
