@@ -111,7 +111,7 @@ class _ProjectCardWebState extends State<ProjectCardWeb>
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Expanded(
-          flex: 2,
+          flex: 3,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -184,7 +184,7 @@ class _ProjectCardWebState extends State<ProjectCardWeb>
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Expanded(
-          flex: 2,
+          flex: 3,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -257,7 +257,7 @@ class _ProjectCardWebState extends State<ProjectCardWeb>
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Expanded(
-          flex: 2,
+          flex: 3,
           child: Stack(
             alignment: Alignment.center,
             children: [
@@ -291,7 +291,7 @@ class _ProjectCardWebState extends State<ProjectCardWeb>
 
   Widget buildProjectInfo() {
     return Expanded(
-      flex: 1,
+      flex: 2,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [

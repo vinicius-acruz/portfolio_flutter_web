@@ -92,7 +92,7 @@ class FirstSectionWeb extends StatelessWidget {
                               children: [
                                 SizedBox(
                                   height: ResponsiveLayout.getResponsiveSize(
-                                      context, 50.0),
+                                      context, 80.0),
                                 ),
                                 TextReveal(
                                   textOpacityAnimation: textOpacityAnimation,
