@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio_flutter_web/modals/projects.dart';
 
 class ResponsiveLayout extends StatelessWidget {
   final Widget mobileLayout;

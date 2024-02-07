@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio_flutter_web/responsive/responsive_layout.dart';
 import 'package:portfolio_flutter_web/screens/section/fourth_section/fourth_section_tablet.dart';
