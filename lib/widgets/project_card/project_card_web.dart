@@ -48,20 +48,21 @@ class _ProjectCardWebState extends State<ProjectCardWeb>
 
   @override
   Widget build(BuildContext context) {
-    final lineIndex = ResponsiveLayout.getWidgetIndex(context,
-        index: widget.index,
-        projectWidth: ResponsiveLayout.buildWidgetValue(context,
-            mobileValue: ResponsiveLayout.projectCardWidthMobile,
-            tabletValue: ResponsiveLayout.projectCardWidthTablet,
-            desktopValue: ResponsiveLayout.projectCardWidthDesktop));
+    double projectWidth = ResponsiveLayout.buildWidgetValue(context,
+        mobileValue: ResponsiveLayout.projectCardWidthMobile,
+        tabletValue: ResponsiveLayout.projectCardWidthTablet,
+        desktopValue: ResponsiveLayout.projectCardWidthDesktop);
 
-    final startRangeDesktop = widget.secondSectionHeight +
-        150 +
-        lineIndex *
-            ResponsiveLayout.buildWidgetValue(context,
-                mobileValue: ResponsiveLayout.projectCardHeightMobile,
-                tabletValue: ResponsiveLayout.projectCardHeightTablet,
-                desktopValue: ResponsiveLayout.projectCardHeightDesktop);
+    double projectHeight = ResponsiveLayout.buildWidgetValue(context,
+        mobileValue: ResponsiveLayout.projectCardHeightMobile,
+        tabletValue: ResponsiveLayout.projectCardHeightTablet,
+        desktopValue: ResponsiveLayout.projectCardHeightDesktop);
+
+    final lineIndex = ResponsiveLayout.getWidgetIndex(context,
+        index: widget.index, projectWidth: projectWidth);
+
+    final startRangeDesktop =
+        widget.secondSectionHeight + 150 + lineIndex * projectHeight;
 
     final startRangeMobile = widget.secondSectionHeight +
         100 +
@@ -80,30 +81,15 @@ class _ProjectCardWebState extends State<ProjectCardWeb>
       }
     }, builder: (context, state) {
       (state.scrollOffsetValue > (startRange + 100) &&
-              state.scrollOffsetValue <
-                  (startRange +
-                      3 *
-                          ResponsiveLayout.buildWidgetValue(context,
-                              mobileValue:
-                                  ResponsiveLayout.projectCardHeightMobile,
-                              tabletValue:
-                                  ResponsiveLayout.projectCardHeightTablet,
-                              desktopValue:
-                                  ResponsiveLayout.projectCardHeightDesktop)))
+              state.scrollOffsetValue < (startRange + 3 * projectHeight))
           ? controller.forward()
           : controller.reverse();
       return AnimatedBuilder(
           animation: animation,
           builder: (context, child) {
             return Container(
-              height: ResponsiveLayout.buildWidgetValue(context,
-                  mobileValue: ResponsiveLayout.projectCardHeightMobile,
-                  tabletValue: ResponsiveLayout.projectCardHeightTablet,
-                  desktopValue: ResponsiveLayout.projectCardHeightDesktop),
-              width: ResponsiveLayout.buildWidgetValue(context,
-                  mobileValue: ResponsiveLayout.projectCardWidthMobile,
-                  tabletValue: ResponsiveLayout.projectCardWidthTablet,
-                  desktopValue: ResponsiveLayout.projectCardWidthDesktop),
+              height: projectHeight,
+              width: projectWidth,
               margin:
                   const EdgeInsets.symmetric(vertical: 15.0, horizontal: 5.0),
               decoration: BoxDecoration(
@@ -339,11 +325,21 @@ class _ProjectCardWebState extends State<ProjectCardWeb>
               textAlign: TextAlign.justify,
             ),
           ),
-          SizedBox(
-            height: 40,
-            child: CustomPlusButton(
-              projectUrl: widget.project.projectUrl,
-              viewMoreMessage: widget.project.viewMoreMessage,
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Expanded(
+                  child: SizedBox(
+                    height: 40,
+                    child: CustomPlusButton(
+                      projectUrl: widget.project.projectUrl,
+                      viewMoreMessage: widget.project.viewMoreMessage,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ],
