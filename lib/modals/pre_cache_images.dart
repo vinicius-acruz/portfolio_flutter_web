@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 List<AssetImage> preCacheImages = [
   const AssetImage('assets/images/projects/project1/caption_fetcher_frame.gif'),
-  const AssetImage('assets/images/projects/project1/project1_1.png'),
+  const AssetImage('assets/images/projects/project1/caption_fetcher_image.png'),
   const AssetImage('assets/images/projects/project2/chat_me_frame.gif'),
   const AssetImage('assets/images/projects/project2/chat_me_image.png'),
   const AssetImage('assets/images/projects/project3/2do_frame.gif'),
