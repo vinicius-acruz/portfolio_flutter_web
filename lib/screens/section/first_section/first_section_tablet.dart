@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio_flutter_web/modals/descriptions.dart';
 import 'package:portfolio_flutter_web/responsive/responsive_layout.dart';
 import 'package:portfolio_flutter_web/screens/section/fourth_section/fourth_section_tablet.dart';
 import 'package:portfolio_flutter_web/widgets/stamp_animation.dart';
@@ -219,7 +220,7 @@ class FirstSectionTablet extends StatelessWidget {
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
-                              'Hi, I\'m Vinícius, an aspiring Flutter developer passionate about crafting seamless and engaging cross-platform applications. Eager to merge creativity with code, I strive to bring innovative solutions to life in the ever-evolving world of mobile development.',
+                              myDescription,
                               style: AppStyles.fontStyle(
                                   fontSize:
                                       ResponsiveLayout.normalLettersSizeTablet),

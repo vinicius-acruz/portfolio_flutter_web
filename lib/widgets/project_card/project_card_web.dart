@@ -331,7 +331,7 @@ class _ProjectCardWebState extends State<ProjectCardWeb>
               children: [
                 Expanded(
                   child: SizedBox(
-                    height: 30,
+                    height: 25,
                     child: CustomPlusButton(
                       projectUrl: widget.project.projectUrl,
                       viewMoreMessage: widget.project.viewMoreMessage,

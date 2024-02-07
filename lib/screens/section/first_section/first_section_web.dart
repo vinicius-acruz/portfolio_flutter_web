@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:portfolio_flutter_web/modals/descriptions.dart';
 import 'package:portfolio_flutter_web/responsive/responsive_layout.dart';
 import 'package:portfolio_flutter_web/screens/section/fourth_section/fourth_section_web.dart';
 import 'package:portfolio_flutter_web/widgets/stamp_animation.dart';
@@ -265,7 +266,7 @@ class FirstSectionWeb extends StatelessWidget {
                                     maxHeight: 300.0,
                                     controller: controller,
                                     child: AutoSizeText(
-                                      'Hi, I\'m Vinícius, an aspiring Flutter developer passionate about crafting seamless and engaging cross-platform applications. Eager to merge creativity with code, I strive to bring innovative solutions to life in the ever-evolving world of mobile development.',
+                                      myDescription,
                                       style: AppStyles.fontStyle(
                                           fontSize: ResponsiveLayout
                                                   .normalLettersSizeDesktop -
