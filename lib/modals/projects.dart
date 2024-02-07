@@ -26,7 +26,7 @@ List<Project> projects = [
       title: 'Caption Fetcher',
       description:
           'Utilizes OpenAI\'s GPT technology for AI-powered summarization of YouTube videos. Features secure Firebase registration, profile management, image uploads, an in-app coin system, and meticulous user history tracking. Data storage and backend operations are managed through Firebase Firestore and Functions.',
-      imageUrl1: 'assets/images/projects/project1/project1_1.png',
+      imageUrl1: 'assets/images/projects/project1/caption_fetcher_image.png',
       projectAnimation:
           'assets/images/projects/project1/caption_fetcher_frame.gif',
       index: 1,
