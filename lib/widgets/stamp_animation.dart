@@ -4,13 +4,13 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 
 class FlutterStampAnimation extends StatefulWidget {
-  const FlutterStampAnimation({Key? key}) : super(key: key);
+  const FlutterStampAnimation({super.key});
 
   @override
-  _FlutterStampAnimationState createState() => _FlutterStampAnimationState();
+  FlutterStampAnimationState createState() => FlutterStampAnimationState();
 }
 
-class _FlutterStampAnimationState extends State<FlutterStampAnimation>
+class FlutterStampAnimationState extends State<FlutterStampAnimation>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _scaleAnimation;
@@ -50,8 +50,8 @@ class _FlutterStampAnimationState extends State<FlutterStampAnimation>
 
     _path = createEllipticalPath();
     _pathAnimation = Tween<Offset>(
-      begin: Offset(0.5, 1.0),
-      end: Offset(1.0, 0.0),
+      begin: const Offset(0.5, 1.0),
+      end: const Offset(1.0, 0.0),
     ).animate(
       CurvedAnimation(
         parent: _controller,
@@ -66,7 +66,7 @@ class _FlutterStampAnimationState extends State<FlutterStampAnimation>
     Path path = Path();
     // Adjust the center and radius here
     Offset ellipseCenter =
-        Offset(-100, 0); // Change these values to move the ellipse
+        const Offset(-100, 0); // Change these values to move the ellipse
     double radius = 200;
     Rect rect = Rect.fromCircle(center: ellipseCenter, radius: radius);
     path.addOval(rect);

@@ -222,13 +222,11 @@ class FirstSectionMobile extends StatelessWidget {
                     textRevealAnimation: textRevealAnimation,
                     maxHeight: 20,
                     controller: controller,
-                    child: Container(
-                      child: const Text(
-                        'Hi, I\'m Vinícius, an aspiring Flutter developer passionate about crafting seamless and engaging cross-platform applications. Eager to merge creativity with code, I strive to bring innovative solutions to life in the ever-evolving world of mobile development.',
-                        style: TextStyle(
-                            fontSize: ResponsiveLayout.normalLettersSizeMobile),
-                        textAlign: TextAlign.justify,
-                      ),
+                    child: const Text(
+                      'Hi, I\'m Vinícius, an aspiring Flutter developer passionate about crafting seamless and engaging cross-platform applications. Eager to merge creativity with code, I strive to bring innovative solutions to life in the ever-evolving world of mobile development.',
+                      style: TextStyle(
+                          fontSize: ResponsiveLayout.normalLettersSizeMobile),
+                      textAlign: TextAlign.justify,
                     ),
                   ),
                 ),

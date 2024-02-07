@@ -6,7 +6,6 @@ import 'package:portfolio_flutter_web/responsive/responsive_layout.dart';
 import '../../constants/style.dart';
 import '../../modals/projects.dart';
 import '../../modals/scroll_offset.dart';
-import 'package:lottie/lottie.dart';
 
 class ProjectCardMobile extends StatefulWidget {
   final Project project;
@@ -93,7 +92,7 @@ class _ProjectCardMobileState extends State<ProjectCardMobile>
         return false;
       }
     }, builder: (context, state) {
-      print('Card ${widget.index}: project line $startRange');
+      //print('Card ${widget.index}: project line $startRange');
       WidgetsBinding.instance.addPostFrameCallback((_) {
         if (state.scrollOffsetValue > (startRange + 100)) {
           controller.forward();

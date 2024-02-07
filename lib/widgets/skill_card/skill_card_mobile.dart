@@ -10,12 +10,14 @@ class SkillCardMobile extends StatefulWidget {
   final Skill skill;
   final int index;
   final double sectionHeight;
+  final bool useImage;
 
   const SkillCardMobile(
       {super.key,
       required this.skill,
       required this.index,
-      required this.sectionHeight});
+      required this.sectionHeight,
+      this.useImage = true});
 
   @override
   State<SkillCardMobile> createState() => _SkillCardMobileState();
@@ -46,8 +48,10 @@ class _SkillCardMobileState extends State<SkillCardMobile>
       return (current.scrollOffsetValue >= startRange &&
           current.scrollOffsetValue <= endRange);
     }, builder: (context, state) {
-      print("skillcard: ${state.scrollOffsetValue}");
-
+      if (state.scrollOffsetValue >= (endRange - 200) &&
+          state.scrollOffsetValue <= (endRange)) {
+        _isExpanded = false;
+      }
       return AnimatedCrossFade(
         crossFadeState: (state.scrollOffsetValue >= (startRange + 50) &&
                 state.scrollOffsetValue <= (endRange - 200))
@@ -94,16 +98,21 @@ class _SkillCardMobileState extends State<SkillCardMobile>
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Icon(
-                  widget.skill.iconData,
-                  size: _isExpanded ? 25 : 40,
-                  color: AppStyles.skillCardsIconsColor,
-                ),
+                widget.useImage
+                    ? Image.asset(
+                        widget.skill.imagePath!,
+                        height: _isExpanded ? 25 : 40,
+                      )
+                    : Icon(
+                        widget.skill.iconData,
+                        size: _isExpanded ? 25 : 40,
+                        color: AppStyles.skillCardsIconsColor,
+                      ),
                 const SizedBox(height: 10.0),
                 Text(
                   widget.skill.title,
                   style: AppStyles.fontStyle(
-                    fontSize: ResponsiveLayout.cardTitleLettersSizeMobile,
+                    fontSize: ResponsiveLayout.cardTitleLettersSizeMobile - 4,
                     fontWeight: FontWeight.bold,
                     color: AppStyles.skillLettersColor,
                   ),

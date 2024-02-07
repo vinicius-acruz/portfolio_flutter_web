@@ -88,12 +88,12 @@ class ResponsiveLayout extends StatelessWidget {
 // Second section skill card sizes
 
 //Mobile
-  static const double firstChildHeightMobile = 230.0;
-  static const double firstChildWidthMobile = 150.0;
-  static const double secondChildHeightMobile = 230.0;
-  static const double secondChildWidthMobile = 150.0;
-  static const double expandedContainerHeightMobile = 400.0;
-  static const double expandedContainerWidthMobile = 280.0;
+  static const double firstChildHeightMobile = 180.0;
+  static const double firstChildWidthMobile = 140.0;
+  static const double secondChildHeightMobile = 180.0;
+  static const double secondChildWidthMobile = 140.0;
+  static const double expandedContainerHeightMobile = 350.0;
+  static const double expandedContainerWidthMobile = 250.0;
 
 //Tablet
   static const double firstChildHeightTablet = 280.0;
@@ -104,7 +104,7 @@ class ResponsiveLayout extends StatelessWidget {
   static const double expandedContainerWidthTablet = 340.0;
 
 //Desktop
-  static const double childHeightDesktop = 450.0;
+  static const double childHeightDesktop = 350.0;
   static const double childWidthDesktop = 400.0;
 
   // Wrap widget spacing:
@@ -144,8 +144,8 @@ class ResponsiveLayout extends StatelessWidget {
     final projectsPerLine = (screenWidth / (projectWidth + 5 + projectSpace))
         .floor(); //5 is the margin of the skill  card
     final totalLine = (skillsLength / projectsPerLine).ceil();
-    print(
-        'screen width: $screenWidth, total  line: $totalLine, skills length: $skillsLength  skill  width total: ${projectWidth + 50 + projectSpace} per line: $projectsPerLine');
+    // print(
+    //     'screen width: $screenWidth, total  line: $totalLine, skills length: $skillsLength  skill  width total: ${projectWidth + 50 + projectSpace} per line: $projectsPerLine');
 
     final sectionHeight = textRevealHeight +
         (totalLine *
@@ -192,7 +192,7 @@ class ResponsiveLayout extends StatelessWidget {
       projectsPerLine = 1;
     }
     final lineIndex = index ~/ projectsPerLine;
-    print('projects per line: $projectsPerLine, line index: $lineIndex');
+    // print('projects per line: $projectsPerLine, line index: $lineIndex');
     return lineIndex;
   }
 

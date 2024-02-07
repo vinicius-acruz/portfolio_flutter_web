@@ -77,7 +77,7 @@ class FourthSectionMobile extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10.0)),
             padding: const EdgeInsets.all(10.0),
             margin: const EdgeInsets.only(left: 30.0, right: 30.0),
-            child: Row(
+            child: const Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 MySocialLinks(),

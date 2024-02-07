@@ -174,7 +174,7 @@ class FirstSectionTablet extends StatelessWidget {
                         );
                       },
                       style: ElevatedButton.styleFrom(
-                        fixedSize: Size(180.0, 45),
+                        fixedSize: const Size(180.0, 45),
                         backgroundColor: AppStyles.reachButtonColor,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0),

@@ -23,6 +23,7 @@ class _SecondSectionState extends State<SecondSection>
   late AnimationController controller;
   late double startRange;
   late double endRange;
+  final bool useImage = true;
 
   @override
   void initState() {
@@ -60,7 +61,6 @@ class _SecondSectionState extends State<SecondSection>
             return false;
           }
         }, builder: (context, state) {
-          print("Scroll Offset: ${state.scrollOffsetValue}");
           (state.scrollOffsetValue > (startRange + 100))
               ? controller.forward()
               : controller.reverse();
@@ -96,15 +96,18 @@ class _SecondSectionState extends State<SecondSection>
                           skill: skill,
                           index: skills.indexOf(skill),
                           sectionHeight: widget.secondSectionHeight,
+                          useImage: useImage,
                         ),
                         desktopLayout: SkillCardWeb(
                             skill: skill,
                             index: skills.indexOf(skill),
-                            sectionHeight: widget.secondSectionHeight),
+                            sectionHeight: widget.secondSectionHeight,
+                            useImage: useImage),
                         tabletLayout: SkillCardTablet(
                           skill: skill,
                           index: skills.indexOf(skill),
                           sectionHeight: widget.secondSectionHeight,
+                          useImage: useImage,
                         )),
                   )
                   .toList(),

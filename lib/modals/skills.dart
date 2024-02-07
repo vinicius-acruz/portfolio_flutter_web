@@ -4,12 +4,14 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class Skill {
   String title;
   String description;
-  IconData iconData;
+  IconData? iconData;
+  String? imagePath;
 
   Skill({
     required this.title,
     required this.description,
-    required this.iconData,
+    this.iconData,
+    this.imagePath,
   });
 }
 
@@ -17,37 +19,71 @@ List<Skill> skills = [
   Skill(
     title: 'Flutter',
     description:
-        'Flutter is a framework for building natively compiled applications for mobile, web, and desktop. It offers a rich widget set and hot-reload feature, enabling rapid development and a consistent user experience across platforms.',
+        "I've successfully developed cross-platform applications using Flutter, harnessing its capabilities for Android, iOS, web, and desktop. With a strong command over Flutter, I bring efficiency and innovation to every project.",
     iconData: FontAwesomeIcons.mobileScreenButton,
+    imagePath: 'assets/images/icons/flutter_icon.png',
   ),
   Skill(
     title: 'Firebase',
     description:
-        'Firebase is a platform for building and scaling web and mobile applications. It provides real-time databases, authentication, hosting, and cloud functions, enhancing functionality, performance, and user engagement.',
+        "Utilizing Firebase, I've seamlessly integrated user authentication and real-time data storage with Firestore. Additionally, I've leveraged Firebase Functions to execute backend operations, enhancing app functionality and user engagement.",
     iconData: FontAwesomeIcons.fire,
+    imagePath: 'images/icons/firebase_icon.png',
   ),
   Skill(
-    title: 'BloC/Provider\nPackage',
+    title: 'BloC/Provider Package',
     description:
-        'BloC pattern and Provider package are state management solutions for Flutter. They organize and manage data flow, ensuring a clean and efficient architecture for scalable applications.',
+        "Employing BloC and Provider packages, I've adeptly managed state in Flutter applications, ensuring a streamlined and efficient architecture that facilitates scalability and maintainability.",
     iconData: FontAwesomeIcons.gears,
+    imagePath: 'images/icons/bloc_icon.png',
+  ),
+  Skill(
+    title: 'Version Control Tools',
+    description:
+        "With knowledge in Git and GitHub, I've maintained precise control over my applications, managing branches and issues to optimize the software development process for collaborative projects.",
+    iconData: FontAwesomeIcons.codeBranch,
+    imagePath: 'images/icons/version_control_icon.png',
+  ),
+  Skill(
+    title: 'Project Management\nTools',
+    description:
+        "Utilizing tools like Jira and Trello, I've efficiently executed tasks, set priorities, and met deadlines for my projects. My adeptness in project management ensures smooth progress and successful outcomes.",
+    iconData: FontAwesomeIcons.listCheck,
+    imagePath: 'images/icons/project_icon.png',
   ),
   Skill(
     title: 'HTML/CSS/\nJavascript',
     description:
-        'HTML, CSS, and JavaScript are foundational for web development. HTML structures content, CSS styles it, and JavaScript adds interactivity, essential for creating responsive and visually appealing web applications.',
+        "I possess foundational knowledge of HTML, CSS, and JavaScript, essential for web development and integrating features such as Firebase Functions into applications.",
     iconData: FontAwesomeIcons.code,
+    imagePath: 'images/icons/html_icon.png',
   ),
   Skill(
-    title: 'Version\nControl\nTools',
+    title: 'OpenAI GPT Plugin',
     description:
-        'Version control tools like Git are crucial for collaborative software development. They enable multiple developers to work simultaneously, track changes, and ensure a seamless and organized development process.',
-    iconData: FontAwesomeIcons.codeBranch,
+        "Leveraging the OpenAI GPT plugin, I've implemented AI-powered features within Flutter apps, fine-tuning prompt structures and configurations to optimize functionality and user experience.",
+    iconData: FontAwesomeIcons.brain,
+    imagePath: 'images/icons/openai_icon.png',
   ),
   Skill(
-    title: 'Project\nManagement\nTools',
+    title: 'UI/UX Design',
     description:
-        'Project management tools like Jira, Trello, or Asana streamline development, enhance collaboration, and ensure timely project delivery. They help plan, track progress, and communicate efficiently for successful project outcomes.',
-    iconData: FontAwesomeIcons.listCheck,
+        "With experience in UI design using Figma, I craft visually appealing and user-friendly interfaces that enhance the overall experience of my applications, ensuring seamless navigation and interaction.",
+    iconData: FontAwesomeIcons.penRuler,
+    imagePath: 'images/icons/ux_ui_icon.png',
+  ),
+  Skill(
+    title: 'Flutter Flame',
+    description:
+        "In game development with Flutter Flame, I've created captivating 2D games with dynamic elements like collisions, object interactions, and character actions. My expertise in Flutter Flame ensures engaging gameplay experiences.",
+    iconData: FontAwesomeIcons.fire,
+    imagePath: 'images/icons/flutter_flame_icon.png',
+  ),
+  Skill(
+    title: 'Flutter APIs',
+    description:
+        "Utilizing Flutter's extensive APIs, I've integrated diverse functionalities into applications, adeptly navigating documentation to implement API features effectively and enhance app capabilities.",
+    iconData: FontAwesomeIcons.mobileScreenButton,
+    imagePath: 'images/icons/flutter_apis_icon.png',
   ),
 ];

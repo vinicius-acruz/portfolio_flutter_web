@@ -44,8 +44,8 @@ class _WholePageState extends State<WholePage> {
             mobileValue: ResponsiveLayout.secondChildWidthMobile,
             tabletValue: ResponsiveLayout.secondChildWidthTablet,
             desktopValue: ResponsiveLayout.childWidthDesktop));
-    print(
-        ' Whole page: second section height: $secondSectionHeight + ${MediaQuery.of(context).size.height}');
+    // print(
+    //     ' Whole page: second section height: $secondSectionHeight + ${MediaQuery.of(context).size.height}');
 
     return Container(
       color: AppStyles.backgroundColor,

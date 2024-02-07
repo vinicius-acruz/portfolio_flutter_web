@@ -9,12 +9,14 @@ class SkillCardTablet extends StatefulWidget {
   final Skill skill;
   final int index;
   final double sectionHeight;
+  final bool useImage;
 
   const SkillCardTablet(
       {super.key,
       required this.skill,
       required this.index,
-      required this.sectionHeight});
+      required this.sectionHeight,
+      this.useImage = true});
 
   @override
   State<SkillCardTablet> createState() => _SkillCardTabletState();
@@ -45,7 +47,6 @@ class _SkillCardTabletState extends State<SkillCardTablet>
       return (current.scrollOffsetValue >= startRange &&
           current.scrollOffsetValue <= endRange);
     }, builder: (context, state) {
-      print("skillcard: ${state.scrollOffsetValue}");
       return AnimatedCrossFade(
         crossFadeState: (state.scrollOffsetValue >= (startRange + 200) &&
                 state.scrollOffsetValue <= (endRange - 200))
@@ -92,13 +93,16 @@ class _SkillCardTabletState extends State<SkillCardTablet>
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Icon(
-                  widget.skill.iconData,
-                  size: _isExpanded
-                      ? ResponsiveLayout.getResponsiveSize(context, 40)
-                      : ResponsiveLayout.getResponsiveSize(context, 45),
-                  color: AppStyles.skillCardsIconsColor,
-                ),
+                widget.useImage
+                    ? Image.asset(
+                        widget.skill.imagePath!,
+                        height: _isExpanded ? 40 : 45,
+                      )
+                    : Icon(
+                        widget.skill.iconData,
+                        size: _isExpanded ? 40 : 45,
+                        color: AppStyles.skillCardsIconsColor,
+                      ),
                 const SizedBox(height: 10.0),
                 Text(
                   widget.skill.title,

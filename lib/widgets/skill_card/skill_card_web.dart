@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_flutter_web/modals/scroll_offset.dart';
 import 'package:portfolio_flutter_web/responsive/responsive_layout.dart';
 import '../../constants/style.dart';
@@ -10,12 +9,14 @@ class SkillCardWeb extends StatefulWidget {
   final Skill skill;
   final int index;
   final double sectionHeight;
+  final bool useImage;
 
   const SkillCardWeb(
       {super.key,
       required this.skill,
       required this.index,
-      required this.sectionHeight});
+      required this.sectionHeight,
+      this.useImage = true});
 
   @override
   State<SkillCardWeb> createState() => _SkillCardWebState();
@@ -41,7 +42,6 @@ class _SkillCardWebState extends State<SkillCardWeb> {
       return (current.scrollOffsetValue >= startRange &&
           current.scrollOffsetValue <= endRange);
     }, builder: (context, state) {
-      print("skillcard: ${state.scrollOffsetValue}");
       return AnimatedCrossFade(
         crossFadeState: (state.scrollOffsetValue >= (startRange + 100) &&
                 state.scrollOffsetValue <= (endRange - 100))
@@ -79,23 +79,39 @@ class _SkillCardWebState extends State<SkillCardWeb> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Icon(
-                widget.skill.iconData,
-                size: 40,
-                color: AppStyles.skillCardsIconsColor,
-              ),
-              const SizedBox(height: 10.0),
-              Text(
-                widget.skill.title,
-                style: AppStyles.fontStyle(
-                  fontSize: ResponsiveLayout.cardTitleLettersSizeDesktop,
-                  fontWeight: FontWeight.bold,
-                  color: AppStyles.skillLettersColor,
+              Expanded(
+                flex: 1,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    widget.useImage
+                        ? Image.asset(
+                            widget.skill.imagePath!,
+                            height: 50,
+                          )
+                        : Icon(
+                            widget.skill.iconData,
+                            size: 50,
+                            color: AppStyles.skillCardsIconsColor,
+                          ),
+                    const SizedBox(width: 10.0),
+                    Text(
+                      widget.skill.title,
+                      maxLines: 2,
+                      style: AppStyles.fontStyle(
+                        fontSize: ResponsiveLayout.cardTitleLettersSizeDesktop,
+                        fontWeight: FontWeight.bold,
+                        color: AppStyles.skillLettersColor,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
                 ),
-                textAlign: TextAlign.center,
               ),
               const SizedBox(height: 10.0),
-              Flexible(
+              Expanded(
+                flex: 3,
                 child: SingleChildScrollView(
                   child: Text(
                     widget.skill.description,

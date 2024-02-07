@@ -39,7 +39,7 @@ class CustomPlusButton extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 SizedBox(
                   height: 80,
                   width: 250,
@@ -80,18 +80,18 @@ class CustomPlusButton extends StatelessWidget {
     return InkWell(
       onTap: () => _showModalBottomSheet(context),
       child: Container(
-        padding: const EdgeInsets.all(8),
+        padding: const EdgeInsets.all(3),
         decoration: BoxDecoration(
           color: const Color.fromARGB(85, 255, 255, 255),
           borderRadius: BorderRadius.circular(10),
         ),
-        child: Row(
+        child: const Row(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const FaIcon(
+            FaIcon(
               FontAwesomeIcons.plus,
-              size: 20.0,
+              size: 15.0,
               color: AppStyles.lettersColor,
             ),
           ],

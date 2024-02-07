@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lottie/lottie.dart';
 import 'package:portfolio_flutter_web/responsive/responsive_layout.dart';
 import '../../constants/style.dart';
 import '../../modals/projects.dart';
@@ -98,8 +97,8 @@ class _ProjectCardTabletState extends State<ProjectCardTablet>
         return false;
       }
     }, builder: (context, state) {
-      print(
-          'Card ${widget.index}: project line $lineIndex, scrolloffset: ${state.scrollOffsetValue}, ');
+      // print(
+      //     'Card ${widget.index}: project line $lineIndex, scrolloffset: ${state.scrollOffsetValue}, ');
       WidgetsBinding.instance.addPostFrameCallback((_) {
         if (state.scrollOffsetValue > (startRange + 100)) {
           controller.forward();

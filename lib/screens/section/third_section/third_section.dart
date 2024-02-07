@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio_flutter_web/responsive/responsive_layout.dart';
-import 'package:portfolio_flutter_web/widgets/project_card/project_card_mobile.dart';
-import 'package:portfolio_flutter_web/widgets/project_card/project_card_tablet.dart';
 import 'package:portfolio_flutter_web/widgets/text_reveal.dart';
 import '../../../constants/style.dart';
 import '../../../modals/projects.dart';
@@ -58,7 +56,7 @@ class _ThirdSectionState extends State<ThirdSection>
         return false;
       }
     }, builder: (context, state) {
-      print("Scroll Offset: ${state.scrollOffsetValue}");
+      //print("Scroll Offset: ${state.scrollOffsetValue}");
       (state.scrollOffsetValue > startRange + 100)
           ? controller.forward()
           : controller.reverse();

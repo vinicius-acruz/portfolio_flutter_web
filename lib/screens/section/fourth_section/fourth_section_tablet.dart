@@ -90,7 +90,7 @@ class FourthSectionTablet extends StatelessWidget {
                           color: Colors.grey.withOpacity(0.2),
                           borderRadius: BorderRadius.circular(10.0)),
                       padding: const EdgeInsets.all(5.0),
-                      child: Row(
+                      child: const Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           MySocialLinks(),
