@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio_flutter_web/responsive/responsive_layout.dart';
 import 'package:portfolio_flutter_web/widgets/social_links.dart';
+import 'package:auto_size_text/auto_size_text.dart'; // Import AutoSizeText
 
 import '../../../constants/style.dart';
 
@@ -17,7 +18,7 @@ class FourthSectionTablet extends StatelessWidget {
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(20),
           topRight: Radius.circular(20),
-        ), // Rounded edges
+        ),
       ),
       padding: const EdgeInsets.symmetric(vertical: 30.0, horizontal: 20.0),
       child: Column(
@@ -30,7 +31,7 @@ class FourthSectionTablet extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
+                    AutoSizeText(
                       "Contact me",
                       style: AppStyles.fontStyle(
                         fontSize:
@@ -38,23 +39,32 @@ class FourthSectionTablet extends StatelessWidget {
                         fontWeight: FontWeight.w500,
                         color: AppStyles.bottomLettersContactColor,
                       ),
+                      minFontSize: 10, // Minimum font size
+                      stepGranularity: 1, // Font size step for resizing
+                      maxLines: 1,
                     ),
                     const SizedBox(height: 10.0),
-                    Text(
+                    AutoSizeText(
                       'Got a project?',
                       style: AppStyles.fontStyle(
                         fontWeight: FontWeight.w600,
                         fontSize: ResponsiveLayout.bottomSheetLetterSizeTablet,
                         color: AppStyles.bottomLettersColor,
                       ),
+                      minFontSize: 10,
+                      stepGranularity: 1,
+                      maxLines: 1,
                     ),
-                    Text(
+                    AutoSizeText(
                       'Let\'s talk!',
                       style: AppStyles.fontStyle(
                         fontWeight: FontWeight.w600,
                         fontSize: ResponsiveLayout.bottomSheetLetterSizeTablet,
                         color: AppStyles.bottomLettersColor,
                       ),
+                      minFontSize: 10,
+                      stepGranularity: 1,
+                      maxLines: 1,
                     ),
                   ],
                 ),
@@ -71,15 +81,21 @@ class FourthSectionTablet extends StatelessWidget {
                         const FaIcon(FontAwesomeIcons.envelopeCircleCheck,
                             size: 30.0, color: Colors.red),
                         const SizedBox(width: 20.0),
-                        Text(
-                          "vinicius.a.cruz1@gmail.com",
-                          textAlign: TextAlign.start,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: AppStyles.fontStyle(
-                            fontSize: ResponsiveLayout.normalLettersSizeTablet,
-                            fontWeight: FontWeight.w500,
-                            color: AppStyles.bottomLettersColor,
+                        Expanded(
+                          // Wrap the text with Expanded
+                          child: AutoSizeText(
+                            "vinicius.a.cruz1@gmail.com",
+                            textAlign: TextAlign.start,
+                            style: AppStyles.fontStyle(
+                              fontSize:
+                                  ResponsiveLayout.normalLettersSizeTablet,
+                              fontWeight: FontWeight.w500,
+                              color: AppStyles.bottomLettersColor,
+                            ),
+                            minFontSize: 10,
+                            stepGranularity: 1,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
                           ),
                         ),
                       ],

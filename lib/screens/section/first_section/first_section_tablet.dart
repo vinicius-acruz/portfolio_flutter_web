@@ -33,7 +33,7 @@ class FirstSectionTablet extends StatelessWidget {
           Positioned.fill(
             right: ResponsiveLayout.getResponsiveSize(context, -75.0),
             child: SecondPageImage(
-              height: ResponsiveLayout.getResponsiveImage(context, 0.85),
+              height: ResponsiveLayout.getResponsiveImage(context, 0.75),
             ),
           ),
           // Positioned.fill(
@@ -51,7 +51,7 @@ class FirstSectionTablet extends StatelessWidget {
           Positioned.fill(
             right: ResponsiveLayout.getResponsiveSize(context, -75.0),
             child: FirstPageImage(
-                height: ResponsiveLayout.getResponsiveImage(context, 0.85)),
+                height: ResponsiveLayout.getResponsiveImage(context, 0.75)),
           ),
           const Positioned(
               top: 20,

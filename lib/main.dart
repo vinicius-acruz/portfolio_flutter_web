@@ -54,8 +54,7 @@ class LoadingScreenState extends State<LoadingScreen>
       0.2; // 20% of the animation running based on duration
 
   Future<void> loadImages(BuildContext context) async {
-    final List<AssetImage> images = preCacheImages;
-    int totalImages = images.length;
+    int totalImages = preCacheImages.length;
     int imagesLoaded = 0;
 
     // Start with the initial animation
@@ -66,8 +65,15 @@ class LoadingScreenState extends State<LoadingScreen>
       curve: Curves.easeOut,
     );
 
-    for (var image in images) {
-      await precacheImage(image, getContext());
+// Start loading GIFs in the background without waiting for them to finish
+    for (var gif in preCacheImagesGif) {
+      precacheImage(gif, context); // Not using await here
+    }
+
+    // Then, load static images and wait for each to finish before proceeding
+    for (var image in preCacheImages) {
+      await precacheImage(
+          image, getContext()); // Using await to ensure completion
       await Future.delayed(const Duration(milliseconds: 100)); // Small delay
       imagesLoaded++;
       double newProgress = (imagesLoaded / totalImages);
