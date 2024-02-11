@@ -86,7 +86,7 @@ class _ThirdSectionState extends State<ThirdSection>
             Wrap(
               alignment: WrapAlignment.center,
               spacing: 30.0,
-              runSpacing: 20.0,
+              runSpacing: 50.0,
               children: projects
                   .map<Widget>((project) => ResponsiveLayout(
                       mobileLayout: ProjectCardWeb(

@@ -85,76 +85,87 @@ class _SkillCardTabletState extends State<SkillCardTablet>
               ),
             ],
           ),
-          child: SizedBox(
-            height: _isExpanded
-                ? ResponsiveLayout.expandedContainerHeightTablet
-                : ResponsiveLayout.secondChildHeightTablet,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                widget.useImage
-                    ? Image.asset(
-                        widget.skill.imagePath!,
-                        height: _isExpanded ? 40 : 45,
-                      )
-                    : Icon(
-                        widget.skill.iconData,
-                        size: _isExpanded ? 40 : 45,
-                        color: AppStyles.skillCardsIconsColor,
-                      ),
-                const SizedBox(height: 10.0),
-                Text(
-                  widget.skill.title,
-                  style: AppStyles.fontStyle(
-                    fontSize: ResponsiveLayout.cardTitleLettersSizeTablet,
-                    fontWeight: FontWeight.bold,
-                    color: AppStyles.skillLettersColor,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-                TextButton(
-                  onPressed: () {
-                    setState(() {
-                      _isExpanded = !_isExpanded;
-                      if (_isExpanded) {
-                        _animationController.forward();
-                      } else {
-                        _animationController.reverse();
-                      }
-                    });
-                  },
-                  child: Text(
-                    _isExpanded ? 'View less' : 'View more',
+          child: GestureDetector(
+            onTap: () => setState(() {
+              _isExpanded = !_isExpanded;
+              if (_isExpanded) {
+                _animationController.forward();
+              } else {
+                _animationController.reverse();
+              }
+            }),
+            child: SizedBox(
+              height: _isExpanded
+                  ? ResponsiveLayout.expandedContainerHeightTablet
+                  : ResponsiveLayout.secondChildHeightTablet,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  widget.useImage
+                      ? Image.asset(
+                          widget.skill.imagePath!,
+                          height: _isExpanded ? 40 : 45,
+                        )
+                      : Icon(
+                          widget.skill.iconData,
+                          size: _isExpanded ? 40 : 45,
+                          color: AppStyles.skillCardsIconsColor,
+                        ),
+                  const SizedBox(height: 10.0),
+                  Text(
+                    widget.skill.title,
                     style: AppStyles.fontStyle(
-                            fontSize:
-                                ResponsiveLayout.normalLettersSizeTablet - 5)
-                        .copyWith(
-                            shadows: [
-                          const Shadow(
-                              color: AppStyles.skillLettersColor,
-                              offset: Offset(0, -5))
-                        ],
-                            color: Colors.transparent,
-                            decoration: TextDecoration.underline,
-                            decorationThickness: 2,
-                            decorationColor: AppStyles.skillLettersColor),
+                      fontSize: ResponsiveLayout.cardTitleLettersSizeTablet,
+                      fontWeight: FontWeight.bold,
+                      color: AppStyles.skillLettersColor,
+                    ),
                     textAlign: TextAlign.center,
                   ),
-                ),
-                if (_isExpanded) // Shows expanded information
-                  Flexible(
-                    child: SingleChildScrollView(
-                      child: Text(
-                        widget.skill.description,
-                        style: AppStyles.fontStyle(
-                            fontSize: ResponsiveLayout.normalLettersSizeTablet,
-                            color: AppStyles.skillLettersColor),
-                        textAlign: TextAlign.center,
-                      ),
+                  TextButton(
+                    onPressed: () {
+                      setState(() {
+                        _isExpanded = !_isExpanded;
+                        if (_isExpanded) {
+                          _animationController.forward();
+                        } else {
+                          _animationController.reverse();
+                        }
+                      });
+                    },
+                    child: Text(
+                      _isExpanded ? 'View less' : 'View more',
+                      style: AppStyles.fontStyle(
+                              fontSize:
+                                  ResponsiveLayout.normalLettersSizeTablet - 5)
+                          .copyWith(
+                              shadows: [
+                            const Shadow(
+                                color: AppStyles.skillLettersColor,
+                                offset: Offset(0, -5))
+                          ],
+                              color: Colors.transparent,
+                              decoration: TextDecoration.underline,
+                              decorationThickness: 2,
+                              decorationColor: AppStyles.skillLettersColor),
+                      textAlign: TextAlign.center,
                     ),
                   ),
-              ],
+                  if (_isExpanded) // Shows expanded information
+                    Flexible(
+                      child: SingleChildScrollView(
+                        child: Text(
+                          widget.skill.description,
+                          style: AppStyles.fontStyle(
+                              fontSize:
+                                  ResponsiveLayout.normalLettersSizeTablet - 2,
+                              color: AppStyles.skillLettersColor),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ),
+                ],
+              ),
             ),
           ),
         ),

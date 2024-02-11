@@ -90,77 +90,88 @@ class _SkillCardMobileState extends State<SkillCardMobile>
               ),
             ],
           ),
-          child: SizedBox(
-            height: _isExpanded
-                ? ResponsiveLayout.expandedContainerHeightMobile
-                : ResponsiveLayout.secondChildHeightMobile,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                widget.useImage
-                    ? Image.asset(
-                        widget.skill.imagePath!,
-                        height: _isExpanded ? 25 : 40,
-                      )
-                    : Icon(
-                        widget.skill.iconData,
-                        size: _isExpanded ? 25 : 40,
-                        color: AppStyles.skillCardsIconsColor,
-                      ),
-                const SizedBox(height: 10.0),
-                Text(
-                  widget.skill.title,
-                  style: AppStyles.fontStyle(
-                    fontSize: ResponsiveLayout.cardTitleLettersSizeMobile - 4,
-                    fontWeight: FontWeight.bold,
-                    color: AppStyles.skillLettersColor,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(height: 1.0),
-                TextButton(
-                  onPressed: () {
-                    setState(() {
-                      _isExpanded = !_isExpanded;
-                      if (_isExpanded) {
-                        _animationController.forward();
-                      } else {
-                        _animationController.reverse();
-                      }
-                    });
-                  },
-                  child: Text(
-                    _isExpanded ? 'View less' : 'View more',
+          child: GestureDetector(
+            onTap: () => setState(() {
+              _isExpanded = !_isExpanded;
+              if (_isExpanded) {
+                _animationController.forward();
+              } else {
+                _animationController.reverse();
+              }
+            }),
+            child: SizedBox(
+              height: _isExpanded
+                  ? ResponsiveLayout.expandedContainerHeightMobile
+                  : ResponsiveLayout.secondChildHeightMobile,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  widget.useImage
+                      ? Image.asset(
+                          widget.skill.imagePath!,
+                          height: _isExpanded ? 25 : 40,
+                        )
+                      : Icon(
+                          widget.skill.iconData,
+                          size: _isExpanded ? 25 : 40,
+                          color: AppStyles.skillCardsIconsColor,
+                        ),
+                  const SizedBox(height: 10.0),
+                  Text(
+                    widget.skill.title,
                     style: AppStyles.fontStyle(
-                            fontSize:
-                                ResponsiveLayout.normalLettersSizeMobile - 3)
-                        .copyWith(
-                            shadows: [
-                          const Shadow(
-                              color: AppStyles.skillLettersColor,
-                              offset: Offset(0, -5))
-                        ],
-                            color: Colors.transparent,
-                            decoration: TextDecoration.underline,
-                            decorationThickness: 2,
-                            decorationColor: AppStyles.skillLettersColor),
+                      fontSize: ResponsiveLayout.cardTitleLettersSizeMobile - 4,
+                      fontWeight: FontWeight.bold,
+                      color: AppStyles.skillLettersColor,
+                    ),
                     textAlign: TextAlign.center,
                   ),
-                ),
-                if (_isExpanded) // Additional details can be added here
-                  Flexible(
-                    child: SingleChildScrollView(
-                      child: Text(
-                        widget.skill.description,
-                        style: AppStyles.fontStyle(
-                            fontSize: ResponsiveLayout.normalLettersSizeMobile,
-                            color: AppStyles.skillLettersColor),
-                        textAlign: TextAlign.center,
-                      ),
+                  const SizedBox(height: 1.0),
+                  TextButton(
+                    onPressed: () {
+                      setState(() {
+                        _isExpanded = !_isExpanded;
+                        if (_isExpanded) {
+                          _animationController.forward();
+                        } else {
+                          _animationController.reverse();
+                        }
+                      });
+                    },
+                    child: Text(
+                      _isExpanded ? 'View less' : 'View more',
+                      style: AppStyles.fontStyle(
+                              fontSize:
+                                  ResponsiveLayout.normalLettersSizeMobile - 3)
+                          .copyWith(
+                              shadows: [
+                            const Shadow(
+                                color: AppStyles.skillLettersColor,
+                                offset: Offset(0, -5))
+                          ],
+                              color: Colors.transparent,
+                              decoration: TextDecoration.underline,
+                              decorationThickness: 2,
+                              decorationColor: AppStyles.skillLettersColor),
+                      textAlign: TextAlign.center,
                     ),
                   ),
-              ],
+                  if (_isExpanded) // Additional details can be added here
+                    Flexible(
+                      child: SingleChildScrollView(
+                        child: Text(
+                          widget.skill.description,
+                          style: AppStyles.fontStyle(
+                              fontSize:
+                                  ResponsiveLayout.normalLettersSizeMobile - 2,
+                              color: AppStyles.skillLettersColor),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ),
+                ],
+              ),
             ),
           ),
         ),

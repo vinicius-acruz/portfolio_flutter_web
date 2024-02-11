@@ -61,7 +61,7 @@ class LoadingScreenState extends State<LoadingScreen>
     _animationController.animateTo(
       initialAnimationFraction,
       duration: const Duration(
-          milliseconds: 2000), // Duration for the initialAnimationFraction
+          milliseconds: 2300), // Duration for the initialAnimationFraction
       curve: Curves.easeOut,
     );
 
@@ -84,7 +84,7 @@ class LoadingScreenState extends State<LoadingScreen>
         _animationController.animateTo(
           newProgress,
           duration: const Duration(
-              milliseconds: 700), // Adjust duration as needed for smoothness
+              milliseconds: 800), // Adjust duration as needed for smoothness
           curve: Curves.easeOut,
         );
       } else if (newProgress > (1 - finalAnimationFraction)) {
