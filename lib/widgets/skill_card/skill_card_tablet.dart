@@ -37,7 +37,16 @@ class _SkillCardTabletState extends State<SkillCardTablet>
 
   @override
   Widget build(BuildContext context) {
-    final startRange = MediaQuery.of(context).size.height;
+    double skillWidth = ResponsiveLayout.secondChildWidthTablet + 10;
+    double skillHeight = ResponsiveLayout.secondChildHeightTablet;
+
+    final lineIndex = ResponsiveLayout.getWidgetIndex(context,
+        index: widget.index, projectWidth: skillWidth);
+    print('skill ${widget.index}, line index: $lineIndex');
+
+    final startRange =
+        MediaQuery.of(context).size.height + lineIndex * skillHeight;
+
     final endRange = 1.5 * widget.sectionHeight +
         widget.index * 200; //  constants to adjust the range as needed
 

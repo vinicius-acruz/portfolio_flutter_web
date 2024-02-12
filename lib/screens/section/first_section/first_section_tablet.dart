@@ -63,7 +63,7 @@ class FirstSectionTablet extends StatelessWidget {
               top: 20,
               left: -100,
               child: SizedBox(
-                  height: isLandscape ? 130 : 200,
+                  height: isLandscape ? 150 : 200,
                   child: const FlutterStampAnimation())),
           // Page Content
           Container(
@@ -220,7 +220,9 @@ class FirstSectionTablet extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       SizedBox(
-                        width: isLandscape ? screenWidth : screenWidth * 0.50,
+                        width: isLandscape
+                            ? screenWidth * 0.65
+                            : screenWidth * 0.50,
                         child: TextReveal(
                           textOpacityAnimation: textOpacityAnimation,
                           textRevealAnimation: textRevealAnimation,
@@ -239,7 +241,9 @@ class FirstSectionTablet extends StatelessWidget {
                         ),
                       ),
                       Container(
-                        width: isLandscape ? 0 : screenWidth * 0.50,
+                        width: isLandscape
+                            ? screenWidth * 0.35
+                            : screenWidth * 0.50,
                       )
                     ],
                   ),

@@ -38,7 +38,17 @@ class _SkillCardMobileState extends State<SkillCardMobile>
 
   @override
   Widget build(BuildContext context) {
-    final startRange = MediaQuery.of(context).size.height;
+    double skillWidth = ResponsiveLayout.secondChildWidthMobile + 10;
+    double skillHeight = ResponsiveLayout.secondChildHeightMobile + 10;
+
+    final lineIndex = ResponsiveLayout.getWidgetIndex(context,
+        index: widget.index, projectWidth: skillWidth);
+    print('skill ${widget.index}, line index: $lineIndex');
+
+    final startRange =
+        MediaQuery.of(context).size.height + 100 + lineIndex * skillHeight;
+
+    //final startRange = MediaQuery.of(context).size.height;
     final endRange = 1.5 * widget.sectionHeight +
         widget.index * 150; //  constants to adjust the range as needed
 

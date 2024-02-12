@@ -88,7 +88,7 @@ class ResponsiveLayout extends StatelessWidget {
 // Second section skill card sizes
 
 //Mobile
-  static const double firstChildHeightMobile = 180.0;
+  static const double firstChildHeightMobile = 160.0;
   static const double firstChildWidthMobile = 120.0;
   static const double secondChildHeightMobile = 180.0;
   static const double secondChildWidthMobile = 140.0;
@@ -96,8 +96,8 @@ class ResponsiveLayout extends StatelessWidget {
   static const double expandedContainerWidthMobile = 180.0;
 
 //Tablet
-  static const double firstChildHeightTablet = 280.0;
-  static const double firstChildWidthTablet = 150.0;
+  static const double firstChildHeightTablet = 250.0;
+  static const double firstChildWidthTablet = 175.0;
   static const double secondChildHeightTablet = 280.0;
   static const double secondChildWidthTablet = 180.0;
   static const double expandedContainerHeightTablet = 480.0;
@@ -183,7 +183,7 @@ class ResponsiveLayout extends StatelessWidget {
 
   // Create a method for setting a index for projects in same line
   static int getWidgetIndex(BuildContext context,
-      {double projectSpace = wrapSpacing,
+      {double projectSpace = wrapSpacing / 2,
       required int index,
       required double projectWidth}) {
     final screenWidth = MediaQuery.of(context).size.width;
