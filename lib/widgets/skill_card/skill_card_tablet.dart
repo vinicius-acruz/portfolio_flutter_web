@@ -37,7 +37,7 @@ class _SkillCardTabletState extends State<SkillCardTablet>
 
   @override
   Widget build(BuildContext context) {
-    final startRange = MediaQuery.of(context).size.height + widget.index * 100;
+    final startRange = MediaQuery.of(context).size.height;
     final endRange = 1.5 * widget.sectionHeight +
         widget.index * 200; //  constants to adjust the range as needed
 
@@ -48,8 +48,7 @@ class _SkillCardTabletState extends State<SkillCardTablet>
           current.scrollOffsetValue <= endRange);
     }, builder: (context, state) {
       return AnimatedCrossFade(
-        crossFadeState: (state.scrollOffsetValue >= (startRange + 200) &&
-                state.scrollOffsetValue <= (endRange - 200))
+        crossFadeState: (state.scrollOffsetValue >= (startRange + 200))
             ? CrossFadeState.showSecond
             : CrossFadeState.showFirst,
         duration: const Duration(milliseconds: 800),

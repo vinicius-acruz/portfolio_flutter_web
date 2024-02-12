@@ -88,16 +88,16 @@ class ResponsiveLayout extends StatelessWidget {
 // Second section skill card sizes
 
 //Mobile
-  static const double firstChildHeightMobile = 50.0;
-  static const double firstChildWidthMobile = 30.0;
+  static const double firstChildHeightMobile = 180.0;
+  static const double firstChildWidthMobile = 120.0;
   static const double secondChildHeightMobile = 180.0;
   static const double secondChildWidthMobile = 140.0;
   static const double expandedContainerHeightMobile = 350.0;
   static const double expandedContainerWidthMobile = 180.0;
 
 //Tablet
-  static const double firstChildHeightTablet = 50.0;
-  static const double firstChildWidthTablet = 30.0;
+  static const double firstChildHeightTablet = 280.0;
+  static const double firstChildWidthTablet = 150.0;
   static const double secondChildHeightTablet = 280.0;
   static const double secondChildWidthTablet = 180.0;
   static const double expandedContainerHeightTablet = 480.0;

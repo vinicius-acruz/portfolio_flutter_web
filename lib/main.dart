@@ -15,15 +15,15 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  final bool debugOn = false; // Set to true to disable loading screen
+  final bool debugOn = true; // Set to true to disable loading screen
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Vinícius\' Portfolio',
       theme: ThemeData(
-        useMaterial3: true,
-      ),
+          useMaterial3: true,
+          scaffoldBackgroundColor: AppStyles.backgroundColor),
       home: BlocProvider(
           create: (_) => DisplayOffset(ScrollOffset(scrollOffsetValue: 0)),
           child: debugOn

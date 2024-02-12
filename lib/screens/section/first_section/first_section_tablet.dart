@@ -25,9 +25,15 @@ class FirstSectionTablet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isLandscape =
+        MediaQuery.of(context).orientation == Orientation.landscape;
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
+    print('is landscape: $isLandscape');
+    print('screen width: $screenWidth, screen height: $screenHeight');
     return SizedBox(
-      height: MediaQuery.of(context).size.height,
-      width: MediaQuery.of(context).size.width,
+      height: screenHeight,
+      width: screenWidth,
       child: Stack(
         children: [
           Positioned.fill(
@@ -53,23 +59,27 @@ class FirstSectionTablet extends StatelessWidget {
             child: FirstPageImage(
                 height: ResponsiveLayout.getResponsiveImage(context, 0.75)),
           ),
-          const Positioned(
+          Positioned(
               top: 20,
               left: -100,
-              child: SizedBox(height: 200, child: FlutterStampAnimation())),
+              child: SizedBox(
+                  height: isLandscape ? 130 : 200,
+                  child: const FlutterStampAnimation())),
           // Page Content
           Container(
-            height: MediaQuery.of(context).size.height,
+            width: screenWidth,
+            height: screenHeight,
             padding: const EdgeInsets.only(left: 25.0),
             child: FittedBox(
-              alignment: Alignment.bottomCenter,
+              alignment: Alignment.bottomLeft,
               fit: BoxFit.contain,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  const SizedBox(
+                  SizedBox(
                     height: 200,
+                    width: screenWidth,
                   ),
                   TextReveal(
                     textOpacityAnimation: textOpacityAnimation,
@@ -204,14 +214,13 @@ class FirstSectionTablet extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.01,
+                    height: screenHeight * 0.01,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       SizedBox(
-                        width:
-                            ResponsiveLayout.getResponsiveSize(context, 300.0),
+                        width: isLandscape ? screenWidth : screenWidth * 0.50,
                         child: TextReveal(
                           textOpacityAnimation: textOpacityAnimation,
                           textRevealAnimation: textRevealAnimation,
@@ -230,12 +239,12 @@ class FirstSectionTablet extends StatelessWidget {
                         ),
                       ),
                       Container(
-                        width: MediaQuery.of(context).size.width * 0.50,
+                        width: isLandscape ? 0 : screenWidth * 0.50,
                       )
                     ],
                   ),
                   SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.05,
+                    height: screenHeight * 0.05,
                   ),
                 ],
               ),
